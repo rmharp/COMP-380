@@ -178,7 +178,9 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--eerie-black-2); }
+body { 
+  background: var(--eerie-black-2);
+}
 
 
 
@@ -266,7 +268,6 @@ article.active {
   position: relative;
   /* padding-bottom: 7px; */
   margin-left: 30px;
-  margin-top: 10px;
 }
 
 .article-title::after {
@@ -2168,7 +2169,9 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin: auto;
     background: var(--eerie-black-2);
-
+    max-width: 100%;
+    padding: 30px;
+    min-width: 100%;
   }
 
 
