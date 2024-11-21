@@ -1,304 +1,337 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Policy | Perspectives on AI</title>
     <!--
       - favicon
     -->
-    <link rel="shortcut icon" href="./assets/images/blacklogo.png" type="image/png">
-
+    <link
+      rel="shortcut icon"
+      href="./assets/images/blacklogo.png"
+      type="image/png"
+    />
 
     <!--
       - custom css link
     -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <!--
       - google font link
     -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXQLH66J4S"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LXQLH66J4S"
+    ></script>
 
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-LXQLH66J4S');
+      gtag("config", "G-LXQLH66J4S");
     </script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!--
       - #MAIN
     -->
 
     <main>
-
-        <!--
+      <!--
           - #SIDEBAR
         -->
 
-        
-
-
-
-
-        <!--
+      <!--
           - #main-content
         -->
 
-        <div class="main-content">
-
-            <!--
+      <div class="main-content">
+        <!--
               - #NAVBAR
             -->
 
-            <nav class="navbar">
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="index.html" class="navbar-link">Home</a>
+            </li>
 
-                <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="history.html" class="navbar-link">History</a>
+            </li>
 
-                    <li class="navbar-item">
-                        <a href="index.html" class="navbar-link">Home</a>
-                    </li>
+            <li class="navbar-item dropdown">
+              <a href="ethics.html" class="navbar-link"
+                >Ethics<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li class="navbar-item">
+                  <a
+                    href="decision_making.html"
+                    class="navbar-link dropdown-link"
+                    >Decisions</a
+                  >
+                </li>
+                <li class="navbar-item">
+                  <a href="alignment.html" class="navbar-link dropdown-link"
+                    >Alignment</a
+                  >
+                </li>
+                <li class="navbar-item">
+                  <a href="#" class="navbar-link dropdown-link active"
+                    >Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
 
-                    <li class="navbar-item">
-                        <a href="history.html" class="navbar-link">History</a>
-                    </li>
-                    
-                    <li class="navbar-item dropdown">
-                        <a href="ethics.html" class="navbar-link">Ethics<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="navbar-item">
-                                <a href="decision_making.html" class="navbar-link dropdown-link">Decisions</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a href="alignment.html" class="navbar-link dropdown-link">Alignment</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a href="#" class="navbar-link dropdown-link active">Policy</a>
-                            </li>
-                        </ul>
-                    </li>
+            <li class="navbar-item dropdown">
+              <a href="generative.html" class="navbar-link"
+                >Generative AI<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li class="navbar-item">
+                  <a href="language.html" class="navbar-link dropdown-link"
+                    >Language</a
+                  >
+                </li>
+                <li class="navbar-item">
+                  <a href="vision.html" class="navbar-link dropdown-link"
+                    >Vision</a
+                  >
+                </li>
+              </ul>
+            </li>
 
-                    <li class="navbar-item dropdown">
-                        <a href="generative.html" class="navbar-link">Generative AI<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="navbar-item">
-                                <a href="language.html" class="navbar-link dropdown-link">Language</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a href="vision.html" class="navbar-link dropdown-link">Vision</a>
-                            </li>
-                        </ul>
-                    </li>
+            <li class="navbar-item">
+              <a href="contact.html" class="navbar-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
 
-                    <li class="navbar-item">
-                        <a href="contact.html" class="navbar-link">Contact</a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-
-            <!--
+        <!--
               - #ABOUT
             -->
 
-            <article class="about  active" data-page="about">
+        <header>
+          <h2 class="h2 article-title">Policy</h2>
+        </header>
 
-                <header>
-                    <h2 class="h2 article-title">Policy</h2>
-                </header>
+        <section class="about-text">
+          <p>
+            At the University of UNC-Chapel Hill, my academic background in
+            Statistics and Analytics & Computer Science drives my commitment to
+            expanding access to learning resources. As Technical Chair of
+            AI@UNC, I've spearheaded initiatives like NeuroSpark, promoting
+            novel approaches to awake craniotomy research and AI research.
+            Presenting my research internationally at Oxford University allowed
+            me to share insights from my research on undergraduate mental health
+            and to advocate for novel approaches to management of mental health
+            resources. At the BRANE Lab, my research has focused on the machine
+            learning methods behind neurobiological and behavioral determinants
+            of substance use treatment response. Through leadership roles and
+            research, I strive to build a healthier, more well-informed
+            community.
+          </p>
+          <br />
 
-                <section class="about-text">
-                    <p>
-                        At the University of UNC-Chapel Hill, my academic background in Statistics and Analytics & Computer Science drives my commitment to expanding access to learning resources. As Technical Chair of AI@UNC, I've spearheaded initiatives like NeuroSpark, promoting novel approaches to awake craniotomy research and AI research. Presenting my research internationally at Oxford University allowed me to share insights from my research on undergraduate mental health and to advocate for novel approaches to management of mental health resources. At the BRANE Lab, my research has focused on the machine learning methods behind neurobiological and behavioral determinants of substance use treatment response. Through leadership roles and research, I strive to build a healthier, more well-informed community.
-                    </p>
-                    <br/>
+          <div id="terminal" style="margin-bottom: 5px">
+            <div id="output"></div>
+            <form id="terminal-form">
+              <label for="input">visitor@liveterm:$ ~ </label>
+              <input type="text" id="input" autofocus autocomplete="off" />
+            </form>
+          </div>
 
-                    <div id="terminal" style="margin-bottom: 5px;">
-                        <div id="output"></div>
-                        <form id="terminal-form">
-                            <label for="input">visitor@liveterm:$ ~ </label>
-                            <input type="text" id="input" autofocus autocomplete="off"/>
-                        </form>
-                    </div>
-                
-                    <script>
-                        'use strict';
+          <script>
+            "use strict";
 
-                        // element toggle function
-                        const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-                
-                        // sidebar variables
-                        const sidebar = document.querySelector("[data-sidebar]");
-                        const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-                
-                        // sidebar toggle functionality for mobile
-                        sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-                
-                        // contact form variables
-                        const form = document.querySelector("[data-form]");
-                        const formInputs = document.querySelectorAll("[data-form-input]");
-                        const formBtn = document.querySelector("[data-form-btn]");
-                
-                        // add event to all form input field
-                        for (let i = 0; i < formInputs.length; i++) {
-                            formInputs[i].addEventListener("input", function () {
-                                // check form validation
-                                if (form.checkValidity()) {
-                                    formBtn.removeAttribute("disabled");
-                                } else {
-                                    formBtn.setAttribute("disabled", "");
-                                }
-                            });
-                        }
-                
-                        // page navigation variables
-                        const navigationLinks = document.querySelectorAll("[data-nav-link]");
-                        const pages = document.querySelectorAll("[data-page]");
-                
-                        // add event to all nav link
-                        for (let i = 0; i < navigationLinks.length; i++) {
-                            navigationLinks[i].addEventListener("click", function () {
-                                for (let i = 0; i < pages.length; i++) {
-                                    if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-                                        pages[i].classList.add("active");
-                                        navigationLinks[i].classList.add("active");
-                                        window.scrollTo(0, 0);
-                                    } else {
-                                        pages[i].classList.remove("active");
-                                        navigationLinks[i].classList.remove("active");
-                                    }
-                                }
-                            });
-                        }
-                        
-                        (function() {
-                            const terminalForm = document.getElementById('terminal-form');
-                            const terminalInput = document.getElementById('input');
-                            const terminalOutput = document.getElementById('output');
-                            const terminal = document.getElementById('terminal');
+            // element toggle function
+            const elementToggleFunc = function (elem) {
+              elem.classList.toggle("active");
+            };
 
-                            let userScrolledUp = false;
-                            let commandHistory = []; // Array to store command history
-                            let historyIndex = -1; // Index to track the current command in the history
-                
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const initialMessage = "Type 'help' to see the list of available commands.<br/>" +
-                                                       "Type 'logofetch' to display logo.<br/>" +
-                                                       "Type 'repo' or click <a href='https://github.com/rmharp/rmharp.github.io'>here</a> for the GitHub repository.<br/><br/>" +
-                                                        "[cmd + k]: clear terminal.";
-                                terminalOutput.innerHTML += `<div>${initialMessage}</div>`;
-                                scrollToEnd();
-                            });
+            // sidebar variables
+            const sidebar = document.querySelector("[data-sidebar]");
+            const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-                            document.addEventListener('keydown', function(event) {
-                                if (event.key === 'k' && (event.ctrlKey || event.metaKey)) {
-                                    event.preventDefault(); // Prevent default behavior associated with Ctrl + K or Cmd + K
-                                    terminalOutput.innerHTML = ''; // Clear the terminal output
-                                    userScrolledUp = false; // Reset scroll detection when clearing the terminal
-                                } else if (event.key === 'ArrowUp') {
-                                    event.preventDefault();
-                                    if (historyIndex < commandHistory.length - 1) {
-                                        historyIndex++;
-                                        terminalInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
-                                    }
-                                } else if (event.key === 'ArrowDown') {
-                                    event.preventDefault();
-                                    if (historyIndex > 0) {
-                                        historyIndex--;
-                                        terminalInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
-                                    } else {
-                                        historyIndex = -1;
-                                        terminalInput.value = ''; // Clear input if no more history to go down to
-                                    }
-                                }
-                            });
-                
-                            terminalForm.addEventListener('submit', function(event) {
-                                event.preventDefault(); // Prevent form from submitting traditionally
-                                const command = terminalInput.value.trim();
-                                if (command !== '') {
-                                    commandHistory.push(command); // Add command to history
-                                    historyIndex = -1; // Reset history index
-                                }
-                                terminalInput.value = ''; // Clear the input after getting the command
-                                processCommand(command);
-                            });
+            // sidebar toggle functionality for mobile
+            sidebarBtn.addEventListener("click", function () {
+              elementToggleFunc(sidebar);
+            });
 
-                            // Add event listener for scroll events on the terminal
-                            terminal.addEventListener('scroll', () => {
-                                // Calculate if the terminal is scrolled to the bottom
-                                const isAtBottom = terminal.scrollHeight - terminal.scrollTop === terminal.clientHeight;
-                            
-                                // Update userScrolledUp based on whether the terminal is at the bottom or not
-                                userScrolledUp = !isAtBottom;
-                            });
+            // contact form variables
+            const form = document.querySelector("[data-form]");
+            const formInputs = document.querySelectorAll("[data-form-input]");
+            const formBtn = document.querySelector("[data-form-btn]");
 
-                            function scrollToEnd() {
-                                // Only scroll to the bottom if the user hasn't scrolled up
-                                if (!userScrolledUp) {
-                                    terminal.scrollTop = terminal.scrollHeight;
-                                }
-                            }
+            // add event to all form input field
+            for (let i = 0; i < formInputs.length; i++) {
+              formInputs[i].addEventListener("input", function () {
+                // check form validation
+                if (form.checkValidity()) {
+                  formBtn.removeAttribute("disabled");
+                } else {
+                  formBtn.setAttribute("disabled", "");
+                }
+              });
+            }
 
-                            function stripHtml(html) {
-                                const doc = new DOMParser().parseFromString(html, 'text/html');
-                                return doc.body.textContent || "";
-                            }
-                            
-                            function typeEffect(element, html, delay) {
-                                let i = 0;
-                                const text = stripHtml(html);  // Extract text content from HTML string
-                                element.textContent = '';  // Clear the element for typing effect
-                            
-                                const typing = setInterval(() => {
-                                    if (i < text.length) {
-                                        element.textContent += text.charAt(i);
-                                        i++;
-                                        scrollToEnd();
-                                    } else {
-                                        clearInterval(typing);
-                                        element.innerHTML = html;  // Restore original HTML after typing effect
-                                        scrollToEnd();
-                                    }
-                                }, delay);
-                            }
-                            
-                            function processCommand(command) {
-                                const fullCommand = `visitor@liveterm:$ ~ ${command}`;
-    
-                                // Append the command to the terminal output
-                                const commandOutput = document.createElement('div');
-                                commandOutput.innerHTML = `<div>${fullCommand}</div>`;
-                                terminalOutput.appendChild(commandOutput); // Change to appendChild for simplicity
-                            
-                                // Append a new div for the response
-                                const responseDisplay = document.createElement('div');
-                                terminalOutput.appendChild(responseDisplay); // Similarly, appending directly to the output
-                                
-                                switch(command.toLowerCase()) {
-                                    case 'help':
-                                        const helpText = "<div>Here are all the available commands, <br/><br/>" +
-                                            "help logofetch repo originstory thrillingapp <br/>" +
-                                            "sudo audio magazine linkedin infographic <br/>" +
-                                            "gallery</div>";
-                                        typeEffect(responseDisplay, helpText, 25);
-                                        break;
-                                    case 'logofetch':
-                                        const logofetchOutput = `
+            // page navigation variables
+            const navigationLinks =
+              document.querySelectorAll("[data-nav-link]");
+            const pages = document.querySelectorAll("[data-page]");
+
+            // add event to all nav link
+            for (let i = 0; i < navigationLinks.length; i++) {
+              navigationLinks[i].addEventListener("click", function () {
+                for (let i = 0; i < pages.length; i++) {
+                  if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+                    pages[i].classList.add("active");
+                    navigationLinks[i].classList.add("active");
+                    window.scrollTo(0, 0);
+                  } else {
+                    pages[i].classList.remove("active");
+                    navigationLinks[i].classList.remove("active");
+                  }
+                }
+              });
+            }
+
+            (function () {
+              const terminalForm = document.getElementById("terminal-form");
+              const terminalInput = document.getElementById("input");
+              const terminalOutput = document.getElementById("output");
+              const terminal = document.getElementById("terminal");
+
+              let userScrolledUp = false;
+              let commandHistory = []; // Array to store command history
+              let historyIndex = -1; // Index to track the current command in the history
+
+              document.addEventListener("DOMContentLoaded", function () {
+                const initialMessage =
+                  "Type 'help' to see the list of available commands.<br/>" +
+                  "Type 'logofetch' to display logo.<br/>" +
+                  "Type 'repo' or click <a href='https://github.com/rmharp/rmharp.github.io'>here</a> for the GitHub repository.<br/><br/>" +
+                  "[cmd + k]: clear terminal.";
+                terminalOutput.innerHTML += `<div>${initialMessage}</div>`;
+                scrollToEnd();
+              });
+
+              document.addEventListener("keydown", function (event) {
+                if (event.key === "k" && (event.ctrlKey || event.metaKey)) {
+                  event.preventDefault(); // Prevent default behavior associated with Ctrl + K or Cmd + K
+                  terminalOutput.innerHTML = ""; // Clear the terminal output
+                  userScrolledUp = false; // Reset scroll detection when clearing the terminal
+                } else if (event.key === "ArrowUp") {
+                  event.preventDefault();
+                  if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    terminalInput.value =
+                      commandHistory[commandHistory.length - 1 - historyIndex];
+                  }
+                } else if (event.key === "ArrowDown") {
+                  event.preventDefault();
+                  if (historyIndex > 0) {
+                    historyIndex--;
+                    terminalInput.value =
+                      commandHistory[commandHistory.length - 1 - historyIndex];
+                  } else {
+                    historyIndex = -1;
+                    terminalInput.value = ""; // Clear input if no more history to go down to
+                  }
+                }
+              });
+
+              terminalForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form from submitting traditionally
+                const command = terminalInput.value.trim();
+                if (command !== "") {
+                  commandHistory.push(command); // Add command to history
+                  historyIndex = -1; // Reset history index
+                }
+                terminalInput.value = ""; // Clear the input after getting the command
+                processCommand(command);
+              });
+
+              // Add event listener for scroll events on the terminal
+              terminal.addEventListener("scroll", () => {
+                // Calculate if the terminal is scrolled to the bottom
+                const isAtBottom =
+                  terminal.scrollHeight - terminal.scrollTop ===
+                  terminal.clientHeight;
+
+                // Update userScrolledUp based on whether the terminal is at the bottom or not
+                userScrolledUp = !isAtBottom;
+              });
+
+              function scrollToEnd() {
+                // Only scroll to the bottom if the user hasn't scrolled up
+                if (!userScrolledUp) {
+                  terminal.scrollTop = terminal.scrollHeight;
+                }
+              }
+
+              function stripHtml(html) {
+                const doc = new DOMParser().parseFromString(html, "text/html");
+                return doc.body.textContent || "";
+              }
+
+              function typeEffect(element, html, delay) {
+                let i = 0;
+                const text = stripHtml(html); // Extract text content from HTML string
+                element.textContent = ""; // Clear the element for typing effect
+
+                const typing = setInterval(() => {
+                  if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    scrollToEnd();
+                  } else {
+                    clearInterval(typing);
+                    element.innerHTML = html; // Restore original HTML after typing effect
+                    scrollToEnd();
+                  }
+                }, delay);
+              }
+
+              function processCommand(command) {
+                const fullCommand = `visitor@liveterm:$ ~ ${command}`;
+
+                // Append the command to the terminal output
+                const commandOutput = document.createElement("div");
+                commandOutput.innerHTML = `<div>${fullCommand}</div>`;
+                terminalOutput.appendChild(commandOutput); // Change to appendChild for simplicity
+
+                // Append a new div for the response
+                const responseDisplay = document.createElement("div");
+                terminalOutput.appendChild(responseDisplay); // Similarly, appending directly to the output
+
+                switch (command.toLowerCase()) {
+                  case "help":
+                    const helpText =
+                      "<div>Here are all the available commands, <br/><br/>" +
+                      "help logofetch repo originstory thrillingapp <br/>" +
+                      "sudo audio magazine linkedin infographic <br/>" +
+                      "gallery</div>";
+                    typeEffect(responseDisplay, helpText, 25);
+                    break;
+                  case "logofetch":
+                    const logofetchOutput = `
 <pre class="reduced-line-spacing">
                             ██████                                             
                      ████████████████████                                      
@@ -340,266 +373,350 @@ Riley Harper
 - riley.harper@unc.edu
 - linkedin.com/in/rileymharper
 </pre>`;
-                                        typeEffect(responseDisplay, logofetchOutput, 0);
-                                        break;
-                                    case 'repo':
-                                        typeEffect(responseDisplay, "<div>Opening GitHub repository...</div>", 0);
-                                        window.open('https://github.com/rmharp/rmharp.github.io', '_blank');
-                                        break;
-                                    case 'originstory':
-                                        typeEffect(responseDisplay, "<div>Playing origin story video...</div>", 25);
-                                        const videoContainer = document.createElement('div');
-                                        videoContainer.classList.add('iframe-container');
-                                        videoContainer.innerHTML = `
+                    typeEffect(responseDisplay, logofetchOutput, 0);
+                    break;
+                  case "repo":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening GitHub repository...</div>",
+                      0
+                    );
+                    window.open(
+                      "https://github.com/rmharp/rmharp.github.io",
+                      "_blank"
+                    );
+                    break;
+                  case "originstory":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Playing origin story video...</div>",
+                      25
+                    );
+                    const videoContainer = document.createElement("div");
+                    videoContainer.classList.add("iframe-container");
+                    videoContainer.innerHTML = `
                                             <iframe src="https://www.youtube.com/embed/er2PS85mJHE?rel=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <div class="button-container">
                                                 <button class="close-button">Close</button>
                                             </div>
                                         `;
-                                        document.body.appendChild(videoContainer);
-                                    
-                                        videoContainer.querySelector('iframe').addEventListener('load', function() {
-                                            // Ensure the visibility and the animation starts only after the iframe has fully loaded
-                                            requestAnimationFrame(() => {
-                                                requestAnimationFrame(() => {
-                                                    videoContainer.classList.add('iframe-grow');
-                                                });
-                                            });
-                                        });
-                                    
-                                        videoContainer.querySelector('.close-button').addEventListener('click', function() {
-                                            videoContainer.classList.remove('iframe-grow');
-                                            videoContainer.addEventListener('transitionend', function() {
-                                                videoContainer.remove();
-                                            });
-                                        });
-                                    
-                                        break;
-                                    
-                                    case 'thrillingapp':
-                                        typeEffect(responseDisplay, "<div>Opening Chapel Thrill Escapes application...</div>", 0);
-                                        const iframeContainer = document.createElement('div');
-                                        iframeContainer.classList.add('iframe-container');
-                                        iframeContainer.innerHTML = `
+                    document.body.appendChild(videoContainer);
+
+                    videoContainer
+                      .querySelector("iframe")
+                      .addEventListener("load", function () {
+                        // Ensure the visibility and the animation starts only after the iframe has fully loaded
+                        requestAnimationFrame(() => {
+                          requestAnimationFrame(() => {
+                            videoContainer.classList.add("iframe-grow");
+                          });
+                        });
+                      });
+
+                    videoContainer
+                      .querySelector(".close-button")
+                      .addEventListener("click", function () {
+                        videoContainer.classList.remove("iframe-grow");
+                        videoContainer.addEventListener(
+                          "transitionend",
+                          function () {
+                            videoContainer.remove();
+                          }
+                        );
+                      });
+
+                    break;
+
+                  case "thrillingapp":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening Chapel Thrill Escapes application...</div>",
+                      0
+                    );
+                    const iframeContainer = document.createElement("div");
+                    iframeContainer.classList.add("iframe-container");
+                    iframeContainer.innerHTML = `
                                             <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FTB09HRitplIjq4UDJvNIXb%2FECON-325-App%3Fnode-id%3D1-401%26t%3DRdHryPupShzAVsRX-1%26scaling%3Dmin-zoom%26page-id%3D0%253A1" allowfullscreen></iframe>
                                             <div class="button-container">
                                                 <button class="close-button">Close</button>
                                             </div>
                                         `;
-                                        document.body.appendChild(iframeContainer);
-                                    
-                                        iframeContainer.querySelector('iframe').addEventListener('load', function() {
-                                            requestAnimationFrame(() => {
-                                                requestAnimationFrame(() => {
-                                                    iframeContainer.classList.add('iframe-grow');
-                                                });
-                                            });
-                                        });
-                                    
-                                        iframeContainer.querySelector('.close-button').addEventListener('click', function() {
-                                            iframeContainer.classList.remove('iframe-grow');
-                                            iframeContainer.addEventListener('transitionend', function() {
-                                                iframeContainer.remove();
-                                            });
-                                        });
-                                    
-                                        break;
-                                    case 'sudo':
-                                        typeEffect(responseDisplay, "<div>Insufficient permissions; sudo access denied.</div>", 0);
-                                        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
-                                        break;
-                                    case 'audio':
-                                        typeEffect(responseDisplay, "<div>Playing audio file...</div>", 25);
-                                        const audio = new Audio('assets/audio/audiofinal.mp3'); // Correct the path as needed
-                                        audio.play();
-                                        break;
-                                    case 'magazine':
-                                        typeEffect(responseDisplay, "<div>Opening Shuford magazine...</div>", 0);
-                                        const pdfContainer = document.createElement('div');
-                                        pdfContainer.classList.add('iframe-container');
-                                        pdfContainer.innerHTML = `
+                    document.body.appendChild(iframeContainer);
+
+                    iframeContainer
+                      .querySelector("iframe")
+                      .addEventListener("load", function () {
+                        requestAnimationFrame(() => {
+                          requestAnimationFrame(() => {
+                            iframeContainer.classList.add("iframe-grow");
+                          });
+                        });
+                      });
+
+                    iframeContainer
+                      .querySelector(".close-button")
+                      .addEventListener("click", function () {
+                        iframeContainer.classList.remove("iframe-grow");
+                        iframeContainer.addEventListener(
+                          "transitionend",
+                          function () {
+                            iframeContainer.remove();
+                          }
+                        );
+                      });
+
+                    break;
+                  case "sudo":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Insufficient permissions; sudo access denied.</div>",
+                      0
+                    );
+                    window.open(
+                      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                      "_blank"
+                    );
+                    break;
+                  case "audio":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Playing audio file...</div>",
+                      25
+                    );
+                    const audio = new Audio("assets/audio/audiofinal.mp3"); // Correct the path as needed
+                    audio.play();
+                    break;
+                  case "magazine":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening Shuford magazine...</div>",
+                      0
+                    );
+                    const pdfContainer = document.createElement("div");
+                    pdfContainer.classList.add("iframe-container");
+                    pdfContainer.innerHTML = `
                                             <iframe src="assets/images/magazineshadow.pdf#zoom=100" type="application/pdf" allowfullscreen></iframe>
                                             <div class="button-container">
                                                 <button class="close-button">Close</button>
                                             </div>
                                         `;
-                                        document.body.appendChild(pdfContainer);
-                                        
-                                        // Ensure the element is initially visible but scaled down
-                                        pdfContainer.style.display = 'block';
-                                        setTimeout(() => { // Delay to allow browser to render the container before scaling
-                                            pdfContainer.classList.add('iframe-grow');
-                                        }, 10); // A short delay should be sufficient
-                                        
-                                        pdfContainer.querySelector('.close-button').addEventListener('click', function() {
-                                            pdfContainer.classList.remove('iframe-grow');
-                                            pdfContainer.addEventListener('transitionend', function() {
-                                                pdfContainer.remove();
-                                            });
-                                        });
-                                        break;
-                                    case 'linkedin':
-                                        typeEffect(responseDisplay, "<div>Opening LinkedIn profile image...</div>", 0);
-                                        const imageContainer = document.createElement('div');
-                                        imageContainer.classList.add('iframe-container'); // Reuse the styling class for consistent UI
-                                        imageContainer.style.overflow = 'auto'; // Enable scrolling on this container only
-                                        imageContainer.style.msOverflowStyle = 'none'; // IE and Edge
-                                        imageContainer.style.scrollbarWidth = 'none'; // Firefox
-                                        imageContainer.style.WebkitOverflowScrolling = 'touch'; // iOS Webkit
-                                        imageContainer.innerHTML = `
+                    document.body.appendChild(pdfContainer);
+
+                    // Ensure the element is initially visible but scaled down
+                    pdfContainer.style.display = "block";
+                    setTimeout(() => {
+                      // Delay to allow browser to render the container before scaling
+                      pdfContainer.classList.add("iframe-grow");
+                    }, 10); // A short delay should be sufficient
+
+                    pdfContainer
+                      .querySelector(".close-button")
+                      .addEventListener("click", function () {
+                        pdfContainer.classList.remove("iframe-grow");
+                        pdfContainer.addEventListener(
+                          "transitionend",
+                          function () {
+                            pdfContainer.remove();
+                          }
+                        );
+                      });
+                    break;
+                  case "linkedin":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening LinkedIn profile image...</div>",
+                      0
+                    );
+                    const imageContainer = document.createElement("div");
+                    imageContainer.classList.add("iframe-container"); // Reuse the styling class for consistent UI
+                    imageContainer.style.overflow = "auto"; // Enable scrolling on this container only
+                    imageContainer.style.msOverflowStyle = "none"; // IE and Edge
+                    imageContainer.style.scrollbarWidth = "none"; // Firefox
+                    imageContainer.style.WebkitOverflowScrolling = "touch"; // iOS Webkit
+                    imageContainer.innerHTML = `
                                             <img src="assets/images/linkedin.png" alt="LinkedIn Profile Image" style="width: 100%; height: auto; max-width: none; display: block;">
                                             <div class="button-container">
                                                 <button class="close-button">Close</button>
                                             </div>
                                         `;
-                                        document.body.appendChild(imageContainer);
-                                    
-                                        // Close button functionality
-                                        const closeBtn = imageContainer.querySelector('.close-button');
-                                        closeBtn.addEventListener('click', function() {
-                                            imageContainer.classList.remove('iframe-grow');
-                                            imageContainer.addEventListener('transitionend', function() {
-                                                imageContainer.remove();
-                                            });
-                                        });
-                                    
-                                        // Display the container then apply the growth animation
-                                        imageContainer.style.display = 'block';
-                                        setTimeout(() => {
-                                            imageContainer.classList.add('iframe-grow');
-                                        }, 10); // A short delay should be sufficient
-                                        break;
-                                    case 'infographic':
-                                        typeEffect(responseDisplay, "<div>Opening infographic...</div>", 0);
-                                        const infographicContainer = document.createElement('div');
-                                        infographicContainer.classList.add('iframe-container'); // Ensure this class has the correct initial CSS for transitions
-                                        infographicContainer.style.overflow = 'auto'; // Initially set to hidden to prevent scrollbars during animation
-                                        infographicContainer.style.msOverflowStyle = 'none'; // IE and Edge
-                                        infographicContainer.style.scrollbarWidth = 'none'; // Firefox
-                                        infographicContainer.style.WebkitOverflowScrolling = 'touch'; // iOS Webkit
-                                        infographicContainer.innerHTML = `
+                    document.body.appendChild(imageContainer);
+
+                    // Close button functionality
+                    const closeBtn =
+                      imageContainer.querySelector(".close-button");
+                    closeBtn.addEventListener("click", function () {
+                      imageContainer.classList.remove("iframe-grow");
+                      imageContainer.addEventListener(
+                        "transitionend",
+                        function () {
+                          imageContainer.remove();
+                        }
+                      );
+                    });
+
+                    // Display the container then apply the growth animation
+                    imageContainer.style.display = "block";
+                    setTimeout(() => {
+                      imageContainer.classList.add("iframe-grow");
+                    }, 10); // A short delay should be sufficient
+                    break;
+                  case "infographic":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening infographic...</div>",
+                      0
+                    );
+                    const infographicContainer = document.createElement("div");
+                    infographicContainer.classList.add("iframe-container"); // Ensure this class has the correct initial CSS for transitions
+                    infographicContainer.style.overflow = "auto"; // Initially set to hidden to prevent scrollbars during animation
+                    infographicContainer.style.msOverflowStyle = "none"; // IE and Edge
+                    infographicContainer.style.scrollbarWidth = "none"; // Firefox
+                    infographicContainer.style.WebkitOverflowScrolling =
+                      "touch"; // iOS Webkit
+                    infographicContainer.innerHTML = `
                                             <img src="assets/images/infographic.png" alt="Infographic" style="width: 100%; height: auto; max-width: none; display: block;">
                                             <div class="button-container">
                                                 <button class="close-button">Close</button>
                                             </div>
                                         `;
-                                        document.body.appendChild(infographicContainer);
-                                    
-                                        // Display the container then apply the growth animation
-                                        infographicContainer.style.display = 'block';
-                                        setTimeout(() => {
-                                            infographicContainer.style.overflow = 'auto'; // Enable scrolling after the animation
-                                            infographicContainer.classList.add('iframe-grow');
-                                        }, 10); // A short delay should be sufficient
-                                    
-                                        // Close button functionality
-                                        const closeBtnInfographic = infographicContainer.querySelector('.close-button');
-                                        closeBtnInfographic.addEventListener('click', function() {
-                                            infographicContainer.classList.remove('iframe-grow');
-                                            infographicContainer.addEventListener('transitionend', function() {
-                                                infographicContainer.remove();
-                                            });
-                                        });
-                                        break;
-                                    case 'gallery':
-                                        typeEffect(responseDisplay, "<div>Opening gallery...</div>", 0);
-                                        const galleryContainer = document.createElement('div');
-                                        galleryContainer.classList.add('fullscreen-gallery'); // Fullscreen overlay
-                                    
-                                        // Gallery HTML with left, right navigation buttons and a close button
-                                        galleryContainer.innerHTML = `
+                    document.body.appendChild(infographicContainer);
+
+                    // Display the container then apply the growth animation
+                    infographicContainer.style.display = "block";
+                    setTimeout(() => {
+                      infographicContainer.style.overflow = "auto"; // Enable scrolling after the animation
+                      infographicContainer.classList.add("iframe-grow");
+                    }, 10); // A short delay should be sufficient
+
+                    // Close button functionality
+                    const closeBtnInfographic =
+                      infographicContainer.querySelector(".close-button");
+                    closeBtnInfographic.addEventListener("click", function () {
+                      infographicContainer.classList.remove("iframe-grow");
+                      infographicContainer.addEventListener(
+                        "transitionend",
+                        function () {
+                          infographicContainer.remove();
+                        }
+                      );
+                    });
+                    break;
+                  case "gallery":
+                    typeEffect(
+                      responseDisplay,
+                      "<div>Opening gallery...</div>",
+                      0
+                    );
+                    const galleryContainer = document.createElement("div");
+                    galleryContainer.classList.add("fullscreen-gallery"); // Fullscreen overlay
+
+                    // Gallery HTML with left, right navigation buttons and a close button
+                    galleryContainer.innerHTML = `
                                             <button class="gallery-prev" style="display: none;">&#10094;</button>
                                             <img src="assets/images/gallery1.png" class="gallery-img" alt="Gallery Image" style="opacity: 0;">
                                             <button class="gallery-next">&#10095;</button>
                                             <button class="close-button">Close</button>
                                         `;
-                                        document.body.appendChild(galleryContainer);
+                    document.body.appendChild(galleryContainer);
 
-                                        // Trigger the scale up transition
-                                        setTimeout(() => {
-                                            galleryContainer.classList.add('active'); // Assuming 'active' triggers scale(1)
-                                        }, 10); // Short delay to ensure CSS transition is triggered
-                                    
-                                        let currentIndex = 1;
-                                        const totalImages = 10; // Total number of images
-                                    
-                                        const prevButton = galleryContainer.querySelector('.gallery-prev');
-                                        const nextButton = galleryContainer.querySelector('.gallery-next');
-                                        const closeButton = galleryContainer.querySelector('.close-button');
-                                        const imageElement = galleryContainer.querySelector('.gallery-img');
-                                    
-                                        function preloadImages() {
-                                            for (let i = 1; i <= totalImages; i++) {
-                                                const img = new Image();
-                                                img.src = `assets/images/gallery${i}.png`;
-                                            }
-                                        }
-                                    
-                                        function updateImage(index) {
-                                            imageElement.style.opacity = 0; // Start by making the current image transparent
-                                    
-                                            setTimeout(() => {
-                                                imageElement.src = `assets/images/gallery${index}.png`; // Change the source of the image
-                                                imageElement.onload = () => { // When the new image is fully loaded
-                                                    setTimeout(() => { // Add a slight delay to ensure transition is noticeable
-                                                        imageElement.style.opacity = 1; // Then fade in the new image
-                                                    }, 200); // You can adjust this delay based on how smooth and noticeable you want the transition
-                                                };
-                                            }, 300); // Delay for source change to mitigate rapid clicking and cache loading issues
-                                    
-                                            // Update button visibility
-                                            prevButton.style.display = index === 1 ? 'none' : 'block';
-                                            nextButton.style.display = index === totalImages ? 'none' : 'block';
-                                        }
-                                    
-                                        prevButton.addEventListener('click', () => {
-                                            if (currentIndex > 1) {
-                                                currentIndex--;
-                                                updateImage(currentIndex);
-                                            }
-                                        });
-                                    
-                                        nextButton.addEventListener('click', () => {
-                                            if (currentIndex < totalImages) {
-                                                currentIndex++;
-                                                updateImage(currentIndex);
-                                            }
-                                        });
-                                    
-                                        closeButton.addEventListener('click', () => {
-                                            // Start the scale down animation before removing the gallery
-                                            galleryContainer.classList.remove('active'); // Assuming 'active' triggers scale(1)
-                                            galleryContainer.addEventListener('transitionend', () => {
-                                                galleryContainer.remove(); // Remove after animation completes
-                                            });
-                                        });
-                                    
-                                        preloadImages();
-                                        updateImage(currentIndex);
-                                    
-                                        galleryContainer.style.display = 'block';
-                                        break;
-                                    default:
-                                        typeEffect(responseDisplay, "shell: command not found: " + command + ". Try 'help' to get started.", 25);
-                            }
-                                scrollToEnd();  // Ensure the terminal scrolls after processing a command
-                            }
-                        })();
-                    </script>
-                </section>
+                    // Trigger the scale up transition
+                    setTimeout(() => {
+                      galleryContainer.classList.add("active"); // Assuming 'active' triggers scale(1)
+                    }, 10); // Short delay to ensure CSS transition is triggered
 
-            </article>
-            
-        </div>
+                    let currentIndex = 1;
+                    const totalImages = 10; // Total number of images
 
+                    const prevButton =
+                      galleryContainer.querySelector(".gallery-prev");
+                    const nextButton =
+                      galleryContainer.querySelector(".gallery-next");
+                    const closeButton =
+                      galleryContainer.querySelector(".close-button");
+                    const imageElement =
+                      galleryContainer.querySelector(".gallery-img");
+
+                    function preloadImages() {
+                      for (let i = 1; i <= totalImages; i++) {
+                        const img = new Image();
+                        img.src = `assets/images/gallery${i}.png`;
+                      }
+                    }
+
+                    function updateImage(index) {
+                      imageElement.style.opacity = 0; // Start by making the current image transparent
+
+                      setTimeout(() => {
+                        imageElement.src = `assets/images/gallery${index}.png`; // Change the source of the image
+                        imageElement.onload = () => {
+                          // When the new image is fully loaded
+                          setTimeout(() => {
+                            // Add a slight delay to ensure transition is noticeable
+                            imageElement.style.opacity = 1; // Then fade in the new image
+                          }, 200); // You can adjust this delay based on how smooth and noticeable you want the transition
+                        };
+                      }, 300); // Delay for source change to mitigate rapid clicking and cache loading issues
+
+                      // Update button visibility
+                      prevButton.style.display = index === 1 ? "none" : "block";
+                      nextButton.style.display =
+                        index === totalImages ? "none" : "block";
+                    }
+
+                    prevButton.addEventListener("click", () => {
+                      if (currentIndex > 1) {
+                        currentIndex--;
+                        updateImage(currentIndex);
+                      }
+                    });
+
+                    nextButton.addEventListener("click", () => {
+                      if (currentIndex < totalImages) {
+                        currentIndex++;
+                        updateImage(currentIndex);
+                      }
+                    });
+
+                    closeButton.addEventListener("click", () => {
+                      // Start the scale down animation before removing the gallery
+                      galleryContainer.classList.remove("active"); // Assuming 'active' triggers scale(1)
+                      galleryContainer.addEventListener("transitionend", () => {
+                        galleryContainer.remove(); // Remove after animation completes
+                      });
+                    });
+
+                    preloadImages();
+                    updateImage(currentIndex);
+
+                    galleryContainer.style.display = "block";
+                    break;
+                  default:
+                    typeEffect(
+                      responseDisplay,
+                      "shell: command not found: " +
+                        command +
+                        ". Try 'help' to get started.",
+                      25
+                    );
+                }
+                scrollToEnd(); // Ensure the terminal scrolls after processing a command
+              }
+            })();
+          </script>
+        </section>
+      </div>
     </main>
 
     <!--
       - ionicon link
     -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>

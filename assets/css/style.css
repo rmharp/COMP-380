@@ -178,7 +178,7 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body { background: var(--eerie-black-2); }
 
 
 
@@ -264,7 +264,9 @@ article.active {
 
 .article-title {
   position: relative;
-  padding-bottom: 7px;
+  /* padding-bottom: 7px; */
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 .article-title::after {
@@ -515,7 +517,7 @@ main {
   background: hsla(240, 1%, 17%, 0.75);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px 0 0 0;
   box-shadow: var(--shadow-2);
   z-index: 5;
 }
@@ -607,6 +609,9 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  /* width: 90%; */
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .about-text p { margin-bottom: 15px; }
@@ -1609,7 +1614,11 @@ main {
   filter: grayscale(1) invert(1);
 }
 
-.contact-form { margin-bottom: 10px; }
+.contact-form { 
+  margin-bottom: 10px;
+  padding-left: 2%;
+  padding-right: 2%;
+}
 
 .form-title { margin-bottom: 20px; }
 
@@ -1786,7 +1795,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   main {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     margin-bottom: 100px;
   }
 
@@ -1841,7 +1850,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    * #NAVBAR
    */
 
-  .navbar { border-radius: 20px 20px 0 0; }
+  .navbar { border-radius: 20px 0 0 0; }
 
   .navbar-list { gap: 20px; }
 
@@ -2158,6 +2167,8 @@ textarea.form-input::-webkit-resizer { display: none; }
     position: relative;
     width: max-content;
     margin: auto;
+    background: var(--eerie-black-2);
+
   }
 
 
@@ -2173,7 +2184,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     left: auto;
     right: 0;
     width: max-content;
-    border-radius: 0 20px;
+    border-radius: 0 0 0 20px;
     padding: 0 20px;
     box-shadow: none;
   }
@@ -2260,7 +2271,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    * REUSED STYLE
    */
 
-  .sidebar, article { width: auto; }
+  article { width: auto; }
 
   article { min-height: 100%; }
 
@@ -2271,7 +2282,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   main {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin-inline: auto;
     display: flex;
     justify-content: center;
@@ -2281,8 +2292,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .main-content {
     min-width: 85%;
-    width: 85%;
-    margin: 0;
+    width: 100%;
+    padding: 30px;
+    /* margin: 20px; */
   }
 
 
