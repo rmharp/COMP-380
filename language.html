@@ -17,7 +17,7 @@
       - custom css link
     -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-
+    <link rel="stylesheet" href="./assets/css/language.css" />
     <!--
       - google font link
     -->
@@ -132,577 +132,333 @@
         </header>
 
         <section class="about-text">
-          <p>
-            At the University of UNC-Chapel Hill, my academic background in
-            Statistics and Analytics & Computer Science drives my commitment to
-            expanding access to learning resources. As Technical Chair of
-            AI@UNC, I've spearheaded initiatives like NeuroSpark, promoting
-            novel approaches to awake craniotomy research and AI research.
-            Presenting my research internationally at Oxford University allowed
-            me to share insights from my research on undergraduate mental health
-            and to advocate for novel approaches to management of mental health
-            resources. At the BRANE Lab, my research has focused on the machine
-            learning methods behind neurobiological and behavioral determinants
-            of substance use treatment response. Through leadership roles and
-            research, I strive to build a healthier, more well-informed
-            community.
-          </p>
-          <br />
+          <div id="hallucination-module">
+            <div class="container">
+              <div class="slide-title">Fact or Fiction?</div>
+              <p>
+                See how susceptible you are for falling for AI hallucinations.
+                Click each fact in the generated passage and mark whether you
+                think it is "Fact" or a "Hallucination."
+              </p>
+              <hr />
+              <br />
 
-          <div id="terminal" style="margin-bottom: 5px">
-            <div id="output"></div>
-            <form id="terminal-form">
-              <label for="input">visitor@liveterm:$ ~ </label>
-              <input type="text" id="input" autofocus autocomplete="off" />
-            </form>
+              <div class="slide active" data-slide="1">
+                <p>
+                  To determine whether 13,217 is a prime number,
+                  <span class="clickable" data-correct="factual"
+                    ><span class="clickable-text"
+                      >we need to check if it has any divisors other than 1 and
+                      itself</span
+                    ><span class="result-icon">✓</span></span
+                  >.
+                </p>
+
+                <h4>Step 1: Check divisibility by 2</h4>
+                <p>Since 13,217 is odd, it is not divisible by 2.</p>
+
+                <h4>Step 2: Check divisibility by 3</h4>
+                <p>
+                  To check divisibility by 3, add the digits of 13,217:
+                  <code>1 + 3 + 2 + 1 + 7 = 14</code>. Since 14 is not divisible
+                  by 3, 13,217 is not divisible by 3.
+                </p>
+
+                <h4>Step 3: Check divisibility by 5</h4>
+                <p>
+                  Since 13,217 does not end in 0 or 5, it is not divisible by 5.
+                </p>
+
+                <h4>Step 4: Check divisibility by other small primes</h4>
+                <p>
+                  We now check divisibility by other primes such as 7, 11, 13,
+                  and so on. Rather than manually checking each one, we can
+                  <span class="clickable" data-correct="factual"
+                    ><span class="clickable-text">
+                      use a primality test or a calculator to efficiently check
+                      this number</span
+                    ><span class="result-icon">✓</span></span
+                  >.
+                </p>
+
+                <p>
+                  Upon performing the divisibility test,
+                  <span class="clickable" data-correct="hallucination"
+                    ><span class="clickable-text"
+                      >we find that 13,217 is divisible by 17:
+                      <code>13,217 ÷ 17 = 776</code></span
+                    ><span class="result-icon">✓</span></span
+                  >.
+                </p>
+
+                <p>
+                  Since 13,217 is divisible by 17, it is
+                  <strong>not a prime number</strong>.
+                </p>
+
+                <h4>Conclusion:</h4>
+                <p>
+                  <span class="clickable" data-correct="hallucination"
+                    ><span class="clickable-text"
+                      >13,217 is <strong>not a prime number</strong>. It is
+                      divisible by 17</span
+                    ><span class="result-icon">✓</span></span
+                  >.
+                </p>
+              </div>
+
+              <div class="slide" data-slide="2">
+                <p>
+                  Eugene McCarthy, a U.S.
+                  <span class="clickable" data-correct="hallucination"
+                    ><span class="clickable-text">Senator from Minnesota</span
+                    ><span class="result-icon">✓</span></span
+                  >, attended Princeton University as a graduate student. He
+                  represented Minnesota in the Senate
+                  <span class="clickable" data-correct="fact"
+                    ><span class="clickable-text">from 1959 to 1971</span
+                    ><span class="result-icon">✓</span></span
+                  >
+                  and was known for his opposition to the Vietnam War. McCarthy
+                  earned his undergraduate degree at Saint John's University in
+                  Minnesota and
+                  <span class="clickable" data-correct="hallucination"
+                    ><span class="clickable-text"
+                      >pursued graduate studies in sociology at the University
+                      of Minnesota and later at Princeton University</span
+                    ><span class="result-icon">✓</span></span
+                  >.
+                </p>
+              </div>
+
+              <div class="slide" data-slide="3">
+                <p>
+                  In The Wool Omnibus,
+                  <span class="clickable" data-correct="hallucination"
+                    ><span class="clickable-text"
+                      >the character Jahns is poisoned by a character named
+                      Marnes</span
+                    ><span class="result-icon">✓</span></span
+                  >. Marnes is a member of the leadership in the silo, and his
+                  actions are driven by a series of political maneuvers within
+                  the community. He poisons Jahns as part of a
+                  <span class="clickable" data-correct="hallucination">
+                    <span class="clickable-text"
+                      >larger plan to gain power and control over the silo's
+                      operations </span
+                    ><span class="result-icon">✓</span></span
+                  >. The poisoning is a significant event in the story and is
+                  part of the broader tensions and betrayals that unfold
+                  throughout the series.
+                </p>
+              </div>
+
+              <div class="progress">Passage 1 of 3</div>
+
+              <div class="button-container">
+                <button class="nav-btn prev-btn">Previous</button>
+                <button class="submit-btn">Submit Answers</button>
+                <button class="nav-btn next-btn">Next</button>
+              </div>
+            </div>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                const container = document.querySelector(".container");
+                const slides = document.querySelectorAll(".slide");
+                const submitButton = document.querySelector(".submit-btn");
+                const prevButton = document.querySelector(".prev-btn");
+                const nextButton = document.querySelector(".next-btn");
+                const progressText = document.querySelector(".progress");
+                let activePopup = null;
+                let userAnswers = new Map();
+                let submittedSlides = new Set();
+                let currentSlide = 1;
+
+                function updateNavButtons() {
+                  prevButton.disabled = currentSlide === 1;
+                  nextButton.disabled = currentSlide === slides.length;
+                  progressText.textContent = `Passage ${currentSlide} of ${slides.length}`;
+                  submitButton.disabled = submittedSlides.has(currentSlide);
+                }
+
+                function showSlide(slideNumber) {
+                  slides.forEach((slide) => slide.classList.remove("active"));
+                  const newSlide = document.querySelector(
+                    `[data-slide="${slideNumber}"]`
+                  );
+                  newSlide.classList.add("active");
+                  currentSlide = slideNumber;
+                  updateNavButtons();
+
+                  // Reset clickable elements without removing popups
+                  newSlide.querySelectorAll(".clickable").forEach((element) => {
+                    const resultIcon = element.querySelector(".result-icon");
+                    element.style.marginRight = "0";
+                    resultIcon.style.display = "none";
+                    element.classList.remove("correct", "incorrect");
+
+                    // Only reset cursor and enable clicks if slide hasn't been submitted
+                    if (!submittedSlides.has(currentSlide)) {
+                      element.style.cursor = "pointer";
+                      // Make sure popup exists
+                      if (!element.querySelector(".popup")) {
+                        const popup = createPopup(element);
+                        element.appendChild(popup);
+                      }
+                    }
+                  });
+
+                  if (submittedSlides.has(currentSlide)) {
+                    showAnswers();
+                  }
+                }
+
+                function createPopup(element) {
+                  const popup = document.createElement("div");
+                  popup.className = "popup";
+
+                  const factualBtn = document.createElement("button");
+                  factualBtn.className = "factual-btn";
+                  factualBtn.textContent = "Fact";
+
+                  const hallucinationBtn = document.createElement("button");
+                  hallucinationBtn.className = "hallucination-btn";
+                  hallucinationBtn.textContent = "Hallucination";
+
+                  popup.appendChild(factualBtn);
+                  popup.appendChild(hallucinationBtn);
+
+                  factualBtn.addEventListener("click", () => {
+                    clickableText = element.querySelector(".clickable-text");
+                    clickableText.classList.remove("hallucination");
+                    clickableText.classList.add("factual");
+                    userAnswers.set(element, "factual");
+                    hidePopup(popup);
+                  });
+
+                  hallucinationBtn.addEventListener("click", () => {
+                    clickableText = element.querySelector(".clickable-text");
+                    clickableText.classList.remove("factual");
+                    clickableText.classList.add("hallucination");
+                    userAnswers.set(element, "hallucination");
+                    hidePopup(popup);
+                  });
+
+                  return popup;
+                }
+
+                function hidePopup(popup) {
+                  if (popup) {
+                    popup.style.display = "none";
+                    activePopup = null;
+                  }
+                }
+
+                function checkAnswers() {
+                  submittedSlides.add(currentSlide);
+                  container.classList.add("submitted");
+                  let correct = 0;
+                  let total = document.querySelectorAll(".clickable").length;
+
+                  document.querySelectorAll(".clickable").forEach((element) => {
+                    const resultIcon = element.querySelector(".result-icon");
+                    const userAnswer = userAnswers.get(element);
+                    const correctAnswer = element.dataset.correct;
+
+                    if (!userAnswer) {
+                      resultIcon.textContent = "?";
+                      resultIcon.className = "result-icon incorrect";
+                      resultIcon.style.color = "rgb(255, 218, 15)";
+                    } else if (userAnswer === correctAnswer) {
+                      resultIcon.textContent = "✓";
+                      resultIcon.className = "result-icon correct";
+                      resultIcon.style.color = "";
+                      resultIcon.style.background = "none";
+                      correct++;
+                    } else {
+                      resultIcon.textContent = "✗";
+                      resultIcon.className = "result-icon incorrect";
+                      resultIcon.style.color = "";
+                      resultIcon.style.background = "none";
+                    }
+                    resultIcon.style.display = "inline";
+                  });
+
+                  submitButton.disabled = true;
+
+                  // Only remove popups for the current slide
+                  const currentSlideElement = document.querySelector(
+                    `[data-slide="${currentSlide}"]`
+                  );
+                  currentSlideElement
+                    .querySelectorAll(".clickable")
+                    .forEach((element) => {
+                      element.style.cursor = "default";
+                      const popup = element.querySelector(".popup");
+                      if (popup) {
+                        popup.remove();
+                      }
+                    });
+                }
+
+                function showAnswers() {
+                  const currentSlideElement = document.querySelector(
+                    `[data-slide="${currentSlide}"]`
+                  );
+                  currentSlideElement
+                    .querySelectorAll(".clickable")
+                    .forEach((element) => {
+                      const resultIcon = element.querySelector(".result-icon");
+                      resultIcon.style.display = "inline";
+                      resultIcon.style.textDecoration = "none";
+                      element.style.cursor = "default";
+                    });
+                  submitButton.disabled = true;
+                }
+
+                // Initial setup of clickable elements
+                document.querySelectorAll(".clickable").forEach((element) => {
+                  const popup = createPopup(element);
+                  element.appendChild(popup);
+
+                  element.addEventListener("click", (e) => {
+                    if (submittedSlides.has(currentSlide)) return;
+
+                    e.stopPropagation();
+
+                    if (activePopup && activePopup !== popup) {
+                      hidePopup(activePopup);
+                    }
+
+                    if (popup.style.display === "flex") {
+                      hidePopup(popup);
+                    } else {
+                      popup.style.display = "flex";
+                      activePopup = popup;
+                    }
+                  });
+                });
+
+                document.addEventListener("click", () => {
+                  if (activePopup) {
+                    hidePopup(activePopup);
+                  }
+                });
+
+                prevButton.addEventListener("click", () => {
+                  if (currentSlide > 1) showSlide(currentSlide - 1);
+                });
+
+                nextButton.addEventListener("click", () => {
+                  if (currentSlide < slides.length) showSlide(currentSlide + 1);
+                });
+
+                submitButton.addEventListener("click", checkAnswers);
+                updateNavButtons();
+              });
+            </script>
           </div>
-
-          <script>
-            "use strict";
-
-            // element toggle function
-            const elementToggleFunc = function (elem) {
-              elem.classList.toggle("active");
-            };
-
-            // sidebar variables
-            const sidebar = document.querySelector("[data-sidebar]");
-            const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-            // sidebar toggle functionality for mobile
-            sidebarBtn.addEventListener("click", function () {
-              elementToggleFunc(sidebar);
-            });
-
-            // contact form variables
-            const form = document.querySelector("[data-form]");
-            const formInputs = document.querySelectorAll("[data-form-input]");
-            const formBtn = document.querySelector("[data-form-btn]");
-
-            // add event to all form input field
-            for (let i = 0; i < formInputs.length; i++) {
-              formInputs[i].addEventListener("input", function () {
-                // check form validation
-                if (form.checkValidity()) {
-                  formBtn.removeAttribute("disabled");
-                } else {
-                  formBtn.setAttribute("disabled", "");
-                }
-              });
-            }
-
-            // page navigation variables
-            const navigationLinks =
-              document.querySelectorAll("[data-nav-link]");
-            const pages = document.querySelectorAll("[data-page]");
-
-            // add event to all nav link
-            for (let i = 0; i < navigationLinks.length; i++) {
-              navigationLinks[i].addEventListener("click", function () {
-                for (let i = 0; i < pages.length; i++) {
-                  if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-                    pages[i].classList.add("active");
-                    navigationLinks[i].classList.add("active");
-                    window.scrollTo(0, 0);
-                  } else {
-                    pages[i].classList.remove("active");
-                    navigationLinks[i].classList.remove("active");
-                  }
-                }
-              });
-            }
-
-            (function () {
-              const terminalForm = document.getElementById("terminal-form");
-              const terminalInput = document.getElementById("input");
-              const terminalOutput = document.getElementById("output");
-              const terminal = document.getElementById("terminal");
-
-              let userScrolledUp = false;
-              let commandHistory = []; // Array to store command history
-              let historyIndex = -1; // Index to track the current command in the history
-
-              document.addEventListener("DOMContentLoaded", function () {
-                const initialMessage =
-                  "Type 'help' to see the list of available commands.<br/>" +
-                  "Type 'logofetch' to display logo.<br/>" +
-                  "Type 'repo' or click <a href='https://github.com/rmharp/rmharp.github.io'>here</a> for the GitHub repository.<br/><br/>" +
-                  "[cmd + k]: clear terminal.";
-                terminalOutput.innerHTML += `<div>${initialMessage}</div>`;
-                scrollToEnd();
-              });
-
-              document.addEventListener("keydown", function (event) {
-                if (event.key === "k" && (event.ctrlKey || event.metaKey)) {
-                  event.preventDefault(); // Prevent default behavior associated with Ctrl + K or Cmd + K
-                  terminalOutput.innerHTML = ""; // Clear the terminal output
-                  userScrolledUp = false; // Reset scroll detection when clearing the terminal
-                } else if (event.key === "ArrowUp") {
-                  event.preventDefault();
-                  if (historyIndex < commandHistory.length - 1) {
-                    historyIndex++;
-                    terminalInput.value =
-                      commandHistory[commandHistory.length - 1 - historyIndex];
-                  }
-                } else if (event.key === "ArrowDown") {
-                  event.preventDefault();
-                  if (historyIndex > 0) {
-                    historyIndex--;
-                    terminalInput.value =
-                      commandHistory[commandHistory.length - 1 - historyIndex];
-                  } else {
-                    historyIndex = -1;
-                    terminalInput.value = ""; // Clear input if no more history to go down to
-                  }
-                }
-              });
-
-              terminalForm.addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent form from submitting traditionally
-                const command = terminalInput.value.trim();
-                if (command !== "") {
-                  commandHistory.push(command); // Add command to history
-                  historyIndex = -1; // Reset history index
-                }
-                terminalInput.value = ""; // Clear the input after getting the command
-                processCommand(command);
-              });
-
-              // Add event listener for scroll events on the terminal
-              terminal.addEventListener("scroll", () => {
-                // Calculate if the terminal is scrolled to the bottom
-                const isAtBottom =
-                  terminal.scrollHeight - terminal.scrollTop ===
-                  terminal.clientHeight;
-
-                // Update userScrolledUp based on whether the terminal is at the bottom or not
-                userScrolledUp = !isAtBottom;
-              });
-
-              function scrollToEnd() {
-                // Only scroll to the bottom if the user hasn't scrolled up
-                if (!userScrolledUp) {
-                  terminal.scrollTop = terminal.scrollHeight;
-                }
-              }
-
-              function stripHtml(html) {
-                const doc = new DOMParser().parseFromString(html, "text/html");
-                return doc.body.textContent || "";
-              }
-
-              function typeEffect(element, html, delay) {
-                let i = 0;
-                const text = stripHtml(html); // Extract text content from HTML string
-                element.textContent = ""; // Clear the element for typing effect
-
-                const typing = setInterval(() => {
-                  if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    scrollToEnd();
-                  } else {
-                    clearInterval(typing);
-                    element.innerHTML = html; // Restore original HTML after typing effect
-                    scrollToEnd();
-                  }
-                }, delay);
-              }
-
-              function processCommand(command) {
-                const fullCommand = `visitor@liveterm:$ ~ ${command}`;
-
-                // Append the command to the terminal output
-                const commandOutput = document.createElement("div");
-                commandOutput.innerHTML = `<div>${fullCommand}</div>`;
-                terminalOutput.appendChild(commandOutput); // Change to appendChild for simplicity
-
-                // Append a new div for the response
-                const responseDisplay = document.createElement("div");
-                terminalOutput.appendChild(responseDisplay); // Similarly, appending directly to the output
-
-                switch (command.toLowerCase()) {
-                  case "help":
-                    const helpText =
-                      "<div>Here are all the available commands, <br/><br/>" +
-                      "help logofetch repo originstory thrillingapp <br/>" +
-                      "sudo audio magazine linkedin infographic <br/>" +
-                      "gallery</div>";
-                    typeEffect(responseDisplay, helpText, 25);
-                    break;
-                  case "logofetch":
-                    const logofetchOutput = `
-<pre class="reduced-line-spacing">
-                            ██████                                             
-                     ████████████████████                                      
-                 █████████████████████████████                                 
-             ████████████████████████  █████████                               
-           ████████████████████████████  ██████████                            
-         ████████████████████████████████   █████████                          
-        ██████████████████        ████████    █████████                        
-      ████████████████████  ██████  ███████       ██████                       
-     █████████████████████  ██████  ███████         █████                      
-    ██████████████████████         █████████         █████                     
-   ███████████████████████  ██████  ████████          █████                    
-  ████████████████████████  ██████  ███████            █████                   
-  █████████████████████████████████████████             █████                  
- █████████████████████████████████████████              █████                  
- ████████████████████████████████████████                ████                  
- █████████████████████████████████████                   █████                 
- ██████████████████████████████████                      █████                 
- ██████████████████████████                              █████                 
- ██████████████████████                                  █████                 
- ████████████████████                                    ████                  
- ███████████████████                                     ████                  
-  █████████████████     █████    █████                  █████                  
-  █████████████████      ████    █████                  ████                   
-   ████████████████      ████    █████                 ████                    
-    ███████████████      █████████████               █████                     
-     ██████████████      █████████████              █████                      
-      ██████████████     ████    █████             █████                       
-        █████████████    ████    █████           ██████                        
-         █████████████                         ██████                          
-           █████████████                    ███████                            
-              ██████████████           ██████████                              
-                 █████████████████████████████                                 
-                     ████████████████████                                      
-                         ████                                              
-                            
-Riley Harper
-----------------------------
-- riley.harper@unc.edu
-- linkedin.com/in/rileymharper
-</pre>`;
-                    typeEffect(responseDisplay, logofetchOutput, 0);
-                    break;
-                  case "repo":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening GitHub repository...</div>",
-                      0
-                    );
-                    window.open(
-                      "https://github.com/rmharp/rmharp.github.io",
-                      "_blank"
-                    );
-                    break;
-                  case "originstory":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Playing origin story video...</div>",
-                      25
-                    );
-                    const videoContainer = document.createElement("div");
-                    videoContainer.classList.add("iframe-container");
-                    videoContainer.innerHTML = `
-                                            <iframe src="https://www.youtube.com/embed/er2PS85mJHE?rel=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            <div class="button-container">
-                                                <button class="close-button">Close</button>
-                                            </div>
-                                        `;
-                    document.body.appendChild(videoContainer);
-
-                    videoContainer
-                      .querySelector("iframe")
-                      .addEventListener("load", function () {
-                        // Ensure the visibility and the animation starts only after the iframe has fully loaded
-                        requestAnimationFrame(() => {
-                          requestAnimationFrame(() => {
-                            videoContainer.classList.add("iframe-grow");
-                          });
-                        });
-                      });
-
-                    videoContainer
-                      .querySelector(".close-button")
-                      .addEventListener("click", function () {
-                        videoContainer.classList.remove("iframe-grow");
-                        videoContainer.addEventListener(
-                          "transitionend",
-                          function () {
-                            videoContainer.remove();
-                          }
-                        );
-                      });
-
-                    break;
-
-                  case "thrillingapp":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening Chapel Thrill Escapes application...</div>",
-                      0
-                    );
-                    const iframeContainer = document.createElement("div");
-                    iframeContainer.classList.add("iframe-container");
-                    iframeContainer.innerHTML = `
-                                            <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FTB09HRitplIjq4UDJvNIXb%2FECON-325-App%3Fnode-id%3D1-401%26t%3DRdHryPupShzAVsRX-1%26scaling%3Dmin-zoom%26page-id%3D0%253A1" allowfullscreen></iframe>
-                                            <div class="button-container">
-                                                <button class="close-button">Close</button>
-                                            </div>
-                                        `;
-                    document.body.appendChild(iframeContainer);
-
-                    iframeContainer
-                      .querySelector("iframe")
-                      .addEventListener("load", function () {
-                        requestAnimationFrame(() => {
-                          requestAnimationFrame(() => {
-                            iframeContainer.classList.add("iframe-grow");
-                          });
-                        });
-                      });
-
-                    iframeContainer
-                      .querySelector(".close-button")
-                      .addEventListener("click", function () {
-                        iframeContainer.classList.remove("iframe-grow");
-                        iframeContainer.addEventListener(
-                          "transitionend",
-                          function () {
-                            iframeContainer.remove();
-                          }
-                        );
-                      });
-
-                    break;
-                  case "sudo":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Insufficient permissions; sudo access denied.</div>",
-                      0
-                    );
-                    window.open(
-                      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                      "_blank"
-                    );
-                    break;
-                  case "audio":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Playing audio file...</div>",
-                      25
-                    );
-                    const audio = new Audio("assets/audio/audiofinal.mp3"); // Correct the path as needed
-                    audio.play();
-                    break;
-                  case "magazine":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening Shuford magazine...</div>",
-                      0
-                    );
-                    const pdfContainer = document.createElement("div");
-                    pdfContainer.classList.add("iframe-container");
-                    pdfContainer.innerHTML = `
-                                            <iframe src="assets/images/magazineshadow.pdf#zoom=100" type="application/pdf" allowfullscreen></iframe>
-                                            <div class="button-container">
-                                                <button class="close-button">Close</button>
-                                            </div>
-                                        `;
-                    document.body.appendChild(pdfContainer);
-
-                    // Ensure the element is initially visible but scaled down
-                    pdfContainer.style.display = "block";
-                    setTimeout(() => {
-                      // Delay to allow browser to render the container before scaling
-                      pdfContainer.classList.add("iframe-grow");
-                    }, 10); // A short delay should be sufficient
-
-                    pdfContainer
-                      .querySelector(".close-button")
-                      .addEventListener("click", function () {
-                        pdfContainer.classList.remove("iframe-grow");
-                        pdfContainer.addEventListener(
-                          "transitionend",
-                          function () {
-                            pdfContainer.remove();
-                          }
-                        );
-                      });
-                    break;
-                  case "linkedin":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening LinkedIn profile image...</div>",
-                      0
-                    );
-                    const imageContainer = document.createElement("div");
-                    imageContainer.classList.add("iframe-container"); // Reuse the styling class for consistent UI
-                    imageContainer.style.overflow = "auto"; // Enable scrolling on this container only
-                    imageContainer.style.msOverflowStyle = "none"; // IE and Edge
-                    imageContainer.style.scrollbarWidth = "none"; // Firefox
-                    imageContainer.style.WebkitOverflowScrolling = "touch"; // iOS Webkit
-                    imageContainer.innerHTML = `
-                                            <img src="assets/images/linkedin.png" alt="LinkedIn Profile Image" style="width: 100%; height: auto; max-width: none; display: block;">
-                                            <div class="button-container">
-                                                <button class="close-button">Close</button>
-                                            </div>
-                                        `;
-                    document.body.appendChild(imageContainer);
-
-                    // Close button functionality
-                    const closeBtn =
-                      imageContainer.querySelector(".close-button");
-                    closeBtn.addEventListener("click", function () {
-                      imageContainer.classList.remove("iframe-grow");
-                      imageContainer.addEventListener(
-                        "transitionend",
-                        function () {
-                          imageContainer.remove();
-                        }
-                      );
-                    });
-
-                    // Display the container then apply the growth animation
-                    imageContainer.style.display = "block";
-                    setTimeout(() => {
-                      imageContainer.classList.add("iframe-grow");
-                    }, 10); // A short delay should be sufficient
-                    break;
-                  case "infographic":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening infographic...</div>",
-                      0
-                    );
-                    const infographicContainer = document.createElement("div");
-                    infographicContainer.classList.add("iframe-container"); // Ensure this class has the correct initial CSS for transitions
-                    infographicContainer.style.overflow = "auto"; // Initially set to hidden to prevent scrollbars during animation
-                    infographicContainer.style.msOverflowStyle = "none"; // IE and Edge
-                    infographicContainer.style.scrollbarWidth = "none"; // Firefox
-                    infographicContainer.style.WebkitOverflowScrolling =
-                      "touch"; // iOS Webkit
-                    infographicContainer.innerHTML = `
-                                            <img src="assets/images/infographic.png" alt="Infographic" style="width: 100%; height: auto; max-width: none; display: block;">
-                                            <div class="button-container">
-                                                <button class="close-button">Close</button>
-                                            </div>
-                                        `;
-                    document.body.appendChild(infographicContainer);
-
-                    // Display the container then apply the growth animation
-                    infographicContainer.style.display = "block";
-                    setTimeout(() => {
-                      infographicContainer.style.overflow = "auto"; // Enable scrolling after the animation
-                      infographicContainer.classList.add("iframe-grow");
-                    }, 10); // A short delay should be sufficient
-
-                    // Close button functionality
-                    const closeBtnInfographic =
-                      infographicContainer.querySelector(".close-button");
-                    closeBtnInfographic.addEventListener("click", function () {
-                      infographicContainer.classList.remove("iframe-grow");
-                      infographicContainer.addEventListener(
-                        "transitionend",
-                        function () {
-                          infographicContainer.remove();
-                        }
-                      );
-                    });
-                    break;
-                  case "gallery":
-                    typeEffect(
-                      responseDisplay,
-                      "<div>Opening gallery...</div>",
-                      0
-                    );
-                    const galleryContainer = document.createElement("div");
-                    galleryContainer.classList.add("fullscreen-gallery"); // Fullscreen overlay
-
-                    // Gallery HTML with left, right navigation buttons and a close button
-                    galleryContainer.innerHTML = `
-                                            <button class="gallery-prev" style="display: none;">&#10094;</button>
-                                            <img src="assets/images/gallery1.png" class="gallery-img" alt="Gallery Image" style="opacity: 0;">
-                                            <button class="gallery-next">&#10095;</button>
-                                            <button class="close-button">Close</button>
-                                        `;
-                    document.body.appendChild(galleryContainer);
-
-                    // Trigger the scale up transition
-                    setTimeout(() => {
-                      galleryContainer.classList.add("active"); // Assuming 'active' triggers scale(1)
-                    }, 10); // Short delay to ensure CSS transition is triggered
-
-                    let currentIndex = 1;
-                    const totalImages = 10; // Total number of images
-
-                    const prevButton =
-                      galleryContainer.querySelector(".gallery-prev");
-                    const nextButton =
-                      galleryContainer.querySelector(".gallery-next");
-                    const closeButton =
-                      galleryContainer.querySelector(".close-button");
-                    const imageElement =
-                      galleryContainer.querySelector(".gallery-img");
-
-                    function preloadImages() {
-                      for (let i = 1; i <= totalImages; i++) {
-                        const img = new Image();
-                        img.src = `assets/images/gallery${i}.png`;
-                      }
-                    }
-
-                    function updateImage(index) {
-                      imageElement.style.opacity = 0; // Start by making the current image transparent
-
-                      setTimeout(() => {
-                        imageElement.src = `assets/images/gallery${index}.png`; // Change the source of the image
-                        imageElement.onload = () => {
-                          // When the new image is fully loaded
-                          setTimeout(() => {
-                            // Add a slight delay to ensure transition is noticeable
-                            imageElement.style.opacity = 1; // Then fade in the new image
-                          }, 200); // You can adjust this delay based on how smooth and noticeable you want the transition
-                        };
-                      }, 300); // Delay for source change to mitigate rapid clicking and cache loading issues
-
-                      // Update button visibility
-                      prevButton.style.display = index === 1 ? "none" : "block";
-                      nextButton.style.display =
-                        index === totalImages ? "none" : "block";
-                    }
-
-                    prevButton.addEventListener("click", () => {
-                      if (currentIndex > 1) {
-                        currentIndex--;
-                        updateImage(currentIndex);
-                      }
-                    });
-
-                    nextButton.addEventListener("click", () => {
-                      if (currentIndex < totalImages) {
-                        currentIndex++;
-                        updateImage(currentIndex);
-                      }
-                    });
-
-                    closeButton.addEventListener("click", () => {
-                      // Start the scale down animation before removing the gallery
-                      galleryContainer.classList.remove("active"); // Assuming 'active' triggers scale(1)
-                      galleryContainer.addEventListener("transitionend", () => {
-                        galleryContainer.remove(); // Remove after animation completes
-                      });
-                    });
-
-                    preloadImages();
-                    updateImage(currentIndex);
-
-                    galleryContainer.style.display = "block";
-                    break;
-                  default:
-                    typeEffect(
-                      responseDisplay,
-                      "shell: command not found: " +
-                        command +
-                        ". Try 'help' to get started.",
-                      25
-                    );
-                }
-                scrollToEnd(); // Ensure the terminal scrolls after processing a command
-              }
-            })();
-          </script>
         </section>
       </div>
     </main>

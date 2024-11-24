@@ -1,0 +1,193 @@
+#hallucination-module .container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  line-height: 1.6;
+  border: solid;
+  border-color: gray;
+  border-radius: 8px;
+}
+
+#hallucination-module .clickable {
+  cursor: pointer;
+  position: relative;
+  display: inline;
+  align-items: center;
+}
+
+/* #hallucination-module .submitted .clickable {
+  margin-right: 25px;
+} */
+
+#hallucination-module .popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 100;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+#hallucination-module .popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  display: flex;
+}
+
+#hallucination-module .popup button,
+#hallucination-module .submit-btn,
+#hallucination-module .nav-btn {
+  margin: 0 4px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#hallucination-module .popup button:hover,
+#hallucination-module .submit-btn:hover,
+#hallucination-module .nav-btn:hover {
+  opacity: 0.8;
+}
+
+#hallucination-module .factual-btn {
+  background: #4caf50;
+  color: white;
+}
+
+#hallucination-module .hallucination-btn {
+  background: #f44336;
+  color: white;
+}
+
+#hallucination-module .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#hallucination-module .submit-btn {
+  background: #2196f3;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+#hallucination-module .nav-btn {
+  padding: 8px 16px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  background: #2c2c2c;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+#hallucination-module .factual {
+  background-color: rgba(76, 175, 80, 0.8);
+}
+
+#hallucination-module .hallucination {
+  background-color: rgba(244, 67, 54, 0.8);
+}
+
+#hallucination-module .result-icon {
+  display: none;
+  position: static;
+  right: -25px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 2px;
+}
+
+#hallucination-module .correct {
+  color: #4caf50;
+}
+
+#hallucination-module .incorrect {
+  color: #f44336;
+}
+
+#hallucination-module .score {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+}
+
+#hallucination-module .clickable-text {
+  display: inline;
+  text-decoration: underline;
+}
+
+#hallucination-module .slide {
+  display: none;
+}
+
+#hallucination-module .slide.active {
+  display: block;
+}
+
+#hallucination-module .slide-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: white;
+}
+
+#hallucination-module .progress {
+  text-align: center;
+  color: #666;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#hallucination-module .prev-btn:disabled {
+  background: #1c1c1c;
+  border-color: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+#hallucination-module .next-btn:disabled {
+  background: #1c1c1c;
+  border-color: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* #hallucination-module .slide p {
+  font-weight: 500;
+} */
+
+#hallucination-module .submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#hallucation-module .prompt {
+  font-weight: 800;
+}

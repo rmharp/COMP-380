@@ -132,7 +132,7 @@
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  background: #28a745;
+  background: #2196f3;
   color: white;
   cursor: pointer;
   transition: all 0.2s;
@@ -142,12 +142,11 @@
 }
 
 .submit-button:hover {
-  background: #218838;
+  opacity: 0.8;
 }
 
 .submit-button:disabled {
-  background: #1c4726;
-  color: #666;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
@@ -167,7 +166,7 @@
 }
 
 .result.correct {
-  color: #28a745;
+  color: #2196f3;
 }
 
 .result.incorrect {

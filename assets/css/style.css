@@ -610,7 +610,6 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
-  /* width: 90%; */
   padding-left: 2%;
   padding-right: 2%;
 }
