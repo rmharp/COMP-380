@@ -6,6 +6,7 @@
   border: solid;
   border-color: gray;
   border-radius: 8px;
+  color: white;
 }
 
 #hallucination-module .clickable {
