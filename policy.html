@@ -37,12 +37,9 @@
       #policy-container {
         max-width: 800px;
         margin: 0 auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
+        position: relative;
         padding: 20px;
+        margin-top: 100px;
       }
       .policy-section {
         margin: 20px;
@@ -100,7 +97,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 20px;
       }
-
       @media (max-width: 768px) {
         .stance-container {
           grid-template-columns: 1fr;
@@ -152,6 +148,29 @@
         opacity: 0.5;
         cursor: not-allowed;
       }
+
+      .footer-container {
+      padding: 20px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.8;
+      background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+      border-radius: 12px;
+      color: white;
+    }
+    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+  z-index: 10; /* Ensure it's above other elements */
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for elevation */
+}
+
+
     </style>
   </head>
   <body>
@@ -226,11 +245,11 @@
               <div class="stance-container">
                 <div>
                   <strong>EU Stance</strong>
-                  <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.</p>
+                  <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.<sup>1</sup></a></p>
                 </div>
                 <div>
                   <strong>US Stance</strong>
-                  <p>There is no federal law like GDPR. The US relies on state laws like the CCPA. A recent Executive Order enforces privacy safeguards and promotes secure data handling.</p>
+                  <p>The US lacks a comprehensive federal data protection law like the GDPR, relying instead on a patchwork of state laws and sector-specific regulations.<sup>2</sup></p>
                 </div>
               </div>
             </div>
@@ -246,11 +265,11 @@
               <div class="stance-container">
                 <div>
                   <strong>EU Stance</strong>
-                  <p>GDPR requires companies to explain automated decisions and mandates risk assessments for high-risk AI processes.</p>
+                  <p>GDPR requires companies to explain automated decisions and mandates risk assessments for high-risk AI processes..<sup>1</sup></p>
                 </div>
                 <div>
                   <strong>US Stance</strong>
-                  <p>The Executive Order mandates rigorous testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.</p>
+                  <p>The Executive Order mandates rigorous testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.<sup>2</sup</p>
                 </div>
               </div>
             </div>
@@ -266,11 +285,11 @@
               <div class="stance-container">
                 <div>
                   <strong>EU Stance</strong>
-                  <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.</p>
+                  <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.<sup>1</sup></p>
                 </div>
                 <div>
                   <strong>US Stance</strong>
-                  <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.</p>
+                  <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.<sup>2</sup></p>
                 </div>
               </div>
             </div>
@@ -286,11 +305,11 @@
               <div class="stance-container">
                 <div>
                   <strong>EU Stance</strong>
-                  <p>The EU's AI Act introduces a comprehensive risk-based framework, categorizing AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight.</p>
+                  <p>The EU's AI Act introduces a comprehensive risk-based framework, categorizing AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight..<sup>1</sup></p>
                 </div>
                 <div>
                   <strong>US Stance</strong>
-                  <p>The US approach focuses on voluntary guidelines and sector-specific regulation. The AI Bill of Rights and Executive Order on AI emphasize responsible innovation while maintaining competitiveness.</p>
+                  <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup>2</sup></p>
                 </div>
               </div>
             </div>
@@ -329,5 +348,22 @@
         });
       </script>
     </main>
+    <footer>
+      <div class="footer-container">
+        <hr>
+        <ol style="list-style-type: decimal;">
+          <li id="footnote1">
+            1. Goddard, M. (2017, November). The EU General Data Protection Regulation (GDPR): European Regulation that has a Global Impact. International Journal of Market Research, 59(6), 703–705. Retrieved 2024-11-12, from 
+            <a href="https://journals.sagepub.com/doi/10.2501/IJMR-2017-050" target="_blank" style="text-decoration: none; color: inherit;">https://journals.sagepub.com/doi/10.2501/IJMR-2017-050</a> doi: 10.2501/IJMR-2017-050
+          </li>
+          <li id="footnote2">
+            2. Register, F. (2023, November 1). Safe, secure, and trustworthy development and use of artificial
+intelligence. Federal Register; OECD AI Policy Observatory. Retrieved from https://www
+.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf ((2021-data-
+policyInitiatives-27577))
+          </li>
+        </ol>
+      </div>
+    </footer>
   </body>
 </html>
