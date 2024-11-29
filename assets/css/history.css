@@ -1,0 +1,371 @@
+:root {
+
+    /**
+     * colors
+     */
+  
+    /* gradient */
+  
+    --bg-gradient-onyx: linear-gradient(
+      to bottom right, 
+      hsl(240, 1%, 25%) 3%, 
+      hsl(0, 0%, 19%) 97%
+    );
+    --bg-gradient-jet: linear-gradient(
+      to bottom right, 
+      hsla(240, 1%, 18%, 0.251) 0%, 
+      hsla(240, 2%, 11%, 0) 100%
+    ), hsl(240, 2%, 13%);
+    --bg-gradient-yellow-1: linear-gradient(
+      to bottom right, 
+      hsl(45, 100%, 71%) 0%, 
+      hsla(36, 100%, 69%, 0) 50%
+    );
+    --bg-gradient-yellow-2: linear-gradient(
+      135deg, 
+      hsla(45, 100%, 71%, 0.251) 0%, 
+      hsla(35, 100%, 68%, 0) 59.86%
+    ), hsl(240, 2%, 13%);
+    --border-gradient-onyx: linear-gradient(
+      to bottom right, 
+      hsl(0, 0%, 25%) 0%, 
+      hsla(0, 0%, 25%, 0) 50%
+    );
+    --text-gradient-blue: linear-gradient(
+      to right, 
+      hsl(204, 72%, 73%), /* UNC Blue */
+      hsl(360, 100%, 100%)  /* White */
+    );
+  --bg-gradient-blue-1: linear-gradient(
+      to bottom right, 
+      hsl(204, 72%, 73%) 0%, /* Light UNC Blue */
+      hsla(204, 72%, 73%, 0) 50%
+    );
+    --bg-gradient-blue-2: linear-gradient(
+      135deg, 
+      hsla(204, 72%, 73%, 0.251) 0%, /* Light UNC Blue with transparency */
+      hsla(204, 72%, 73%, 0) 59.86%
+    ), hsl(240, 2%, 13%); /* Dark gray */
+  
+    /* solid */
+  
+    --jet: hsl(0, 0%, 22%);
+    --onyx: hsl(240, 1%, 17%);
+    --eerie-black-1: hsl(240, 2%, 13%);
+    --eerie-black-2: hsl(240, 2%, 12%);
+    --smoky-black: hsl(0, 0%, 7%);
+    --white-1: hsl(0, 0%, 100%);
+    --white-2: hsl(0, 0%, 98%);
+    --unc-blue-crayola: hsl(204, 72%, 73%);
+}
+
+#timeline-container :root {
+    --primary-color: #212121;
+    --background-color: #111;
+    --font: sans-serif;
+    --history-blue: #2196f3;
+}
+
+#timeline-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#timeline-container body {
+    background: var(--background-color);
+    font-family: var(--font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#timeline-container .main-title {
+    color: #2196f3;
+    font-size: 2.5rem;
+    margin: 30px 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Timeline Container */
+#timeline-container .timeline {
+    background: #151515;
+    margin: 50px auto;
+    padding: 70px;
+    border-radius: 15px;
+    border: solid gray;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+    /* max-width: 80%; */
+    /* padding-bottom: 10px; */
+}
+
+/* Card container */
+#timeline-container .card {
+    position: relative;
+    /* max-width: 60%; */
+    /* max-width: 400px; */
+    transition: transform 0.3s ease;
+}
+
+#timeline-container .card:hover .info {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
+/* setting padding based on even or odd */
+#timeline-container .card:nth-child(odd) {
+    padding: 30px 0 30px 30px;
+}
+#timeline-container .card:nth-child(even) {
+    padding: 30px 30px 30px 0;
+}
+
+/* Global ::before */
+#timeline-container .card:nth-child(odd)::before {
+    content: "";
+    position: absolute;
+    width: 55%;
+    border: solid var(--unc-blue-crayola);
+}
+#timeline-container .card:nth-child(even)::before {
+    content: "";
+    position: absolute;
+    width: 45%;
+    border: solid var(--unc-blue-crayola);
+}
+
+/* Setting the border of top, bottom, left */
+#timeline-container .card:nth-child(odd)::before {
+    left: 0px;
+    top: -5px;
+    bottom: -5px;
+    border-width: 5px 0 5px 5px;
+    border-radius: 50px 0 0 50px;
+}
+
+@media only screen and (max-width: 400px) {
+    #timeline-container .card:nth-child(odd)::before {
+        top: -5px;
+        bottom: -5px;
+    }
+}
+
+/* Setting the border of top, bottom, right */
+#timeline-container .card:nth-child(even)::before {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-width: 5px 5px 5px 0;
+    border-radius: 0 50px 50px 0;
+}
+
+/* Removing the border if it is the first card */
+#timeline-container .card:first-child::before {
+    border-top: 0;
+    border-top-left-radius: 0;
+}
+
+/* Removing the border if it is the last card and it's odd */
+#timeline-container .card:last-child:nth-child(odd)::before {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Removing the border if it is the last card and it's even */
+#timeline-container .card:last-child:nth-child(even)::before {
+    border-bottom: 0;
+    border-bottom-right-radius: 0; 
+}
+
+/* Information about the timeline */
+#timeline-container .info {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #333 0%, #222 100%);
+    opacity: 1;
+    transition: opacity 0.1s ease-in;
+
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Title of the card */
+#timeline-container .title {
+    color: var(--unc-blue-crayola);
+    position: relative;
+}
+
+/* Timeline dot */
+#timeline-container .title::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 999px;
+    border: 3px solid var(--unc-blue-crayola);
+    opacity: 1;
+}
+
+/* text right if the card is even */
+#timeline-container .card:nth-child(even) > .info > .title {
+    text-align: right;
+}
+
+/* setting dot to the left if the card is odd */
+#timeline-container .card:nth-child(odd) > .info > .title::before {
+    left: -47.5px;
+}
+
+/* setting dot to the right if the card is odd */
+#timeline-container .card:nth-child(even) > .info > .title::before {
+    right: -47.5px;
+}
+
+/* Modal styles */
+#timeline-container .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: -100;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#timeline-container .modal.show {
+    display: flex;
+    /* transition: opacity 1s ease-in-out; */
+    opacity: 1;
+    z-index: 100;
+}
+
+#timeline-container .modal-content {
+    background: var(--primary-color);
+    padding: 40px;
+    border-radius: 10px;
+    /* max-width: 800px; */
+    width: 72%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+#timeline-container .close-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: none;
+    border: none;
+    color: var(--unc-blue-crayola);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#timeline-container .modal-timeline {
+    margin-top: 20px;
+    padding: 40px;
+    background: #151515;
+    border-radius: 8px;
+    /* border-left: var(--unc-blue-crayola); */
+}
+
+#timeline-container .timeline-item {
+    display: flex;
+    margin: 20px 20px;
+    margin-left: 50px; 
+}
+
+#timeline-container .timeline-item-title {
+    margin-right: 20px;
+}
+
+#timeline-container .timeline-item span {
+    width: 10%;
+    text-align: center;
+    margin-right: 20px;
+}
+/* #timeline-container .timeline-item {
+    display: flex;
+    margin: 0 0;
+    padding: 25px; */
+    /* background: linear-gradient(145deg, #444 0%, #333 100%); */
+    /* border-radius: 8px; */
+    /* border-left: solid;
+    border-color: #2196f3;
+    border-width: 0 0 0 5px;
+} */
+
+#timeline-container .timeline-date {
+    min-width: 100px;
+    color: var(--unc-blue-crayola);
+    font-weight: bold;
+}
+
+#timeline-container .timeline-description {
+    color: #ddd;
+    margin-left: 20px;
+}
+
+#timeline-container .start-timeline {
+    border-right: thick solid var(--unc-blue-crayola);
+    max-width: 50%;
+    width: 50%;
+}
+
+#timeline-container .dot-container {
+    position: relative;
+    border-bottom: solid;
+    top: 5px;
+    width: 25%;
+    margin-left: 50%;
+    height: 10px;
+    border-width: 5px;
+    border-color: var(--unc-blue-crayola);
+}
+
+#timeline-container .dot {
+    position: absolute;
+    bottom: -12.5px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--unc-blue-crayola);
+    border-radius: 50%;
+}
+
+#timeline-container .arrow-container {
+    position: relative;
+    border: solid;
+    border-width: 5px 0 0 5px;
+    height: 70px;
+    top: -5px;
+    max-width: 40%;
+    margin-left: 50%;
+    border-top-left-radius: 50px;
+    border-color: var(--unc-blue-crayola);
+}
+
+#timeline-container .down-arrow {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: none;
+    bottom: -10px;
+    left: -17.5px;
+}
