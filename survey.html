@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Ethics Survey | Perspectives on AI</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    #survey-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px;
+      margin-top: 100px;
+    }
+
+    .question {
+      display: none;
+      margin: 20px;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+      border: 2px solid #007bff;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .question:hover {
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+    }
+
+    .question.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .topic {
+      margin-bottom: 20px;
+      color: var(--light-gray);
+      font-size: var(--fs-2);
+      font-weight: var(--fw-600);
+    }
+
+    .blurb {
+      margin-bottom: 30px;
+      color: var(--light-gray);
+      font-size: var(--fs-4);
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .question-text {
+      color: var(--light-gray);
+      font-size: var(--fs-3);
+      margin-bottom: 15px;
+      font-weight: var(--fw-500);
+    }
+
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 0 20px;
+    }
+
+    .navigation-buttons .spacer {
+      flex: 1;
+    }
+
+    .navigation-buttons button {
+      cursor: pointer;
+      padding: 15px 25px;
+      font-size: var(--fs-3);
+      font-weight: var(--fw-500);
+      background: linear-gradient(to right, #444444, #333333);
+      color: var(--light-gray);
+      border: none;
+      border-radius: 14px;
+      transition: 0.25s ease;
+      min-width: 120px;
+    }
+    
+    .navigation-buttons button:hover {
+      background: linear-gradient(to right, #555555, #444444);
+      color: #ffffff;
+    }
+    
+    .progress-bar {
+      width: calc(100% - 40px);
+      height: 6px;
+      background: linear-gradient(to right, #444444, #333333);
+      margin: 20px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: linear-gradient(to right, #444444, #333333);
+      color: var(--light-gray);
+      border: 1px solid #333;
+      border-radius: 10px;
+      font-family: "Poppins", sans-serif;
+      font-size: var(--fs-4);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #555;
+    }
+
+    h3 {
+      color: var(--light-gray);
+      font-size: var(--fs-3);
+      margin-bottom: 15px;
+    }
+
+    #results {
+      display: none;
+      margin: 20px;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+      border: 1px solid #333;
+      border-radius: 20px;
+    }
+
+    .question-stats {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: linear-gradient(to right, #444444, #333333);
+    }
+
+    .question-stats h3 {
+      margin-top: 0;
+      color: var(--light-gray);
+    }
+
+    .question-stats ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .question-stats li {
+      margin: 10px 0;
+      padding: 8px;
+      background: linear-gradient(to right, #3a3a3a, #2a2a2a);
+      border-radius: 8px;
+      color: var(--light-gray);
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .option {
+      padding: 15px 20px;
+      background: linear-gradient(to right, #444444, #333333);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--light-gray);
+    }
+
+    .option:hover {
+      background: linear-gradient(to right, #555555, #444444);
+      transform: translateX(5px);
+    }
+
+    .option.selected {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      border-color: #ffffff;
+    }
+
+    #submit-button {
+      background: linear-gradient(to right, #007bff, #0056b3);
+    }
+
+    #submit-button:hover {
+      background: linear-gradient(to right, #0056b3, #004494);
+    }
+
+    /* Add loading spinner styles */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .button-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Add transition styles */
+    #survey-section, #results {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 1;
+    }
+
+    #survey-section.fade-out, #results.fade-out {
+      opacity: 0;
+    }
+
+    #results {
+      opacity: 0;
+    }
+
+    #results.visible {
+      opacity: 1;
+    }
+
+    .footer-container {
+      padding: 20px;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.6;
+      background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+      border-radius: 15px;
+      color: white;
+      margin: 20px;
+      border: 2px solid #ff8c00;
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+    }
+
+    .footer-container ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-container li {
+      background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 10px 0;
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .footer-container li:hover {
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .footer-container li::before {
+      content: "3";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 10px;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+
+    .footer-container a {
+      color: #ff8c00;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-container a:hover {
+      color: #ff4500;
+      text-decoration: underline;
+    }
+
+    footer {
+      position: relative;
+      width: 100%;
+      background: transparent;
+      z-index: 10;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+
+    main {
+      margin-bottom: 50px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .scroll-link {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .scroll-link:hover {
+      text-decoration: underline;
+    }
+
+    sup a.scroll-link {
+      display: inline-block;
+      background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      margin-left: 5px;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      top: -5px;
+    }
+
+    sup a.scroll-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+      text-decoration: none;
+    }
+
+    sup a.scroll-link:active {
+      transform: translateY(0);
+      box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="survey-container">
+      <div id="survey-section">
+        <h2 class="h2 article-title">AI Ethics Survey</h2>
+        <form id="survey-form">
+          <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+          </div>
+
+          <div class="question active" data-question="1">
+            <div class="topic">Responsibility in Autonomous Decision-Making</div>
+            <div class="blurb">
+              AI systems are beginning and growing in their ability to make decisions without direct human input. It's a significant ethical challenge to determine who to place the blame on (developers, operators, or the AI itself)<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Who should bear primary responsibility for the outcomes of autonomous AI systems?</div>
+            <input type="hidden" name="q1" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Developers, for designing the system.</div>
+              <div class="option" data-value="B">B) Operators, for deploying and using the system.</div>
+              <div class="option" data-value="C">C) Society, for enabling reliance on such technologies.</div>
+              <div class="option" data-value="D">D) The AI system itself, as an independent actor.</div>
+              <div class="option" data-value="E">E) Responsibility should depend on the specific situation.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="2">
+            <div class="topic">AI Bias and Fairness</div>
+            <div class="blurb">AI systems can perpetuate or amplify existing societal biases through their training data and algorithms. This raises concerns about fairness and discrimination in automated decision-making processes.<sup><a href="#footnote3" class="scroll-link">3</a></sup></div>
+            <div class="question-text">How should AI bias be addressed in critical decision-making systems?</div>
+            <input type="hidden" name="q2" required>
+            <div class="options-container">
+              <div class="option" data-value="A">Mandate diverse training data and regular bias audits.</div>
+              <div class="option" data-value="B">Use AI only as a supplement to human decision-making.</div>
+              <div class="option" data-value="C">Focus on transparency rather than trying to eliminate bias.</div>
+              <div class="option" data-value="D">Accept some bias as inevitable in complex systems.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="3">
+            <div class="topic">Privacy in Data Collection</div>
+            <div class="blurb">
+              AI systems depend heavily on user data, which is sometimes collected without users fully understanding how it will be used. This presents ethical concerns about consent, privacy, and the balance between individual rights and benefits to society.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Should users have the right to refuse AI-driven data collection?</div>
+            <input type="hidden" name="q3" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Yes, users should have full control over their data.</div>
+              <div class="option" data-value="B">B) Yes, but only for sensitive or identifiable information.</div>
+              <div class="option" data-value="C">C) No, if data is anonymized and contributes to public good.</div>
+              <div class="option" data-value="D">D) No, companies need user data to improve AI systems.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="4">
+            <div class="topic">AI in Warfare</div>
+            <div class="blurb">
+              Autonomous weapons systems, also known as "killer robots," can make decisions about lethal force without human oversight. While they may reduce human casualties, the use of autonomous weapons systems in real warfare raises moral concerns about AI accountability and escalation of conflict.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Should autonomous weapons systems be allowed in military contexts?</div>
+            <input type="hidden" name="q4" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) No, the use of AI in warfare is fundamentally unethical.</div>
+              <div class="option" data-value="B">B) Yes, but only under strict human oversight.</div>
+              <div class="option" data-value="C">C) Yes, AI can reduce human casualties and improve efficiency.</div>
+              <div class="option" data-value="D">D) Only in defensive scenarios, not for initiating attacks.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="5">
+            <div class="topic">Impact on Employment</div>
+            <div class="blurb">
+              Artificial intelligence automation is reshaping the global labor market. While it creates opportunities in some areas, it also creates difficulties for other areas of the labor force, thereby presenting an important challenge to policymakers to ensure the fair transition and the economic stability of the country.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">What is the most ethical approach to address AI-driven job displacement?</div>
+            <input type="hidden" name="q5" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Governments should provide universal basic income.</div>
+              <div class="option" data-value="B">B) Companies should fund worker retraining programs.</div>
+              <div class="option" data-value="C">C) Let the market decide, as new jobs will naturally emerge.</div>
+              <div class="option" data-value="D">D) Avoid deploying AI in industries where job loss is significant.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="6">
+            <div class="topic">Emotional AI and Human Relationships</div>
+            <div class="blurb">
+              When there is an expectation of comfort, but also a concern about the sense of intimacy and possible use for manipulation of these systems, we use emotional AI. Empathy-Simulating AI tries to create connections with its users, such as in caregiving or therapy.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Should AI be designed to form emotional connections with humans?</div>
+            <input type="hidden" name="q6" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Yes, if it provides genuine benefits like companionship.</div>
+              <div class="option" data-value="B">B) Yes, but only with clear labeling that it is AI, not human.</div>
+              <div class="option" data-value="C">C) No, it risks manipulating users and fostering dependence.</div>
+              <div class="option" data-value="D">D) No, AI should focus on tasks, not emotional engagement.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="7">
+            <div class="topic">Unequal Access to AI Benefits</div>
+            <div class="blurb">
+              Artificial intelligence technology often benefits wealthy nations and corporations, which aggravate existing inequalities. In order to promote a more equitable global society, a gap remains between those with power and those without it.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">How should society address unequal access to AI technologies?</div>
+            <input type="hidden" name="q7" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Governments should regulate for equitable access.</div>
+              <div class="option" data-value="B">B) Companies should voluntarily share technology with underserved communities.</div>
+              <div class="option" data-value="C">C) Focus on advancing technology first; access will follow naturally.</div>
+              <div class="option" data-value="D">D) Unequal access is inevitable; focus on mitigating harm instead.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="8">
+            <div class="topic">Surveillance and AI Policing</div>
+            <div class="blurb">
+              AI-powered surveillance tools, such as facial recognition, are increasingly being used by law enforcement. They can make us safer, but they also risk racial discrimination, violation of privacy, and misuse by the authorities.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">How should AI be used in law enforcement?</div>
+            <input type="hidden" name="q8" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Only for data analysis, with no involvement in decision-making.</div>
+              <div class="option" data-value="B">B) Allowed but strictly monitored to avoid biases.</div>
+              <div class="option" data-value="C">C) Fully integrated into decision-making to enhance safety.</div>
+              <div class="option" data-value="D">D) Prohibited entirely due to potential for misuse.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="9">
+            <div class="topic">AI as Moral Agents</div>
+            <div class="blurb">
+              Some researchers raise the question that advanced AI might one day develop moral reasoning or consciousness. This possibility raises questions about whether such systems deserve rights or recognition as moral entities.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Should advanced AI systems have rights similar to humans?</div>
+            <input type="hidden" name="q9" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Yes, if they demonstrate moral reasoning and consciousness.</div>
+              <div class="option" data-value="B">B) Yes, but only limited rights for specific scenarios.</div>
+              <div class="option" data-value="C">C) No, AI is a tool, not a moral being.</div>
+              <div class="option" data-value="D">D) No, focusing on AI rights distracts from real human ethical issues.</div>
+            </div>
+          </div>
+
+          <div class="question" data-question="10">
+            <div class="topic">AI and Environmental Sustainability</div>
+            <div class="blurb">
+              Training large AI models consumes significant resources, contributing to environmental degradation. While AI can help address sustainability challenges, it must also balance its own ecological footprint.<sup><a href="#footnote3" class="scroll-link">3</a></sup>
+            </div>
+            <div class="question-text">Should the environmental costs of AI development limit its use?</div>
+            <input type="hidden" name="q10" required>
+            <div class="options-container">
+              <div class="option" data-value="A">A) Yes, AI research must prioritize sustainability.</div>
+              <div class="option" data-value="B">B) Yes, but only for applications with marginal benefits.</div>
+              <div class="option" data-value="C">C) No, the benefits of AI outweigh its environmental costs.</div>
+              <div class="option" data-value="D">D) No, focus on making AI energy-efficient instead of limiting its use.</div>
+            </div>
+          </div>
+
+          <div class="navigation-buttons">
+            <button type="button" id="prev-button" style="display: none;">Previous</button>
+            <div class="spacer"></div>
+            <button type="button" id="next-button">Next</button>
+            <button type="submit" id="submit-button" style="display: none;">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="results" style="display: none;">
+        <h2 class="h2 article-title">What others have said</h2>
+        <div id="results-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <hr>
+      <ol>
+        <li id="footnote3">
+          Müller, V. C. (2023). Ethics of Artificial Intelligence and Robotics. In E. N. Zalta & U. Nodelman (Eds.), The Stanford Encyclopedia of Philosophy (Fall 2023 ed.). Metaphysics Research Lab, Stanford University. Retrieved from 
+          <a href="https://plato.stanford.edu/archives/fall2023/entries/ethics-ai/" target="_blank">https://plato.stanford.edu/archives/fall2023/entries/ethics-ai/</a>
+        </li>
+      </ol>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("survey-form");
+    const questions = document.querySelectorAll('.question');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit-button');
+    const progressBar = document.getElementById('progress');
+    const resultsDiv = document.getElementById('results');
+    const resultsContent = document.getElementById('results-content');
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzOUuf0Kavfl5wKOIUDantoz69C53sGDeXfq1s16jmDPUtVJHN3zC1ZfvQMeBzI_XvP8w/exec";
+    const surveySection = document.getElementById('survey-section');
+    
+    let currentQuestion = 0;
+    const totalQuestions = questions.length;
+
+    // Add click event listeners to all options
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove selected class from all siblings
+        const container = this.closest('.options-container');
+        container.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        
+        // Add selected class to clicked option
+        this.classList.add('selected');
+        
+        // Update hidden input value
+        const hiddenInput = this.closest('.question').querySelector('input[type="hidden"]');
+        hiddenInput.value = this.dataset.value;
+      });
+    });
+
+    function updateQuestion() {
+      questions.forEach((q, index) => {
+        q.classList.remove('active');
+        if (index === currentQuestion) {
+          q.classList.add('active');
+        }
+      });
+
+      const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+      progressBar.style.width = `${progress}%`;
+
+      prevButton.style.display = currentQuestion === 0 ? 'none' : 'block';
+      if (currentQuestion === totalQuestions - 1) {
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'block';
+      } else {
+        nextButton.style.display = 'block';
+        submitButton.style.display = 'none';
+      }
+    }
+
+    async function displayResults(data = null) {
+      try {
+        if (!data) {
+          const response = await fetch(scriptURL + '?action=getResults');
+          data = await response.json();
+        }
+        
+        if (!data || data.length === 0) {
+          resultsContent.innerHTML = '<p>No results available yet.</p>';
+          return;
+        }
+
+        // Show results div and prepare content
+        resultsDiv.style.display = 'block';
+        let resultsHTML = '<div class="results-container">';
+        
+        // Process results for each question
+        const questionResults = {};
+        
+        // Initialize question results structure
+        for (let i = 1; i <= 10; i++) {
+          questionResults[i] = {
+            question: questions[i-1].querySelector('.question-text').textContent,
+            options: {},
+            total: 0
+          };
+          
+          // Get all possible options for this question
+          const options = questions[i-1].querySelectorAll('.option');
+          options.forEach(option => {
+            questionResults[i].options[option.dataset.value] = 0;
+          });
+        }
+
+        // Make sure data is an array before processing
+        const responsesArray = Array.isArray(data) ? data : (data.responses || []);
+        
+        // Count responses
+        responsesArray.forEach(response => {
+          for (let i = 1; i <= 10; i++) {
+            const answer = response[`q${i}`];
+            if (answer) {
+              if (!questionResults[i].options[answer]) {
+                questionResults[i].options[answer] = 0;
+              }
+              questionResults[i].options[answer]++;
+              questionResults[i].total++;
+            }
+          }
+        });
+        
+        // Generate HTML for results
+        for (let i = 1; i <= 10; i++) {
+          const result = questionResults[i];
+          resultsHTML += `
+            <div class="result-item">
+              <p class="result-question">Q${i}: ${result.question}</p>
+              <div class="result-bars">
+          `;
+          
+          // Add bars for each option
+          Object.entries(result.options).forEach(([option, count]) => {
+            const percentage = result.total ? Math.round((count / result.total) * 100) : 0;
+            const optionText = questions[i-1].querySelector(`[data-value="${option}"]`)?.textContent || `Option ${option}`;
+            
+            resultsHTML += `
+              <div class="result-bar-container">
+                <div class="result-label">
+                  <span class="option-text">${optionText}</span>
+                  <span class="percentage">${percentage}%</span>
+                </div>
+                <div class="result-bar">
+                  <div class="result-bar-fill" style="width: ${percentage}%"></div>
+                </div>
+              </div>
+            `;
+          });
+          
+          resultsHTML += `
+              </div>
+              <p class="total-responses">Total responses: ${result.total}</p>
+            </div>
+          `;
+        }
+        
+        resultsHTML += '</div>';
+        
+        // Add CSS for results
+        if (!document.querySelector('#results-styles')) {
+          const style = document.createElement('style');
+          style.id = 'results-styles';
+          style.textContent = `
+            .results-container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+            .result-item {
+              background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+              border-radius: 20px;
+              padding: 25px;
+              margin-bottom: 25px;
+            }
+            .result-question {
+              color: var(--light-gray);
+              font-size: var(--fs-3);
+              margin-bottom: 25px;
+              font-weight: var(--fw-500);
+            }
+            .result-bars {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+            }
+            .result-bar-container {
+              width: 100%;
+            }
+            .result-label {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 8px;
+              color: var(--light-gray);
+            }
+            .option-text {
+              font-size: var(--fs-4);
+              opacity: 0.9;
+              flex: 1;
+              padding-right: 20px;
+            }
+            .percentage {
+              font-weight: var(--fw-500);
+              min-width: 50px;
+              text-align: right;
+            }
+            .result-bar {
+              height: 8px;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 4px;
+              overflow: hidden;
+            }
+            .result-bar-fill {
+              height: 100%;
+              background: linear-gradient(to right, #007bff, #0056b3);
+              transition: width 1s ease-out;
+            }
+            .total-responses {
+              margin-top: 20px;
+              color: var(--light-gray);
+              font-size: var(--fs-4);
+              opacity: 0.7;
+              text-align: right;
+            }
+            #take-again-button {
+              display: block;
+              margin: 30px auto;
+              padding: 15px 30px;
+              font-size: var(--fs-3);
+              font-weight: var(--fw-500);
+              color: var(--light-gray);
+              background: linear-gradient(to right, #444444, #333333);
+              border: none;
+              border-radius: 12px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+            #take-again-button:hover {
+              background: linear-gradient(to right, #555555, #444444);
+              transform: translateY(-2px);
+            }
+          `;
+          document.head.appendChild(style);
+        }
+
+        resultsContent.innerHTML = resultsHTML;
+
+        // Add take again button
+        const takeAgainButton = document.createElement('button');
+        takeAgainButton.id = 'take-again-button';
+        takeAgainButton.textContent = 'Take Survey Again';
+        takeAgainButton.onclick = resetSurvey;
+        resultsContent.appendChild(takeAgainButton);
+
+        // Fade in the results
+        setTimeout(() => {
+          resultsDiv.classList.add('visible');
+        }, 50);
+        
+      } catch (error) {
+        console.error('Error fetching results:', error);
+        resultsContent.innerHTML = `
+          <div class="error-message">
+            <h3>Unable to load results</h3>
+            <p>An error occurred while fetching the survey results. This might be because:</p>
+            <ul>
+              <li>The results are still being processed</li>
+              <li>There was a network error</li>
+              <li>No responses have been recorded yet</li>
+            </ul>
+            <p>Please try again in a few moments.</p>
+          </div>
+        `;
+      }
+    }
+
+    function resetSurvey() {
+      // Fade out results
+      resultsDiv.classList.remove('visible');
+      
+      // Wait for fade out animation
+      setTimeout(() => {
+        // Reset form
+        form.reset();
+        
+        // Clear all selected options
+        document.querySelectorAll('.option.selected').forEach(option => {
+          option.classList.remove('selected');
+        });
+        
+        // Clear all hidden inputs
+        for (let i = 1; i <= 10; i++) {
+          const hiddenInput = form.querySelector(`input[name="q${i}"]`);
+          if (hiddenInput) {
+            hiddenInput.value = '';
+          }
+        }
+        
+        // Reset to first question
+        currentQuestion = 0;
+        updateQuestion();
+        
+        // Reset progress bar
+        progressBar.style.width = '0%';
+        
+        // Show survey section, hide results
+        resultsDiv.style.display = 'none';
+        surveySection.style.display = 'block';
+        surveySection.classList.remove('fade-out');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 500);
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        updateQuestion();
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      const currentQuestionElement = questions[currentQuestion];
+      const select = currentQuestionElement.querySelector('select');
+      const optionsContainer = currentQuestionElement.querySelector('.options-container');
+      const selectedOption = optionsContainer.querySelector('.option.selected');
+      
+      if (select && select.value === '') {
+        alert('Please select an answer before proceeding.');
+        return;
+      }
+      
+      if (optionsContainer && !selectedOption) {
+        alert('Please select an answer before proceeding.');
+        return;
+      }
+
+      if (currentQuestion < totalQuestions - 1) {
+        currentQuestion++;
+        updateQuestion();
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const finalOptionsContainer = questions[currentQuestion].querySelector('.options-container');
+      const finalSelectedOption = finalOptionsContainer.querySelector('.option.selected');
+      
+      if (finalOptionsContainer && !finalSelectedOption) {
+        alert('Please select an answer before submitting.');
+        return;
+      }
+
+      // Show loading state
+      const submitButton = document.getElementById('submit-button');
+      const originalContent = submitButton.innerHTML;
+      submitButton.innerHTML = '<div class="button-content">Submitting<span class="loading-spinner"></span></div>';
+      submitButton.disabled = true;
+
+      // Fade out survey section immediately
+      surveySection.classList.add('fade-out');
+
+      // Collect all answers
+      const formData = {};
+      for (let i = 1; i <= 10; i++) {
+        const hiddenInput = form.querySelector(`input[name="q${i}"]`);
+        if (hiddenInput) {
+          formData[`q${i}`] = hiddenInput.value;
+        }
+      }
+
+      try {
+        // Start fetching results early
+        const resultsPromise = fetch(scriptURL + '?action=getResults');
+        
+        // Submit the form data
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        // Short delay to ensure data is processed
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Hide survey and reset button
+        surveySection.style.display = 'none';
+        submitButton.innerHTML = originalContent;
+        submitButton.disabled = false;
+        
+        // Get results (should be ready or nearly ready by now)
+        const resultsResponse = await resultsPromise;
+        const data = await resultsResponse.json();
+        
+        // Show results immediately
+        displayResults(data);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred while submitting your responses. Please try again.');
+        
+        // Reset submit button on error
+        submitButton.innerHTML = originalContent;
+        submitButton.disabled = false;
+        surveySection.classList.remove('fade-out');
+      }
+    });
+
+    // Initialize the first question
+    updateQuestion();
+  </script>
+</body>
+</html>
