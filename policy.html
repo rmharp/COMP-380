@@ -149,45 +149,100 @@
         cursor: not-allowed;
       }
       .footer-container {
-  padding: 20px; /* Reduce padding further */
-  text-align: left;
-  font-size: 12px; /* Smaller font size */
-  line-height: 3; /* Compact line spacing */
-  background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
-  border-radius: 8px;
-  color: white;
-}
+        padding: 20px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.6;
+        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        border-radius: 15px;
+        color: white;
+        margin: 20px;
+        border: 2px solid #ff8c00;
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+      }
 
-footer {
-  position: relative; /* Change from fixed to relative */
-  width: 100%;
-  background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
-  z-index: 10; /* Keep it above other elements */
-  text-align: center;
-  padding: 10px 0; /* Reduce padding */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-}
+      .footer-container ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-main {
-  margin-bottom: 50px; /* Add spacing at the bottom of the content */
-}
+      .footer-container li {
+        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        padding: 15px;
+        border-radius: 12px;
+        margin: 10px 0;
+        border: 1px solid rgba(255, 140, 0, 0.3);
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+        transition: all 0.3s ease;
+      }
 
-html {
-  scroll-behavior: smooth; /* Enables smooth scrolling */
-}
+      .footer-container li:hover {
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+        transform: translateY(-2px);
+      }
 
-.scroll-link {
-  color: white; /* Change the link color to white */
-  font-weight: bold; /* Make the link bold */
-  text-decoration: none; /* Remove underline */
-}
+      .footer-container li::before {
+        content: attr(data-number);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        margin-right: 10px;
+        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+      }
 
-.scroll-link:hover {
-  text-decoration: underline; /* Optional: Add underline on hover */
-}
+      .footer-container a {
+        color: #ff8c00;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
+      .footer-container a:hover {
+        color: #ff4500;
+        text-decoration: underline;
+      }
 
+      sup a.scroll-link {
+        display: inline-block;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        margin-left: 5px;
+        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        top: -5px;
+      }
 
+      sup a.scroll-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+        text-decoration: none;
+      }
+
+      sup a.scroll-link:active {
+        transform: translateY(0);
+        box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+      }
+
+      footer {
+        position: relative;
+        width: 100%;
+        background: transparent;
+        z-index: 10;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 30px;
+      }
     </style>
   </head>
   <body>
@@ -226,6 +281,12 @@ html {
                   >Alignment</a
                 >
               </li>
+            </li>
+            <li class="navbar-item">
+              <a href="ethics_survey.html" class="navbar-link dropdown-link"
+                >Ethics Survey</a
+              >
+            </li>
             </ul>
           </li>
           <li class="navbar-item dropdown">
@@ -326,7 +387,7 @@ html {
                 </div>
                 <div>
                   <strong>US Stance</strong>
-                  <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote1" class="scroll-link">2</a></sup></p>
+                  <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
                 </div>
               </div>
             </div>
@@ -367,17 +428,14 @@ html {
     </main>
     <footer>
       <div class="footer-container">
-        <hr>
-        <ol style="list-style-type: decimal;">
-          <li id="footnote1">
-            1. Goddard, M. (2017, November). The EU General Data Protection Regulation (GDPR): European Regulation that has a Global Impact. International Journal of Market Research, 59(6), 703–705. Retrieved 2024-11-12, from 
-            <a href="https://journals.sagepub.com/doi/10.2501/IJMR-2017-050" target="_blank" style="text-decoration: none; color: inherit;">https://journals.sagepub.com/doi/10.2501/IJMR-2017-050</a> doi: 10.2501/IJMR-2017-050
+        <ol>
+          <li id="footnote1" data-number="1">
+            Goddard, M. (2017, November). The EU General Data Protection Regulation (GDPR): European Regulation that has a Global Impact. International Journal of Market Research, 59(6), 703–705. Retrieved 2024-11-12, from 
+            <a href="https://journals.sagepub.com/doi/10.2501/IJMR-2017-050" target="_blank">https://journals.sagepub.com/doi/10.2501/IJMR-2017-050</a>
           </li>
-          <li id="footnote2">
-            2. Register, F. (2023, November 1). Safe, secure, and trustworthy development and use of artificial
-intelligence. Federal Register; OECD AI Policy Observatory. Retrieved from https://www
-.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf ((2021-data-
-policyInitiatives-27577))
+          <li id="footnote2" data-number="2">
+            Register, F. (2023, November 1). Safe, secure, and trustworthy development and use of artificial intelligence. Federal Register; OECD AI Policy Observatory. Retrieved from 
+            <a href="https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf" target="_blank">https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf</a>
           </li>
         </ol>
       </div>
