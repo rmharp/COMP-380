@@ -4,399 +4,497 @@
   <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decision Making | Perspectives on AI</title>
-  <!-- favicon -->
   <link rel="shortcut icon" href="./assets/images/blacklogo.png" type="image/png" />
-
-  <!-- custom css link -->
   <link rel="stylesheet" href="./assets/css/style.css" />
-
-  <!-- google font link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-LXQLH66J4S"
-  ></script>
-
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXQLH66J4S"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
-
     gtag("config", "G-LXQLH66J4S");
   </script>
 
-  <!-- Additional CSS for the scenario panels -->
   <style>
-    /* General Styles */
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #333; /* Changed to dark background for contrast */
-      color: #333;
+      margin:0; padding:0;
+      background-color: #333;
+      color:#333;
     }
     .main-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px;
     }
-    /* Removed the white background from .about-text */
     .about-text {
-      padding: 20px;
-      border-radius: 8px;
+      padding:20px;
+      border-radius:8px;
     }
-
-    /* Dilemma Prompt */
     .dilemma-prompt {
-      text-align: center;
-      font-size: 1.8em;
-      margin-top: 20px;
-      font-weight: bold;
-      color: #fff; /* Changed text color to white */
+      text-align:center;
+      font-size:1.8em;
+      margin-top:20px;
+      font-weight:bold;
+      color:#fff;
     }
-
-    /* Progress Counter */
     .progress-counter {
-      text-align: center;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #ccc; /* Adjusted color for visibility on dark background */
+      text-align:center;
+      margin-top:10px;
+      font-weight:bold;
+      color:#ccc;
     }
-
-    /* Scenario container styles */
     .scenario-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      margin-top: 20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-top:20px;
     }
-
     .scenario-panel {
-      width: 100%;
-      max-width: 500px;
-      margin: 10px;
-      border: 1px solid #ddd;
-      padding: 15px;
-      position: relative;
-      text-align: center;
-      cursor: pointer;
-      background-color: #fff;
-      border-radius: 8px;
-      transition: box-shadow 0.3s;
+      width:100%;
+      max-width:800px;
+      border:1px solid #ddd;
+      padding:15px;
+      background-color:#fff;
+      border-radius:8px;
+      position:relative;
     }
-
     .scenario-panel:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
     }
-
-    .scenario-panel img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
+    .scenario-content {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
-
-    .scenario-panel .description {
-      display: none;
-      margin-top: 10px;
-      text-align: left;
-      color: #333;
+    .scenario-content img {
+      width:300px;
+      height:auto;
+      border-radius:4px;
+      margin:10px;
     }
-
-    .scenario-panel .show-description-btn {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1em;
+    .description-container {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      flex:1;
+      min-width:200px;
+      margin:10px;
+      background-color:#f9f9f9;
+      border:1px solid #ccc;
+      border-radius:4px;
+      padding:15px;
+      text-align:center;
+      cursor:pointer;
+      transition:background-color 0.3s;
+      position:relative;
     }
-
-    .scenario-panel .show-description-btn:hover {
-      background-color: #0056b3;
+    .description-container:hover {
+      background-color:#e6e6e6;
     }
-
-    .scenario-panel.selected {
-      border-color: #28a745;
-      background-color: #e6ffe6;
+    .description-container.selected {
+      border-color:#28a745;
+      background-color:#e6ffe6;
     }
-
-    /* Navigation Buttons */
+    .show-description-btn {
+      margin-bottom:10px;
+      padding:8px 16px;
+      background-color:#007bff;
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:1em;
+    }
+    .show-description-btn:hover {
+      background-color:#0056b3;
+    }
+    .description {
+      display:none;
+      margin-top:10px;
+      text-align:left;
+      color:#333;
+      width:100%;
+    }
     .navigation-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-top:30px;
     }
-
     .navigation-buttons button {
-      margin: 0 10px;
-      padding: 12px 24px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background-color 0.3s;
+      margin:0 10px;
+      padding:12px 24px;
+      background-color:#007bff;
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:1em;
+      transition:background-color 0.3s;
     }
-
     .navigation-buttons button:hover:not(:disabled) {
-      background-color: #0056b3;
+      background-color:#0056b3;
     }
-
     .navigation-buttons button:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
+      background-color:#cccccc;
+      cursor:not-allowed;
     }
 
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .scenario-panel {
-        width: 100%;
-        max-width: none;
+    @media (max-width:768px) {
+      .scenario-content {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .scenario-content img {
+        width:100%;
+        max-width:300px;
+      }
+      .description-container {
+        min-width:auto;
+        width:100%;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- Main content -->
-  <main>
-    <div class="main-content">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <a href="index.html" class="navbar-link">Home</a>
-          </li>
+<main>
+  <div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li class="navbar-item"><a href="index.html" class="navbar-link">Home</a></li>
+        <li class="navbar-item"><a href="history.html" class="navbar-link">History</a></li>
+        <li class="navbar-item"><a href="policy.html" class="navbar-link">Policy</a></li>
+        <li class="navbar-item dropdown">
+          <a href="ethics.html" class="navbar-link">Ethics<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="navbar-item"><a href="#" class="navbar-link dropdown-link active">Decisions</a></li>
+            <li class="navbar-item"><a href="alignment.html" class="navbar-link dropdown-link">Alignment</a></li>
+            <li class="navbar-item"><a href="ethics_survey.html" class="navbar-link dropdown-link">Ethics Survey</a></li>
+          </ul>
+        </li>
+        <li class="navbar-item dropdown">
+          <a href="generative.html" class="navbar-link">Generative AI<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="navbar-item"><a href="language.html" class="navbar-link dropdown-link">Language</a></li>
+            <li class="navbar-item"><a href="vision.html" class="navbar-link dropdown-link">Vision</a></li>
+          </ul>
+        </li>
+        <li class="navbar-item"><a href="contact.html" class="navbar-link">Contact</a></li>
+      </ul>
+    </nav>
 
-          <li class="navbar-item">
-            <a href="history.html" class="navbar-link">History</a>
-          </li>
+    <!-- Header -->
+    <header>
+      <h2 class="h2 article-title">Decision Making</h2>
+    </header>
 
-          <li class="navbar-item">
-            <a href="policy.html" class="navbar-link">Policy</a>
-          </li>
+    <!-- Dilemma Section -->
+    <section class="about-text">
+      <div class="dilemma-prompt" id="dilemmaPrompt">What should the self-driving car do?</div>
+      <div class="progress-counter" id="progressCounter">1/13</div>
 
-          <li class="navbar-item dropdown">
-            <a href="ethics.html" class="navbar-link"
-              >Ethics<span class="caret"></span
-            ></a>
-            <ul class="dropdown-menu">
-              <li class="navbar-item">
-                <a
-                  href="#"
-                  class="navbar-link dropdown-link active"
-                  >Decisions</a
-                >
-              </li>
-              <li class="navbar-item">
-                <a href="alignment.html" class="navbar-link dropdown-link"
-                  >Alignment</a
-                >
-              </li>
-              <li class="navbar-item">
-                <a href="ethics_survey.html" class="navbar-link dropdown-link"
-                  >Ethics Survey</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="navbar-item dropdown">
-            <a href="generative.html" class="navbar-link"
-              >Generative AI<span class="caret"></span
-            ></a>
-            <ul class="dropdown-menu">
-              <li class="navbar-item">
-                <a href="language.html" class="navbar-link dropdown-link"
-                  >Language</a
-                >
-              </li>
-              <li class="navbar-item">
-                <a href="vision.html" class="navbar-link dropdown-link"
-                  >Vision</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <li class="navbar-item">
-            <a href="contact.html" class="navbar-link">Contact</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Header -->
-      <header>
-        <h2 class="h2 article-title">Decision Making</h2>
-      </header>
-
-      <!-- Dilemma Section -->
-      <section class="about-text">
-        <!-- Dilemma Prompt -->
-        <div class="dilemma-prompt" id="dilemmaPrompt">What should the self-driving car do?</div>
-
-        <!-- Progress Counter -->
-        <div class="progress-counter" id="progressCounter">1/13</div>
-
-        <!-- Scenario Panels -->
-        <div class="scenario-container" id="scenarioContainer">
-          <!-- Left Panel -->
-          <div class="scenario-panel" data-option="left">
-            <img src="assets/images/decision_making/left_image_1.png" alt="Left Scenario Image" id="leftImage" />
-            <button class="show-description-btn">Show Description</button>
-            <div class="description">
-              <p id="leftDescription">Description of the left scenario...</p>
+      <div class="scenario-container" id="scenarioContainer">
+        <div class="scenario-panel">
+          <div class="scenario-content">
+            <div class="description-container" data-option="left" id="leftOption">
+              <button class="show-description-btn">Show Description</button>
+              <div class="description" id="leftDescription">Left scenario description</div>
             </div>
-          </div>
 
-          <!-- Right Panel -->
-          <div class="scenario-panel" data-option="right">
-            <img src="assets/images/decision_making/right_image_1.png" alt="Right Scenario Image" id="rightImage" />
-            <button class="show-description-btn">Show Description</button>
-            <div class="description">
-              <p id="rightDescription">Description of the right scenario...</p>
+            <div style="position: relative; display: inline-block;">
+              <img src="assets/images/decision_making/scenario_1.png" alt="Scenario Image" id="scenarioImage" />
+              <canvas id="arrowCanvas" width="300" height="300" style="position:absolute; top:0; left:0; pointer-events:none;"></canvas>
+            </div>
+
+            <div class="description-container" data-option="right" id="rightOption">
+              <button class="show-description-btn">Show Description</button>
+              <div class="description" id="rightDescription">Right scenario description</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Navigation Buttons -->
-        <div class="navigation-buttons">
-          <button id="prevButton">Previous</button>
-          <button id="nextButton">Next</button>
-        </div>
-      </section>
-    </div>
-  </main>
+      <div class="navigation-buttons">
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+      </div>
+    </section>
+  </div>
+</main>
 
-  <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      let currentScenarioIndex = 0;
-      const totalScenarios = 13;
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let currentScenarioIndex = 0;
+  const totalScenarios = 13;
 
-      // Descriptions for each scenario (optional)
-      const descriptions = [
-        {
-          left: 'Description of the left scenario for scenario 1.',
-          right: 'Description of the right scenario for scenario 1.'
-        },
-        {
-          left: 'Description of the left scenario for scenario 2.',
-          right: 'Description of the right scenario for scenario 2.'
-        },
-        // ... Add descriptions for scenarios 3 to 13
-      ];
+  let busXFactor = 0.36;
 
-      const progressCounter = document.getElementById('progressCounter');
-      const scenarioPanels = document.querySelectorAll('.scenario-panel');
-      const prevButton = document.getElementById('prevButton');
-      const nextButton = document.getElementById('nextButton');
+  const scenarios = [
+    {
+      image: 'assets/images/decision_making/scenario_1.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_2.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 natural science students dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_2.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 natural science students dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+    },
+    { 
+      image: 'assets/images/decision_making/scenario_3.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science and 1 social science students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_5.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_6.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_7.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_8.png',
+      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 professors dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 undergraduate students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_9.png',
+      left: 'In this case, the self-driving car with sudden brake failure will continue ahead and crash into a concrete barrier. This will result in a <strong>1 undergraduate student passenger dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_10.png',
+      left: 'In this case, the self-driving car with sudden brake failure will continue ahead and crash into a concrete barrier. This will result in a <strong>1 undergraduate student passengerdead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_11.png',
+      left: 'In this case, the self-driving car with sudden brake failure will continue ahead and crash into a concrete barrier. This will result in a <strong>1 undergraduate student passenger dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_12.png',
+      left: 'In this case, the self-driving car with sudden brake failure will continue ahead and crash into a concrete barrier. This will result in a <strong>1 undergraduate student passenger dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong>'
+    },
+    {
+      image: 'assets/images/decision_making/scenario_13.png',
+      left: 'In this case, the self-driving car with sudden brake failure will continue ahead and crash into a concrete barrier. This will result in a <strong>1 undergraduate student passenger dead.</strong>',
+      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+    },
+  ];
 
-      function loadScenario(index) {
-        progressCounter.textContent = `${index + 1}/${totalScenarios}`;
+  const progressCounter = document.getElementById('progressCounter');
+  const scenarioImage = document.getElementById('scenarioImage');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+  const leftOption = document.getElementById('leftOption');
+  const rightOption = document.getElementById('rightOption');
+  const leftDescription = document.getElementById('leftDescription');
+  const rightDescription = document.getElementById('rightDescription');
 
-        // Update image sources based on scenario number
-        const leftImage = document.getElementById('leftImage');
-        const rightImage = document.getElementById('rightImage');
+  const leftShowBtn = leftOption.querySelector('.show-description-btn');
+  const rightShowBtn = rightOption.querySelector('.show-description-btn');
 
-        leftImage.src = `assets/images/decision_making/left_image_${index + 1}.png`;
-        rightImage.src = `assets/images/decision_making/right_image_${index + 1}.png`;
+  const arrowCanvas = document.getElementById('arrowCanvas');
+  const ctx = arrowCanvas.getContext('2d');
 
-        // Update descriptions if available
-        if (descriptions[index]) {
-          document.getElementById('leftDescription').textContent = descriptions[index].left;
-          document.getElementById('rightDescription').textContent = descriptions[index].right;
-          scenarioPanels.forEach(function(panel) {
-            panel.querySelector('.show-description-btn').style.display = 'inline-block';
-          });
+  function clearArrow() {
+    ctx.clearRect(0, 0, arrowCanvas.width, arrowCanvas.height);
+  }
+
+  function drawStraightArrow(busX, topY, bottomY) {
+    clearArrow();
+    ctx.fillStyle = 'rgba(255,235,59,0.5)';
+
+    ctx.beginPath();
+    // shaft top
+    ctx.moveTo(busX-10, topY);
+    ctx.lineTo(busX+10, topY);
+    ctx.lineTo(busX+10, bottomY-30);
+
+    // arrowhead right base
+    ctx.lineTo(busX+20, bottomY-30);
+    // arrow tip
+    ctx.lineTo(busX, bottomY);
+    // arrowhead left base
+    ctx.lineTo(busX-20, bottomY-30);
+
+    ctx.lineTo(busX-10, bottomY-30);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawSmoothCurvedArrow(ctx, startX, startY, shift, topY, bottomY) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    // Use 'butt' or 'square' to have flat line ends.
+    ctx.lineWidth = 20;
+    ctx.lineCap = 'butt';
+    ctx.lineJoin = 'miter';
+    ctx.strokeStyle = 'rgba(255,235,59,0.5)';
+
+    // Control points for the curve
+    const p0 = { x: startX, y: topY };
+    const p3 = { x: startX + shift, y: bottomY };
+
+    const p1 = { x: startX,         y: topY + (bottomY - topY) * 0.33 };
+    const p2 = { x: startX + shift, y: topY + (bottomY - topY) * 0.66 };
+
+    // Instead of drawing to p3 (the final arrow tip), we stop the line 30px above.
+    // This ensures the arrowhead won't overlap the shaft.
+    const p3Shaft = { x: p3.x, y: p3.y - 30 };
+
+    // Draw the shaft
+    ctx.beginPath();
+    ctx.moveTo(p0.x, p0.y);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3Shaft.x, p3Shaft.y);
+    ctx.stroke();
+
+    // Now draw the arrowhead just like the straight arrow, using p3 (the full length)
+    ctx.beginPath();
+    // arrowhead right base
+    ctx.moveTo(p3.x+20, p3.y-30);
+    // arrow tip
+    ctx.lineTo(p3.x, p3.y);
+    // arrowhead left base
+    ctx.lineTo(p3.x-20, p3.y-30);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(255,235,59,0.5)';
+    ctx.fill();
+  }
+
+
+  // Helper function for cubic Bézier interpolation (not needed for arrowhead now, but kept for reference)
+  function cubicBezier(p0, p1, p2, p3, t) {
+    const c = 3*(p1 - p0);
+    const b = 3*(p2 - p1) - c;
+    const a = p3 - p0 - c - b;
+    return ((a*t + b)*t + c)*t + p0;
+  }
+
+
+  function loadScenario(index) {
+    progressCounter.textContent = `${index + 1}/${totalScenarios}`;
+
+    const scenarioData = scenarios[index] || {
+      image: `assets/images/decision_making/scenario_${index + 1}.png`,
+      left: 'Default left scenario description',
+      right: 'Default right scenario description'
+    };
+
+    scenarioImage.src = scenarioData.image;
+    leftDescription.innerHTML = scenarioData.left;
+    rightDescription.innerHTML = scenarioData.right;
+
+    leftDescription.style.display = 'none';
+    rightDescription.style.display = 'none';
+    leftShowBtn.textContent = 'Show Description';
+    rightShowBtn.textContent = 'Show Description';
+
+    leftOption.classList.remove('selected');
+    rightOption.classList.remove('selected');
+
+    clearArrow();
+  }
+
+  leftShowBtn.addEventListener('click', function(event) {
+    event.stopPropagation();
+    if (leftDescription.style.display === 'none') {
+      leftDescription.style.display = 'block';
+      leftShowBtn.textContent = 'Hide Description';
+    } else {
+      leftDescription.style.display = 'none';
+      leftShowBtn.textContent = 'Show Description';
+    }
+  });
+
+  rightShowBtn.addEventListener('click', function(event) {
+    event.stopPropagation();
+    if (rightDescription.style.display === 'none') {
+      rightDescription.style.display = 'block';
+      rightShowBtn.textContent = 'Hide Description';
+    } else {
+      rightDescription.style.display = 'none';
+      rightShowBtn.textContent = 'Show Description';
+    }
+  });
+
+  [leftOption, rightOption].forEach(optionEl => {
+    optionEl.addEventListener('click', function(e) {
+      if (e.target.classList.contains('show-description-btn')) return;
+
+      const description = optionEl.querySelector('.description');
+      if (description.style.display !== 'none') {
+        [leftOption, rightOption].forEach(o => o.classList.remove('selected'));
+        optionEl.classList.add('selected');
+        const selectedOption = optionEl.getAttribute('data-option');
+        console.log('User selected:', selectedOption, 'in scenario', currentScenarioIndex + 1);
+
+        clearArrow();
+        let busX = arrowCanvas.width * busXFactor;
+        let topY = arrowCanvas.height * 0.264;
+        let bottomY = arrowCanvas.height * 0.68;
+        let shift = arrowCanvas.width * 0.4; // Adjust this to control the curve's horizontal shift.
+
+        if (selectedOption === 'left') {
+          // Straight arrow
+          drawStraightArrow(busX, topY, bottomY);
+        } else if (selectedOption === 'right') {
+          // Swerve (curved) arrow
+          drawSmoothCurvedArrow(ctx, busX, topY, shift, topY, bottomY);
         } else {
-          // If no description provided, hide the Show Description buttons
-          scenarioPanels.forEach(function(panel) {
-            panel.querySelector('.show-description-btn').style.display = 'none';
-          });
+          clearArrow();
         }
-
-        // Reset selection and description visibility
-        scenarioPanels.forEach(function(panel) {
-          panel.classList.remove('selected');
-          panel.querySelector('.description').style.display = 'none';
-          panel.querySelector('.show-description-btn').textContent = 'Show Description';
-        });
-
-        // Disable or enable navigation buttons
-        prevButton.disabled = index === 0;
-        nextButton.disabled = index === totalScenarios - 1;
       }
-
-      // Event listeners for Show Description buttons
-      scenarioPanels.forEach(function(panel) {
-        const showDescBtn = panel.querySelector('.show-description-btn');
-        showDescBtn.addEventListener('click', function(event) {
-          event.stopPropagation(); // Prevent the click from selecting the panel
-          const description = panel.querySelector('.description');
-          if (description.style.display === 'none') {
-            description.style.display = 'block';
-            showDescBtn.textContent = 'Hide Description';
-          } else {
-            description.style.display = 'none';
-            showDescBtn.textContent = 'Show Description';
-          }
-        });
-
-        // Click event to select this panel
-        panel.addEventListener('click', function() {
-          // Deselect other panels
-          scenarioPanels.forEach(p => p.classList.remove('selected'));
-          // Select this panel
-          panel.classList.add('selected');
-
-          // Here you can handle the user's choice, e.g., save it to a variable
-          const selectedOption = panel.getAttribute('data-option');
-          console.log('User selected:', selectedOption, 'in scenario', currentScenarioIndex + 1);
-        });
-      });
-
-      // Navigation buttons
-      prevButton.addEventListener('click', function() {
-        if (currentScenarioIndex > 0) {
-          currentScenarioIndex--;
-          loadScenario(currentScenarioIndex);
-        }
-      });
-
-      nextButton.addEventListener('click', function() {
-        if (currentScenarioIndex < totalScenarios - 1) {
-          currentScenarioIndex++;
-          loadScenario(currentScenarioIndex);
-        }
-      });
-
-      // Initial load
-      loadScenario(currentScenarioIndex);
     });
-  </script>
+  });
 
-  <!-- ionicon link -->
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
+  prevButton.addEventListener('click', function() {
+    if (currentScenarioIndex > 0) {
+      currentScenarioIndex--;
+      loadScenario(currentScenarioIndex);
+    }
+  });
+
+  nextButton.addEventListener('click', function() {
+    if (currentScenarioIndex < totalScenarios - 1) {
+      currentScenarioIndex++;
+      loadScenario(currentScenarioIndex);
+    }
+  });
+
+  scenarioImage.addEventListener('load', function() {
+    arrowCanvas.width = scenarioImage.clientWidth;
+    arrowCanvas.height = scenarioImage.clientHeight;
+    clearArrow();
+  });
+
+  loadScenario(currentScenarioIndex);
+});
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
