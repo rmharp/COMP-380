@@ -33,7 +33,6 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-LXQLH66J4S"
     ></script>
-
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -99,6 +98,91 @@
         border-radius: 10px;
         transition: opacity 0.3s ease;
       }
+
+      /* Footer-specific styling starts here */
+      footer {
+        position: relative;
+        width: 100%;
+        background: transparent;
+        z-index: 10;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 30px;
+      }
+
+      .footer-container {
+        padding: 20px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.6;
+        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        border-radius: 15px;
+        color: white;
+        margin: 20px;
+        border: 2px solid #ff8c00;
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+      }
+
+      .footer-container hr {
+        border: 1px solid rgba(255, 140, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .footer-container h3 {
+        color: var(--light-gray);
+        font-size: var(--fs-3);
+        margin-bottom: 15px;
+      }
+
+      .footer-container ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: list-counter;
+      }
+
+      .footer-container li {
+        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        padding: 15px;
+        border-radius: 12px;
+        margin: 10px 0;
+        border: 1px solid rgba(255, 140, 0, 0.3);
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+        transition: all 0.3s ease;
+        color: var(--light-gray);
+        counter-increment: list-counter;
+      }
+
+      .footer-container li:hover {
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .footer-container li::before {
+        content: counter(list-counter);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        margin-right: 10px;
+        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        color: #fff;
+      }
+
+      .footer-container a {
+        color: #ff8c00;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-container a:hover {
+        color: #ff4500;
+        text-decoration: underline;
+      }
+      /* Footer-specific styling ends here */
     </style>
   </head>
 
@@ -172,14 +256,17 @@
 
         <section class="summary-section">
           <p>
-            This project aims to provide a multifaceted exploration of
-            Artificial Intelligence. By delving into its rich history,
-            examining current policies, confronting ethical dilemmas, and
-            showcasing generative capabilities in language and vision, we hope
-            to offer a comprehensive view of AI’s past, present, and future.
-            Explore each section to gain a broader understanding of the
-            evolving landscape of artificial intelligence, the decisions that
-            shape it, and its implications on society.
+            This project aims to provide a multifaceted exploration of Artificial Intelligence—its evolution, applications, and implications. 
+            Rather than insisting on a single guiding thesis, we approach AI from a range of perspectives. Our goal is not only to inform, 
+            but to encourage you to engage critically with different angles and interpretations. In some cases, we present multiple or even 
+            conflicting viewpoints, prompting reflection and inviting you to draw your own conclusions. At other times, we might highlight 
+            underrepresented facets of AI research, or reframe familiar topics in innovative ways to spark new insights. Whether you come here 
+            looking for a historical dive, guidance on policy considerations, ethical quandaries, or the dilemmas of artificial intelligence 
+            models, this site is designed to be a resource, a conversation, and a catalyst for more thoughtful engagement. By centering our 
+            approach around a guiding research question—<em>how can we understand and shape the trajectory of AI so that it aligns with 
+            human values and genuinely benefits society?</em>—rather than a single, predetermined thesis, we aim to let discoveries, evidence, and 
+            analysis emerge as more and more users play our games and surveys. In doing so, we hope to equip you not just with facts and figures, but with the analytical tools and 
+            contextual understanding necessary to participate meaningfully in the ongoing dialogue about AI’s role in society and the future.
           </p>
 
           <div class="page-grid">
@@ -282,6 +369,69 @@
             </div>
           </div>
         </section>
+
+        <footer>
+          <div class="footer-container">
+            <hr>
+            <h3>References</h3>
+            <ol>
+              <li>
+                Awad, E., Dsouza, S., Kim, R., Schulz, J., Henrich, J., Shariff, A., Bonnefon, J.-F., & Rahwan, I. (2018). <em>The Moral Machine experiment.</em> <em>Nature, 563(7729)</em>, 59–64.<br>
+                <a href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank">https://www.nature.com/articles/s41586-018-0637-6</a>
+              </li>
+
+              <li>
+                Christian, B. (2020). <em>The Alignment Problem: Machine Learning and Human Values.</em> W. W. Norton & Company.
+              </li>
+
+              <li>
+                Buolamwini, J., & Gebru, T. (2018). <em>Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification.</em> In S. A. Friedler & C. Wilson (Eds.), <em>Proceedings of the 1st Conference on Fairness, Accountability and Transparency</em> (pp. 77–91). PMLR.<br>
+                <a href="https://proceedings.mlr.press/v81/buolamwini18a.html" target="_blank">https://proceedings.mlr.press/v81/buolamwini18a.html</a>
+              </li>
+
+              <li>
+                Anderson, M., & Anderson, S. L. (2007). <em>Machine Ethics: Creating an Ethical Intelligent Agent.</em> <em>AI Magazine, 28(4)</em>, 15.<br>
+                <a href="https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2065" target="_blank">https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/2065</a>
+              </li>
+
+              <li>
+                Goddard, M. (2017). <em>The EU General Data Protection Regulation (GDPR): European Regulation that has a Global Impact.</em> <em>International Journal of Market Research, 59(6)</em>, 703–705.<br>
+                <a href="https://journals.sagepub.com/doi/10.2501/IJMR-2017-050" target="_blank">https://journals.sagepub.com/doi/10.2501/IJMR-2017-050</a>
+              </li>
+
+              <li>
+                Müller, V. C. (2023). <em>Ethics of Artificial Intelligence and Robotics.</em> In E. N. Zalta & U. Nodelman (Eds.), <em>The Stanford Encyclopedia of Philosophy</em> (Fall 2023 ed.). Metaphysics Research Lab, Stanford University.<br>
+                <a href="https://plato.stanford.edu/archives/fall2023/entries/ethics-ai/" target="_blank">https://plato.stanford.edu/archives/fall2023/entries/ethics-ai/</a>
+              </li>
+
+              <li>
+                OECD.AI. (2021). <em>Database of National AI Policies.</em><br>
+                <a href="https://oecd.ai" target="_blank">https://oecd.ai</a>
+              </li>
+
+              <li>
+                Weber-Wulff, D., Anohina-Naumeca, A., Bjelobaba, S., Foltýnek, T., Guerrero-Dib, J., Popoola, O., Šigut, P., & Waddington, L. (2023). <em>Testing of detection tools for AI-generated text.</em> <em>International Journal for Educational Integrity, 19(1)</em>.<br>
+                <a href="http://dx.doi.org/10.1007/s40979-023-00146-z" target="_blank">http://dx.doi.org/10.1007/s40979-023-00146-z</a>
+              </li>
+
+              <li>
+                Karras, T., Laine, S., & Aila, T. (2018). <em>A Style-Based Generator Architecture for Generative Adversarial Networks.</em> 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 4396–4405.<br>
+                <a href="https://api.semanticscholar.org/CorpusID:54482423" target="_blank">https://api.semanticscholar.org/CorpusID:54482423</a>
+              </li>
+
+              <li>
+                Rawte, V., Sheth, A., & Das, A. (2023). <em>A Survey of Hallucination in Large Foundation Models.</em> arXiv:2309.05922.<br>
+                <a href="https://arxiv.org/abs/2309.05922" target="_blank">https://arxiv.org/abs/2309.05922</a>
+              </li>
+
+              <li>
+                Federal Register. (2023, November 1). <em>Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence.</em><br>
+                <a href="https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf" target="_blank">https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf</a>
+              </li>
+            </ol>
+          </div>
+        </footer>
+        
       </div>
     </main>
 

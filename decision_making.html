@@ -382,16 +382,6 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.fill();
   }
 
-
-  // Helper function for cubic Bézier interpolation (not needed for arrowhead now, but kept for reference)
-  function cubicBezier(p0, p1, p2, p3, t) {
-    const c = 3*(p1 - p0);
-    const b = 3*(p2 - p1) - c;
-    const a = p3 - p0 - c - b;
-    return ((a*t + b)*t + c)*t + p0;
-  }
-
-
   function loadScenario(index) {
     progressCounter.textContent = `${index + 1}/${totalScenarios}`;
 
