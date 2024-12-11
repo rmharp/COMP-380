@@ -773,13 +773,30 @@
             }
           }
         });
+
+        // Get user's answers from form
+        const userAnswers = {};
+        for (let i = 1; i <= 10; i++) {
+          const input = document.querySelector(`input[name="q${i}"]`);
+          if (input) {
+            userAnswers[i] = input.value;
+          }
+        }
         
         // Generate HTML for results
         for (let i = 1; i <= 10; i++) {
           const result = questionResults[i];
+          const userAnswer = userAnswers[i];
+          
           resultsHTML += `
             <div class="result-item">
               <p class="result-question">Q${i}: ${result.question}</p>
+              ${userAnswer ? `
+                <div class="user-answer">
+                  <span class="user-answer-label">Your answer:</span>
+                  <span class="user-answer-text">${questions[i-1].querySelector(`[data-value="${userAnswer}"]`)?.textContent || userAnswer}</span>
+                </div>
+              ` : ''}
               <div class="result-bars">
           `;
           
@@ -787,9 +804,10 @@
           Object.entries(result.options).forEach(([option, count]) => {
             const percentage = result.total ? Math.round((count / result.total) * 100) : 0;
             const optionText = questions[i-1].querySelector(`[data-value="${option}"]`)?.textContent || `Option ${option}`;
+            const isUserAnswer = option === userAnswer;
             
             resultsHTML += `
-              <div class="result-bar-container">
+              <div class="result-bar-container ${isUserAnswer ? 'user-selected' : ''}">
                 <div class="result-label">
                   <span class="option-text">${optionText}</span>
                   <span class="percentage">${percentage}%</span>
@@ -829,7 +847,26 @@
             .result-question {
               color: var(--light-gray);
               font-size: var(--fs-3);
+              margin-bottom: 15px;
+              font-weight: var(--fw-500);
+            }
+            .user-answer {
+              background: linear-gradient(to right, #444444, #333333);
+              padding: 12px 20px;
+              border-radius: 12px;
               margin-bottom: 25px;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            .user-answer-label {
+              color: var(--light-gray);
+              font-size: var(--fs-4);
+              opacity: 0.8;
+            }
+            .user-answer-text {
+              color: var(--light-gray);
+              font-size: var(--fs-4);
               font-weight: var(--fw-500);
             }
             .result-bars {
@@ -839,6 +876,12 @@
             }
             .result-bar-container {
               width: 100%;
+              padding: 8px;
+              border-radius: 8px;
+              transition: background-color 0.3s ease;
+            }
+            .result-bar-container.user-selected {
+              background: rgba(0, 123, 255, 0.1);
             }
             .result-label {
               display: flex;
