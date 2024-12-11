@@ -131,13 +131,13 @@
 #timeline-container .card:nth-child(odd)::before {
     content: "";
     position: absolute;
-    width: 55%;
+    width: 85%;
     border: solid var(--unc-blue-crayola);
 }
 #timeline-container .card:nth-child(even)::before {
     content: "";
     position: absolute;
-    width: 45%;
+    width: 15%;
     border: solid var(--unc-blue-crayola);
 }
 
@@ -299,16 +299,6 @@
     text-align: center;
     margin-right: 20px;
 }
-/* #timeline-container .timeline-item {
-    display: flex;
-    margin: 0 0;
-    padding: 25px; */
-    /* background: linear-gradient(145deg, #444 0%, #333 100%); */
-    /* border-radius: 8px; */
-    /* border-left: solid;
-    border-color: #2196f3;
-    border-width: 0 0 0 5px;
-} */
 
 #timeline-container .timeline-date {
     min-width: 100px;
@@ -331,7 +321,7 @@
     position: relative;
     border-bottom: solid;
     top: 5px;
-    width: 25%;
+    width: 35%;
     margin-left: 50%;
     height: 10px;
     border-width: 5px;

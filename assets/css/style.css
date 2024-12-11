@@ -515,12 +515,13 @@ main {
   top: 0;  /* Change from bottom: 0 to top: 0 */
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: hsla(240, 4%, 11%, 0.75);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 0 0 12px 12px;  /* Adjust border radius for top positioning */
   box-shadow: var(--shadow-2);
   z-index: 5;
+  border-width: 0 0 1px 1px;
 }
 
 .navbar-list {
@@ -564,10 +565,11 @@ main {
   visibility: hidden;
   width: 120%; /* Fixed width */
   min-width: 100px;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: hsla(240, 4%, 11%);
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 0 0 12px 12px;
+  /* border-radius: 12px 12px 12px 12px; */
   box-shadow: var(--shadow-2);
   z-index: 1;
   padding: 0rem;
@@ -2192,6 +2194,8 @@ textarea.form-input::-webkit-resizer { display: none; }
     border-radius: 0 0 0 20px;
     padding: 0 20px;
     box-shadow: none;
+    /* border: none;
+    background: none; */
   }
 
   .navbar-list {
