@@ -109,6 +109,11 @@
         background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
         border: 1px solid #333;
       }
+      .next-button-right {
+  margin-left: auto;
+  margin-right: 0;
+  display: block;
+}
 
       .stance-container strong {
         color: var(--orange-yellow-crayola);
@@ -203,7 +208,6 @@
 
       .footer-container a:hover {
         color: #ff4500;
-        text-decoration: underline;
       }
 
       sup a.scroll-link {
@@ -226,7 +230,6 @@
       sup a.scroll-link:hover {
         transform: translateY(-2px);
         box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
-        text-decoration: none;
       }
 
       sup a.scroll-link:active {
@@ -242,6 +245,20 @@
         text-align: center;
         padding: 10px 0;
         margin-top: 30px;
+      }
+
+      .intro-content {
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .intro-text {
+        color: var(--light-gray);
+        font-size: var(--fs-4);
+        line-height: 1.8;
+        margin: 0 auto;
+        max-width: 700px;
+        margin-bottom: 30px;
       }
     </style>
   </head>
@@ -313,7 +330,14 @@
       </header>
       <section class="about-text">
         <div id="policy-container">
-          <div class="policy-section active" data-index="1">
+          <div class="policy-section active" data-index="0">
+            <div class="intro-content">
+              <h2 class="article-title">AI Policy Perspectives</h2>
+              <p class="intro-text">With most technology, AI faces the debate between regulation for safety and freedom to conquer for rapid advancement. This page dives into the critical differences between the US and EU on AI and data regulation policy issues. Through side-by-side comparisons, you'll learn how each region tackles these challenges, and more importantly, what they prioritize and what it means for the future of AI.</p>
+              <button class="nav-button next next-button-right" style="margin-top: 30px;">Next</button>
+            </div>
+          </div>
+          <div class="policy-section" data-index="1">
             <h3 class="policy-issue">1. Privacy and Data Protection</h3>
             <div class="policy-stance active">
               <div class="stance-container">
@@ -328,7 +352,7 @@
               </div>
             </div>
             <div class="navigation-buttons">
-              <button class="nav-button prev" disabled>Previous</button>
+              <button class="nav-button prev" >Previous</button>
               <button class="nav-button next">Next</button>
             </div>
           </div>
@@ -398,7 +422,7 @@
       <script>
         document.addEventListener('DOMContentLoaded', function() {
           const sections = document.querySelectorAll('.policy-section');
-          let currentIndex = 1;
+          let currentIndex = 0;
 
           function updateSections() {
             sections.forEach(section => {
@@ -411,9 +435,9 @@
 
           document.querySelectorAll('.nav-button').forEach(button => {
             button.addEventListener('click', function() {
-              if (this.classList.contains('prev') && currentIndex > 1) {
+              if (this.classList.contains('prev') && currentIndex > 0) {
                 currentIndex--;
-              } else if (this.classList.contains('next') && currentIndex < sections.length) {
+              } else if (this.classList.contains('next') && currentIndex < sections.length - 1) {
                 currentIndex++;
               }
               updateSections();
