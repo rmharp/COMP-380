@@ -58,6 +58,60 @@
         color: var(--light-gray);
         text-align: left; /* Added this line to left align the text */
       }
+
+      .footer-container {
+        padding: 20px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.6;
+        background: #3a3a3a;
+        border-radius: 15px;
+        color: white;
+        margin: 20px;
+      }
+
+      .footer-container ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-container li {
+        background: #3a3a3a;
+        padding: 15px;
+        border-radius: 12px;
+        margin: 10px 0;
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .footer-container li:hover {
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .footer-container li::before {
+        content: attr(data-number);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        margin-right: 10px;
+        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+      }
+
+      .footer-container a {
+        color: #ff8c00;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-container a:hover {
+        color: #ff4500;
+      }
     </style>
   </head>
 
@@ -222,7 +276,7 @@
               font-size: 18px;
             "
           >
-            Learn more about ethical dilemmas of autonomous driving systems!
+            Learn more about diverse perspectives on AI ethics!
           </div>
           <div
             style="
@@ -242,9 +296,20 @@
                 border-radius: 12px;
                 font-weight: bolder;
               "
-              >Go to Decisions</a
+              >Go to Ethics Survey</a
             >
-          </div>
+          </div> <br>
+
+          <footer>
+            <div class="footer-container">
+              <ol>
+                <li id="footnote2" data-number="2">
+                  Christian, B. (2020). <em>The Alignment Problem: Machine Learning and Human Values.</em> W. W. Norton & Company.
+                </li>
+              </ol>
+            </div>
+          </footer>
+
           </section>
 
           <script>
