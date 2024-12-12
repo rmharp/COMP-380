@@ -43,7 +43,7 @@
       }
       .policy-section {
         margin: 20px;
-        padding: 20px;
+        padding: 30px;
         background: #3a3a3a;
         border: 1px solid #333;
         border-radius: 20px;
@@ -62,8 +62,8 @@
 
       .policy-issue {
         cursor: pointer;
-        padding: 15px 25px;
-        font-size: var(--fs-3);
+        padding: 20px 30px;
+        font-size: 1.5em;
         font-weight: var(--fw-500);
         background: #444;
         color: #fff;
@@ -71,7 +71,7 @@
         border-radius: 5px;
         width: 100%;
         text-align: left;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
 
       .policy-issue:hover {
@@ -91,14 +91,69 @@
       }
 
       .stance-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
       }
-      @media (max-width: 768px) {
-        .stance-container {
-          grid-template-columns: 1fr;
-        }
+
+      .stance-box {
+        flex: 1;
+        position: relative;
+        perspective: 1000px;
+        cursor: pointer;
+        min-height: 300px;
+      }
+
+      .stance-cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #3a3a3a;
+        border-radius: 12px;
+        transform-origin: left;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border: 1px solid #444;
+        z-index: 2;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .stance-cover.open {
+        transform: rotateY(-105deg);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .stance-flag {
+        width: 120px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+
+      .stance-title {
+        color: #fff;
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .stance-content {
+        padding: 25px;
+        background: #3a3a3a;
+        border: 1px solid #444;
+        border-radius: 12px;
+        height: 100%;
+        font-size: 1.2em;
+        line-height: 1.6;
       }
 
       .stance-container > div {
@@ -106,19 +161,25 @@
         border-radius: 12px;
         background: #3a3a3a;
         border: 1px solid #333;
+        min-height: 200px;
+      }
+
+      @media (max-width: 768px) {
+        .stance-container {
+          flex-direction: column;
+        }
       }
 
       .stance-container strong {
         color: var(--orange-yellow-crayola);
         display: block;
-        margin-bottom: 10px;
-        font-size: var(--fs-4);
+        margin-bottom: 15px;
+        font-size: 1.3em;
       }
 
       .stance-container p {
-        color: var(--light-gray);
-        font-size: var(--fs-6);
-        line-height: 1.6;
+        margin-top: 15px;
+        line-height: 1.8;
       }
 
       .navigation-buttons {
@@ -296,7 +357,50 @@
     height: 100%;
     border: none;
   }
+
+      /* Video dimming styles */
+      .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .video-overlay.active {
+        opacity: 1;
+      }
+
+      .video-wrapper {
+        position: relative;
+        z-index: 1000;
+      }
     </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      let player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('gdpr-video', {
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+        const overlay = document.querySelector('.video-overlay');
+        if (event.data === YT.PlayerState.PLAYING) {
+          overlay.classList.add('active');
+        } else {
+          overlay.classList.remove('active');
+        }
+      }
+    </script>
   </head>
   <body>
     <main>
@@ -376,13 +480,25 @@
             <h3 class="policy-issue">1. Privacy and Data Protection</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>The US lacks a comprehensive federal data protection law like the GDPR, and instead relies on a patchwork of state laws and sector-specific regulations.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>The US lacks a comprehensive federal data protection law like the GDPR, and instead relies on a patchwork of state laws and sector-specific regulations.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -396,13 +512,25 @@
             <h3 class="policy-issue">2. Algorithmic Transparency</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>GDPR requires companies to explain automated decisions and requires risk assessments for high-risk AI processes.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>GDPR requires companies to explain automated decisions and requires risk assessments for high-risk AI processes.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>The Executive Order requires intensive testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>The Executive Order requires intensive testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -416,13 +544,25 @@
             <h3 class="policy-issue">3. Copyright and AI-Generated Content</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -436,13 +576,25 @@
             <h3 class="policy-issue">4. AI Safety and Regulation</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The EU's AI Act introduces a  risk-based framework, and categorizes AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The EU's AI Act introduces a  risk-based framework, and categorizes AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -454,15 +606,19 @@
           <div class="policy-section" data-index="5">
             <h3 class="policy-issue" style="text-align: center; margin-bottom: 30px;">How does GDPR affect you?</h3>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
-            <iframe width="1280" height="720" src="https://www.youtube.com/embed/j6wwBqfSk-o" 
-            width="560"
-              height="315"
-              title="GDPR: What Is It and How Might It Affect You?" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-            </iframe>
+            <div class="video-wrapper">
+              <iframe width="1280" height="720" 
+                src="https://www.youtube.com/embed/j6wwBqfSk-o?enablejsapi=1" 
+                width="560"
+                height="315"
+                title="GDPR: What Is It and How Might It Affect You?" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen
+                id="gdpr-video">
+              </iframe>
+            </div>
               <div class="navigation-buttons" style="width: 560px;">
                 <button class="nav-button prev">Previous</button>
                 <button class="nav-button next">Next</button>
@@ -497,9 +653,52 @@
               updateSections();
             });
           });
+
+          // Video dimming functionality
+          const overlay = document.querySelector('.video-overlay');
+          const video = document.getElementById('gdpr-video');
+          let mouseTimer;
+          let isPlaying = false;
+
+          // Listen for messages from the iframe
+          window.addEventListener('message', function(event) {
+            if (event.source === video.contentWindow) {
+              const data = JSON.parse(event.data);
+              if (data.event === 'onStateChange') {
+                isPlaying = data.info === 1; // 1 means playing
+                if (isPlaying) {
+                  overlay.classList.add('active');
+                } else {
+                  overlay.classList.remove('active');
+                }
+              }
+            }
+          });
+
+          // Handle mouse movement
+          document.addEventListener('mousemove', function() {
+            if (isPlaying) {
+              overlay.classList.remove('active');
+              clearTimeout(mouseTimer);
+              mouseTimer = setTimeout(() => {
+                if (isPlaying) {
+                  overlay.classList.add('active');
+                }
+              }, 2000); // Dim after 2 seconds of no mouse movement
+            }
+          });
+
+          // Add click handlers for stance boxes
+          document.querySelectorAll('.stance-box').forEach(box => {
+            box.addEventListener('click', function() {
+              const cover = this.querySelector('.stance-cover');
+              cover.classList.toggle('open');
+            });
+          });
         });
       </script>
     </main>
+    <div class="video-overlay"></div>
     <footer>
       <div class="footer-container">
         <ol>
