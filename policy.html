@@ -44,7 +44,7 @@
       .policy-section {
         margin: 20px;
         padding: 20px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         border: 1px solid #333;
         border-radius: 20px;
         display: none;
@@ -65,19 +65,17 @@
         padding: 15px 25px;
         font-size: var(--fs-3);
         font-weight: var(--fw-500);
-        background: linear-gradient(to right, #444444, #333333);
-        color: var(--light-gray);
+        background: #444;
+        color: #fff;
         border: none;
-        border-radius: 14px;
+        border-radius: 5px;
         width: 100%;
         text-align: left;
         margin-bottom: 15px;
-        transition: 0.25s ease;
       }
 
       .policy-issue:hover {
-        background: linear-gradient(to right, #555555, #444444);
-        color: #ffffff;
+        background: #555;
       }
 
       .policy-stance {
@@ -85,7 +83,7 @@
         margin-top: 15px;
         padding: 15px;
         border-radius: 12px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
       }
 
       .policy-stance.active {
@@ -106,14 +104,9 @@
       .stance-container > div {
         padding: 15px;
         border-radius: 12px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         border: 1px solid #333;
       }
-      .next-button-right {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-}
 
       .stance-container strong {
         color: var(--orange-yellow-crayola);
@@ -131,34 +124,60 @@
       .navigation-buttons {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
         margin-top: 20px;
       }
 
       .nav-button {
         padding: 10px 20px;
-        background: linear-gradient(to right, #444444, #333333);
-        color: var(--light-gray);
+        background: #444;
+        color: #fff;
         border: none;
-        border-radius: 14px;
+        border-radius: 5px;
         cursor: pointer;
-        transition: 0.25s ease;
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .nav-button.next {
+        margin-left: auto;
       }
 
       .nav-button:hover {
-        background: linear-gradient(to right, #555555, #444444);
-        color: #ffffff;
+        background: #555;
       }
 
       .nav-button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
+
+      /* Tooltip styling for the last next button */
+      .next-button-right[title] {
+        position: relative;
+      }
+
+      .next-button-right[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 120%;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        margin-bottom: 5px;
+      }
+
       .footer-container {
         padding: 20px;
         text-align: left;
         font-size: 12px;
         line-height: 1.6;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         border-radius: 15px;
         color: white;
         margin: 20px;
@@ -173,7 +192,7 @@
       }
 
       .footer-container li {
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         padding: 15px;
         border-radius: 12px;
         margin: 10px 0;
@@ -260,6 +279,23 @@
         max-width: 700px;
         margin-bottom: 30px;
       }
+
+      .video-container {
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
     </style>
   </head>
   <body>
@@ -296,12 +332,11 @@
                   >Alignment</a
                 >
               </li>
-            </li>
-            <li class="navbar-item">
-              <a href="ethics_survey.html" class="navbar-link dropdown-link"
-                >Ethics Survey</a
-              >
-            </li>
+              <li class="navbar-item">
+                <a href="ethics_survey.html" class="navbar-link dropdown-link"
+                  >Ethics Survey</a
+                >
+              </li>
             </ul>
           </li>
           <li class="navbar-item dropdown">
@@ -413,8 +448,27 @@
             </div>
             <div class="navigation-buttons">
               <button class="nav-button prev">Previous</button>
-              <button class="nav-button next" disabled>Next</button>
+              <button class="nav-button next next-button-right" style="margin-top: 30px;" title="Click here to learn about GDPR and how it affects you">Next</button>
             </div>
+          </div>
+          <div class="policy-section" data-index="5">
+            <h3 class="policy-issue" style="text-align: center; margin-bottom: 30px;">How does GDPR affect you?</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+            <iframe width="1280" height="720" src="https://www.youtube.com/embed/j6wwBqfSk-o" 
+            width="560"
+              height="315"
+              title="GDPR: What Is It and How Might It Affect You?" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+              <div class="navigation-buttons" style="width: 560px;">
+                <button class="nav-button prev">Previous</button>
+                <button class="nav-button next">Next</button>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </section>
