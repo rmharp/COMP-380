@@ -112,8 +112,15 @@
       </header>
 
       <section class="about-text">
-        <p>Explore the past of AI. Learn how its gained its place in the world from how its early roots to its current
-        </p>
+        <div style="display: flex; justify-content: center;">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <p style="margin-top: 50px; text-align: center; font-weight: 500; font-size: 28px;">Explore the past of AI</p>
+            <p style="margin-top: 0px; text-align: center; font-size: 18px;">Learn how it started and where it is now.
+            </p>
+          </div>
+          
+        </div>
+        
         <div id="timeline-container">
 
           <div class="timeline" style="max-width: 80%;">
@@ -350,14 +357,29 @@
               // First timeline data
               [
                 {
-                  "year": 2024,
-                  "event": "First Timeline Event 1",
-                  "description": "Description of the first event in the first timeline."
+                  "year": "1966",
+                  "event": "NRC ends $20 million funding",
+                  "description": "A report from Automatic Language Processing Advisory Committee (ALPAC) criticized machine translation efforts, which the NRC used to justify cutting funding."
                 },
                 {
-                  "year": 2023,
-                  "event": "First Timeline Event 2",
-                  "description": "Description of the second event in the first timeline."
+                  "year": "1969",
+                  "event": "Perceptrons (book)",
+                  "description": "This book pointed out limitations in perceptron technology, severly demotivating work in neural networks for the following decade."
+                },
+                {
+                  "year": "1969",
+                  "event": "Mansfield Amendment",
+                  "description": "A law was passed requiring DARPA project to be mission-oriented, rather than undirected as they had been in the past. Although not directly targeting AI, it was hard to justify AI spending under this amendment at the time"
+                },
+                {
+                  "year": "1973",
+                  "event": "Lighthill Report",
+                  "description": "A UK report describing the lack of results in AI. Leads to diminishing funding in AI in the UK."
+                },
+                {
+                  "year": "1974",
+                  "event": "SUR cancelled",
+                  "description": "The Speech Understanding Research program at Carnegie Mellon University lost its annual $3 million funding from DARPA. "
                 }
               ],
               // Second timeline data
