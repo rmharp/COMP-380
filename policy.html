@@ -389,26 +389,6 @@
         position: relative;
         cursor: pointer;
       }
-
-      .exciting-tooltip::after {
-        content: "Test your knowledge with a fun game! \01F3AE";
-        position: absolute;
-        bottom: 130%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-size: 1.1em;
-        white-space: nowrap;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        animation: bounce 1s infinite;
-      }
-
       .exciting-tooltip:hover::after {
         opacity: 1;
         visibility: visible;
