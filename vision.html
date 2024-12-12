@@ -35,6 +35,98 @@
 
     gtag("config", "G-LXQLH66J4S");
   </script>
+  <style>
+    .footer-container {
+      padding: 20px;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.6;
+      background: #3a3a3a;
+      border-radius: 15px;
+      color: white;
+      margin: 20px;
+    }
+
+    .footer-container ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-container li {
+      background: #3a3a3a;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 10px 0;
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .footer-container li:hover {
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .footer-container li::before {
+      content: attr(data-number);
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 10px;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+
+    .footer-container a {
+      color: #ff8c00;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-container a:hover {
+      color: #ff4500;
+    }
+
+    sup a.scroll-link {
+      display: inline-block;
+      background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      margin-left: 5px;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      top: -5px;
+    }
+
+    sup a.scroll-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+    }
+
+    sup a.scroll-link:active {
+      transform: translateY(0);
+      box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+    }
+
+    footer {
+      position: relative;
+      width: 100%;
+      background: transparent;
+      z-index: 10;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 
 <body>
@@ -133,7 +225,7 @@
               Image generation is a computationally expensive process, meaning many
               calculations are needed for even a single image to be created from scratch.
               The first original image generation model was based on Generative Adversarial
-              Network (GANs). GANs consists of two different modules, a generator and discriminator.
+              Network (GANs). GANs consists of two different modules, a generator and discriminator <sup><a href="#footnote1" class="scroll-link">1</a></sup>.
               In this context, the generator trains to make better images to trick the discriminator.
               The discriminator trains against the generator to identify images that are generated vs. real.
               Early days of image generations were dominated by GANs before later turning to a new method:
@@ -167,7 +259,7 @@
               </div>
             </div>
             <p style="font-size: 18px; width: 100%; margin-top: 40px">
-              Diffusion models generate images step-by-step. Essentially, they start from a random image (pure noise)
+              Diffusion models generate images step-by-step <sup><a href="#footnote2" class="scroll-link">2</a></sup>. Essentially, they start from a random image (pure noise)
               and sprinkle color in over many steps based on your prompt. These models work on massive sets of data and
               are the architectures behind every modern image generation model. This includes DALL-E, Midjourney, Stable
               Diffusion,
@@ -341,6 +433,9 @@
               style="width: 100%; height: 100%;" preload="metadata" loop="" controlslist="nodownload" playsinline=""
               webkit-playsinline="" x5-playsinline="" autoplay=""></video>
             </div>
+            <p style="font-size: 16px; width: 100%; text-align: center; display: inline-block; margin-top: 20px;">
+              From OpenAI's <a href="https://sora.com/explore/featured" style="display: inline; color: #2196f3;">featured Sora videos</a>.
+            </p>
             
         </div>
 
@@ -533,6 +628,21 @@
       </section>
     </div>
   </main>
+
+  <footer>
+    <div class="footer-container">
+      <ol>
+        <li id="footnote1" data-number="1">
+          Goodfellow, I. J., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A., & Bengio, Y. (2014). Generative adversarial networks. arXiv. 
+          <a href="https://journals.sagepub.com/doi/10.2501/IJMR-2017-050" target="_blank">https://arxiv.org/abs/1406.2661</a>
+        </li>
+        <li id="footnote2" data-number="2">
+          Ho, J., Jain, A., & Abbeel, P. (2020). Denoising diffusion probabilistic models. arXiv. 
+          <a href="https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf" target="_blank">https://arxiv.org/abs/2006.11239</a>
+        </li>
+      </ol>
+    </div>
+  </footer>
 
   <!--
       - ionicon link
