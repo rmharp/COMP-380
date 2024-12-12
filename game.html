@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Policy Game</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #1E1E1E;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .return-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            background: #3a3a3a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .return-button:hover {
+            background: #4a4a4a;
+            transform: translateY(-2px);
+        }
+
+        .game-intro {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: #3a3a3a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .game-intro h2 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .game-intro p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .start-game-btn {
+            padding: 15px 30px;
+            font-size: 1.3em;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .start-game-btn:hover {
+            background: #555;
+            transform: translateY(-3px);
+        }
+
+        .game-interface {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin: 60px auto 0;
+            max-width: 1200px;
+            background: #3a3a3a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-interface.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .timer {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .stance-category {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .stance-display {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px auto;
+            gap: 30px;
+        }
+
+        .flag-option {
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            flex: 0 0 200px;
+            background: #444;
+        }
+
+        .flag-option:hover {
+            transform: scale(1.05);
+            background: #555;
+        }
+
+        .flag-img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .stance-text {
+            flex: 1;
+            margin: 0 40px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            background: #444;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .feedback-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .feedback-content {
+            background: #3a3a3a;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid #333;
+        }
+
+        .feedback-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .feedback-text {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .feedback-stance {
+            background: #444;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .feedback-category {
+            font-size: 1.1em;
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        .feedback-answer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px;
+            background: #555;
+            border-radius: 8px;
+        }
+
+        .feedback-answer img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .checkmark {
+            color: #4CAF50;
+            font-size: 1.5em;
+        }
+
+        .next-stance-btn {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .next-stance-btn:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .feedback-button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Poppins", sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .feedback-button:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .hallucination-tooltip {
+            position: relative;
+        }
+
+        .hallucination-tooltip:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background: #4A90E2;
+            color: white;
+            border-radius: 6px;
+            font-size: 0.9em;
+            white-space: nowrap;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .hallucination-tooltip:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: #4A90E2;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button class="return-button" onclick="window.location.href='policy.html'">← Return to Policy</button>
+    
+    <div class="game-intro">
+        <h2>Test Your Knowledge! 🎯</h2>
+        <p>
+            Now that you've learned about the different approaches to AI policy in the EU and US, 
+            let's put your knowledge to the test! In this interactive game, you'll be presented with 
+            various policy statements and need to identify whether they belong to the EU or US.
+        </p>
+        <button class="start-game-btn">Start Game &#127918;</button>
+    </div>
+
+    <div class="game-interface">
+        <div class="timer">10</div>
+        <div class="stance-category"></div>
+        <div class="stance-display">
+            <div class="flag-option" data-region="EU">
+                <img src="https://flagcdn.com/w320/eu.png" alt="EU Flag" class="flag-img">
+                <div>European Union</div>
+            </div>
+            <div class="stance-text"></div>
+            <div class="flag-option" data-region="US">
+                <img src="https://flagcdn.com/w320/us.png" alt="US Flag" class="flag-img">
+                <div>United States</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-screen">
+        <div class="feedback-content">
+            <h3 class="feedback-title"></h3>
+            <p class="feedback-text"></p>
+            <button class="next-stance-btn">Next Question</button>
+        </div>
+    </div>
+
+    <script>
+        const stances = [
+            {
+                category: "Privacy and Data Protection",
+                text: "In this region/country, privacy is treated as a fundamental human right. Companies must obtain clear consent for using personal data and adhere to strict transparency requirements, even for entities outside this region/country.",
+                answer: "EU"
+            },
+            {
+                category: "Privacy and Data Protection",
+                text: "This region/country does not have a comprehensive federal data protection law and instead relies on a patchwork of state laws and sector-specific regulations.",
+                answer: "US"
+            },
+            {
+                category: "Algorithmic Transparency",
+                text: "This region/country requires companies to explain automated decisions and conduct risk assessments for high-risk AI processes.",
+                answer: "EU"
+            },
+            {
+                category: "Algorithmic Transparency",
+                text: "In this region/country, testing AI systems involves identifying risks such as bias or misuse, and mechanisms like watermarking are required for AI-generated content.",
+                answer: "US"
+            },
+            {
+                category: "Copyright and AI-Generated Content",
+                text: "This region/country has strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.",
+                answer: "EU"
+            },
+            {
+                category: "Copyright and AI-Generated Content",
+                text: "This region/country has evolving copyright laws that specify AI-generated works without human authorship cannot be copyrighted.",
+                answer: "US"
+            },
+            {
+                category: "AI Safety and Regulation",
+                text: "This region/country categorizes AI systems based on their potential harm, with strict requirements for safety, transparency, and human oversight for high-risk AI systems.",
+                answer: "EU"
+            },
+            {
+                category: "AI Safety and Regulation",
+                text: "In this region/country, proposals for AI regulation are fragmented, with ongoing debates about balancing innovation and regulation.",
+                answer: "US"
+            }
+        ];
+
+        let currentStanceIndex = 0;
+        let score = 0;
+        let timer;
+        let timeLeft;
+
+        document.querySelector('.start-game-btn').addEventListener('click', startGame);
+
+        function startGame() {
+            document.querySelector('.game-intro').style.display = 'none';
+            document.querySelector('.game-interface').classList.add('active');
+            presentStance();
+        }
+
+        function presentStance() {
+            if (currentStanceIndex >= stances.length) {
+                endGame();
+                return;
+            }
+
+            const stance = stances[currentStanceIndex];
+            document.querySelector('.stance-category').textContent = stance.category;
+            document.querySelector('.stance-text').textContent = stance.text;
+
+            timeLeft = 10;
+            updateTimer();
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    showFeedback(false, "Time's up!");
+                }
+            }, 1000);
+
+            document.querySelectorAll('.flag-option').forEach(option => {
+                option.onclick = () => checkAnswer(option.dataset.region);
+            });
+        }
+
+        function updateTimer() {
+            document.querySelector('.timer').textContent = timeLeft;
+        }
+
+        function checkAnswer(selectedRegion) {
+            clearInterval(timer);
+            const correct = selectedRegion === stances[currentStanceIndex].answer;
+            if (correct) score++;
+            showFeedback(correct);
+        }
+
+        function showFeedback(correct, message = null) {
+            const feedbackScreen = document.querySelector('.feedback-screen');
+            const feedbackTitle = document.querySelector('.feedback-title');
+            const feedbackText = document.querySelector('.feedback-text');
+            const stance = stances[currentStanceIndex];
+
+            const title = message === "Time's up!" ? "Time's Up! ⏰" : (correct ? "Correct! 🎉" : "Not quite right 😅");
+            
+            const feedbackContent = document.querySelector('.feedback-content');
+            feedbackContent.innerHTML = `
+                <h3 class="feedback-title">${title}</h3>
+                ${message === "Time's up!" ? '<p class="feedback-text">You ran out of time!</p>' : ''}
+                <div class="feedback-stance">
+                    <div class="feedback-category">${stance.category}</div>
+                    <div>${stance.text}</div>
+                    <div class="feedback-answer">
+                        <img src="https://flagcdn.com/w320/${stance.answer.toLowerCase()}.png" 
+                             alt="${stance.answer} Flag" 
+                             style="width: 30px; height: auto;">
+                        ${stance.answer === 'EU' ? 'European Union' : 'United States'}
+                        <span class="checkmark">✓</span>
+                    </div>
+                </div>
+                <button class="next-stance-btn">Next Question</button>
+            `;
+
+            feedbackScreen.style.display = 'flex';
+
+            document.querySelector('.next-stance-btn').addEventListener('click', () => {
+                feedbackScreen.style.display = 'none';
+                currentStanceIndex++;
+                presentStance();
+            });
+        }
+
+        function endGame() {
+            const feedbackScreen = document.querySelector('.feedback-screen');
+            const feedbackContent = document.querySelector('.feedback-content');
+
+            feedbackContent.innerHTML = `
+                <h3 class="feedback-title">Game Over! 🏆</h3>
+                <p class="feedback-text">Your final score: ${score}/${stances.length}</p>
+                <div class="feedback-buttons">
+                    <a href="policy.html" class="feedback-button">Return to Policy</a>
+                    <a href="language.html" class="feedback-button hallucination-tooltip" title="Click here to learn about AI hallucinations">Learn More</a>
+                </div>
+            `;
+
+            feedbackScreen.style.display = 'flex';
+            
+            document.querySelector('.next-stance-btn').onclick = () => window.location.href = 'policy.html';
+        }
+    </script>
+</body>
+</html>

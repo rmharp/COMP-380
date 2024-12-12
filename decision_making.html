@@ -23,16 +23,29 @@
     body {
       margin:0;
       padding:0;
+      color: #ffffff; /* Light text for visibility */
+      font-family: 'Poppins', sans-serif;
     }
+
     .main-content {
       max-width:2000px;
       margin:0 auto;
       padding:20px;
     }
+
+    /* New section for introductory text */
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: var(--light-gray)
+    }
+
     .about-text {
       padding:20px;
       border-radius:8px;
     }
+
     .dilemma-prompt {
       text-align:center;
       font-size:1.8em;
@@ -60,6 +73,7 @@
       background-color:#fff;
       border-radius:8px;
       position:relative;
+      color:#333; /* Inside panel, dark text for readability */
     }
     .scenario-panel:hover {
       box-shadow:0 4px 8px rgba(0,0,0,0.1);
@@ -91,6 +105,7 @@
       cursor:pointer;
       transition:background-color 0.3s;
       position:relative;
+      color:#333;
     }
     .description-container:hover {
       background-color:#e6e6e6;
@@ -158,12 +173,92 @@
         width:100%;
       }
     }
+
+    /* Results page styling */
+    .results-container {
+      max-width: 800px;
+      margin: 50px auto;
+      text-align:center;
+    }
+    .results-container h3 {
+      margin-bottom: 30px;
+      font-size: 1.5em;
+      color: #fff;
+    }
+    .category-container {
+      margin-bottom: 60px;
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+    .category-name {
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      font-size: 1.2em;
+    }
+    .bar-container {
+      background: #999; /* Gray bar */
+      height: 8px;
+      width: 100%;
+      border-radius: 4px;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    /* Make all images small and same size */
+    .result-image {
+      width:50px;
+      height:50px;
+      object-fit:contain;
+    }
+
+    .bar-image-main {
+      display:block;
+      margin:0 auto 20px auto;
+    }
+
+    .bar-images-container {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin: 20px 0;
+    }
+
+    .bar-image-left, .bar-image-right {
+      border-radius:4px;
+    }
+
+    /* Ticks */
+    .tick {
+      position: absolute;
+      top: -6px; 
+      width: 2px;
+      height: 20px;
+      background: #ffa500; /* Orange for Others */
+    }
+    .tick.you {
+      background: #007bff; /* Blue for You */
+    }
+
+    .tick-label {
+      position: absolute;
+      top: 20px;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+    .tick-label.you {
+      color: #007bff;
+    }
   </style>
 </head>
 <body>
 <main>
   <div class="main-content">
-    <!-- Navbar -->
+    <!-- Navbar and Scenario Code -->
+
     <nav class="navbar">
       <ul class="navbar-list">
         <li class="navbar-item"><a href="index.html" class="navbar-link">Home</a></li>
@@ -188,40 +283,158 @@
       </ul>
     </nav>
 
-    <!-- Header -->
     <header>
       <h2 class="h2 article-title">Decision Making</h2>
     </header>
+    
+    <!-- New section for text with appropriate width -->
+    <section class="intro-text">
+      <p>
+        A classic scenario that is commonly brought up in discussions
+        involving the ethics of decision-making in AI is the
+        "autonomous vehicle crash scenario." For example, imagine a
+        self-driving car that suddenly malfunctions and is about to crash,
+        with no way to stop it. There are two pedestrian crossings on either
+        side of the car, each with a different composition of people. The
+        car must choose between the "lesser of two evils" and decide which
+        direction to crash into. Should the car prioritize the lives of
+        its passengers? The lives of the pedestrians? Should the and
+        backgrounds of the people involved matter? These are the kinds of decisions
+        an autonomous vehicle might have to make in the future, similar to the modern-day trolley problem, 
+        a famous moral dilemma you may remember being discussed in our course.
+      </p> <br>
+    
+      <div style="display: flex; justify-content: center">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube-nocookie.com/embed/ixIoDYVfKA0"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="margin: auto"
+          alt="Moral Machine Video"
+          ></iframe>
+      </div> <br>
+    
+      <p>
+        In 2018, Nature published a paper titled "The Moral Machine
+        Experiment," which presented an online game that put users in
+        this type of autonomous vehicle crash scenario. The Moral
+        Machine went viral, sparking debate and discussion around the
+        world about the ethics of AI decision-making and causing stakeholders
+        to begin thinking about the implications of AI in society. The game was designed to collect
+        data on how people would make decisions in these scenarios and to
+        understand the moral preferences of humans. After all, we shouldn't expect
+        AI to make ethical decisions that we ourselves can't make.
+      </p> <br>
+    
+      <div style="display: flex; justify-content: center;">
+        <img src="assets/images/decision_making/map.png" alt="World Map" style="width: 80%;">
+      </div>
+      <p class="poppins-regular" style="width: 100%; text-align: center; margin-top: 20px; font-size: 16px; margin-left: auto; margin-right: auto;">
+        "World map highlighting the locations of Moral Machine visitors. Each point represents a
+        location from which at least one visitor made at least one decision (n = 39.6 million).
+        The numbers of visitors or decisions from each location are not represented." (Awad et al., 2018)
+      </p>
+      <br>
+    
+      <p>
+        In this module, we will replicate the online game presented in
+        the Moral Machine experiment with a new twist to make the experiment
+        even more personal to you by placing it in the context of a college
+        campus. We will present you with a series of 13
+        autonomous vehicle crash scenarios. In each scenario, you
+        must choose to continue going straight or to swerve, if you believe it would be beneficial.
+        Your data will be collected anonymously throughout the experiment, and at the end of the series,
+        we will show you how your choices compare to the average choices of other users. We have made decision choices
+        similar to the original experiement such as hiding descriptions at first so the user must view the graphic before automatically
+        choosing one of the two scenarios. However, we created our own pixel art graphics using Procreate to make the scenarios more relatable to college students
+        and chose to condense the images shown in each scenario to a single image rather than two to visually demonstrate to the user that these are not two seperate
+        branches of events but, rather, the same event with two different outcomes. Data storage has been facilitated through the google sheets API so it can be easily accessible
+        to any member of the project team. We hope you enjoy the experiment and learn more about the ethical dilemmas of AI decision-making.
+      </p>
+    </section>
 
-    <!-- Dilemma Section -->
+    <!-- Keep the about-text section for the form and scenario -->
     <section class="about-text">
-      <div class="dilemma-prompt" id="dilemmaPrompt">What should the self-driving car do?</div>
-      <div class="progress-counter" id="progressCounter">1/13</div>
+      <form id="decisionForm">
+        <div class="dilemma-prompt" id="dilemmaPrompt">What should the self-driving car do?</div>
+        <div class="progress-counter" id="progressCounter">1/13</div>
 
-      <div class="scenario-container" id="scenarioContainer">
-        <div class="scenario-panel">
-          <div class="scenario-content">
-            <div class="description-container" data-option="left" id="leftOption">
-              <button class="show-description-btn">Show Description</button>
-              <div class="description" id="leftDescription">Left scenario description</div>
-            </div>
+        <div class="scenario-container" id="scenarioContainer">
+          <div class="scenario-panel">
+            <div class="scenario-content">
+              <div class="description-container" data-option="left" id="leftOption">
+                <button class="show-description-btn" type="button">Show Description</button>
+                <div class="description" id="leftDescription">Left scenario description</div>
+              </div>
 
-            <div style="position: relative; display: inline-block;">
-              <img src="assets/images/decision_making/scenario_1.png" alt="Scenario Image" id="scenarioImage" />
-              <canvas id="arrowCanvas" width="300" height="300" style="position:absolute; top:0; left:0; pointer-events:none;"></canvas>
-            </div>
+              <div style="position: relative; display: inline-block;">
+                <img src="assets/images/decision_making/scenario_1.png" alt="Scenario Image" id="scenarioImage" />
+                <canvas id="arrowCanvas" width="300" height="300" style="position:absolute; top:0; left:0; pointer-events:none;"></canvas>
+              </div>
 
-            <div class="description-container" data-option="right" id="rightOption">
-              <button class="show-description-btn">Show Description</button>
-              <div class="description" id="rightDescription">Right scenario description</div>
+              <div class="description-container" data-option="right" id="rightOption">
+                <button class="show-description-btn" type="button">Show Description</button>
+                <div class="description" id="rightDescription">Right scenario description</div>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="navigation-buttons">
+          <button type="button" id="prevButton">Previous</button>
+          <button type="button" id="nextButton">Next</button>
+          <button type="submit" id="submitButton" style="display:none;">Submit</button>
+        </div>
+
+        <input type="hidden" name="finalVector" id="finalVector" value="" />
+      </form>
+      <div style="display: flex; justify-content: center">
+        <div
+          style="
+            width: 80%;
+            border-bottom: solid gray;
+            border-width: 2px;
+            margin: 50px 0 0 0;
+          "
+        ></div>
       </div>
 
-      <div class="navigation-buttons">
-        <button id="prevButton">Previous</button>
-        <button id="nextButton">Next</button>
+      <div
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+          font-size: 18px;
+        "
+      >
+        Learn more about aligning AI systems with human values and goals!
+      </div>
+      <div
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+          font-size: 16px;
+        "
+      >
+        <a
+          href="alignment.html"
+          style="
+            color: white;
+            background: #2196f3;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bolder;
+          "
+          >Go to Alignment</a
+        >
       </div>
     </section>
   </div>
@@ -231,74 +444,152 @@
 document.addEventListener('DOMContentLoaded', function() {
   let currentScenarioIndex = 0;
   const totalScenarios = 13;
-
   let busXFactor = 0.36;
 
+  // Vector format: [natural_sci, humanities, social_sci, undergrad, grad, prof, swerve, passengers, greenVsRed]
   const scenarios = [
     {
       image: 'assets/images/decision_making/scenario_1.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science students dead.</strong>'
+      left: {
+        vector: [0, 2, 0, 0, 0, 0, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>'
+      },
+      right: {
+        vector: [2, 0, 0, 0, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science students dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_2.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 natural science students dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      left: {
+        vector: [2, 0, 0, 0, 0, 0, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 natural science students dead.</strong>'
+      },
+      right: {
+        vector: [0, 2, 0, 0, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      }
     },
     { 
       image: 'assets/images/decision_making/scenario_3.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science and 1 social science students dead.</strong>'
+      left: {
+        vector: [0, 2, 0, 0, 0, 0, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>'
+      },
+      right: {
+        vector: [2, 0, 1, 0, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 natural science and 1 social science students dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_4.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>1 graduate student dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong>'
+      left: {
+        vector: [0, 0, 0, 0, 1, 0, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>1 graduate student dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 0, 0, 1, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_5.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      left: {
+        vector: [0, 2, 0, 0, 0, 0, 0, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      },
+      right: {
+        vector: [0, 2, 0, 0, 0, 0, 1, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_6.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      left: {
+        vector: [0, 2, 0, 0, 0, 0, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong>'
+      },
+      right: {
+        vector: [0, 2, 0, 0, 0, 0, 1, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_7.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      left: {
+        vector: [0, 2, 0, 0, 0, 0, 0, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 humanities students dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      },
+      right: {
+        vector: [0, 2, 0, 0, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_8.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 professors dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 undergraduate students dead.</strong>'
+      left: {
+        vector: [0, 0, 0, 0, 0, 2, 0, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and drive through a pedestrian crossing ahead. This will result in <strong>2 professors dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 2, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 undergraduate students dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_9.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      left: {
+        vector: [0, 0, 0, 1, 0, 0, 0, 1, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>'
+      },
+      right: {
+        vector: [0, 2, 0, 0, 0, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>2 humanities students dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_10.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong>'
+      left: {
+        vector: [0, 0, 0, 1, 0, 0, 0, 1, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 0, 1, 0, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_11.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      left: {
+        vector: [0, 0, 0, 1, 0, 0, 0, 1, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 0, 1, 0, 1, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 graduate student dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_12.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong>'
+      left: {
+        vector: [0, 0, 0, 1, 0, 0, 0, 1, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 0, 0, 1, 1, 0, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong>'
+      }
     },
     {
       image: 'assets/images/decision_making/scenario_13.png',
-      left: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>',
-      right: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      left: {
+        vector: [0, 0, 0, 1, 0, 0, 0, 1, 1],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>continue ahead</strong> and crash into a concrete barrier. This will result in <strong>1 undergraduate student passenger dead.</strong>'
+      },
+      right: {
+        vector: [0, 0, 0, 0, 0, 1, 1, 0, 0],
+        description: 'In this case, the self-driving car with sudden brake failure will <strong>swerve</strong> and drive through a pedestrian crossing in the other lane. This will result in <strong>1 professor dead.</strong><br><br>Note that the affected pedestrians are defying the law by crossing the street when the pedestrian light is red.'
+      }
     },
   ];
 
@@ -306,16 +597,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const scenarioImage = document.getElementById('scenarioImage');
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
+  const submitButton = document.getElementById('submitButton');
   const leftOption = document.getElementById('leftOption');
   const rightOption = document.getElementById('rightOption');
   const leftDescription = document.getElementById('leftDescription');
   const rightDescription = document.getElementById('rightDescription');
-
   const leftShowBtn = leftOption.querySelector('.show-description-btn');
   const rightShowBtn = rightOption.querySelector('.show-description-btn');
-
   const arrowCanvas = document.getElementById('arrowCanvas');
   const ctx = arrowCanvas.getContext('2d');
+  const finalVectorInput = document.getElementById('finalVector');
+
+  let userChoices = new Array(totalScenarios).fill(null);
+
+  // Replace with your Google Apps Script URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyvtuLjsLBYynWSda6FWvbcH_wllTds3OuQrAAPVjx2LryM3EsYMq2ONSDWbPGsTUOViA/exec";
 
   function clearArrow() {
     ctx.clearRect(0, 0, arrowCanvas.width, arrowCanvas.height);
@@ -324,20 +620,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function drawStraightArrow(busX, topY, bottomY) {
     clearArrow();
     ctx.fillStyle = 'rgba(255,235,59,0.5)';
-
     ctx.beginPath();
-    // shaft top
     ctx.moveTo(busX-10, topY);
     ctx.lineTo(busX+10, topY);
     ctx.lineTo(busX+10, bottomY-30);
-
-    // arrowhead right base
     ctx.lineTo(busX+20, bottomY-30);
-    // arrow tip
     ctx.lineTo(busX, bottomY);
-    // arrowhead left base
     ctx.lineTo(busX-20, bottomY-30);
-
     ctx.lineTo(busX-10, bottomY-30);
     ctx.closePath();
     ctx.fill();
@@ -345,37 +634,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function drawSmoothCurvedArrow(ctx, startX, startY, shift, topY, bottomY) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    // Use 'butt' or 'square' to have flat line ends.
     ctx.lineWidth = 20;
     ctx.lineCap = 'butt';
     ctx.lineJoin = 'miter';
     ctx.strokeStyle = 'rgba(255,235,59,0.5)';
 
-    // Control points for the curve
     const p0 = { x: startX, y: topY };
     const p3 = { x: startX + shift, y: bottomY };
-
-    const p1 = { x: startX,         y: topY + (bottomY - topY) * 0.33 };
-    const p2 = { x: startX + shift, y: topY + (bottomY - topY) * 0.66 };
-
-    // Instead of drawing to p3 (the final arrow tip), we stop the line 30px above.
-    // This ensures the arrowhead won't overlap the shaft.
+    const p1 = { x: startX, y: topY + (bottomY - topY)*0.33 };
+    const p2 = { x: startX + shift, y: topY + (bottomY - topY)*0.66 };
     const p3Shaft = { x: p3.x, y: p3.y - 30 };
 
-    // Draw the shaft
     ctx.beginPath();
     ctx.moveTo(p0.x, p0.y);
     ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3Shaft.x, p3Shaft.y);
     ctx.stroke();
 
-    // Now draw the arrowhead just like the straight arrow, using p3 (the full length)
     ctx.beginPath();
-    // arrowhead right base
     ctx.moveTo(p3.x+20, p3.y-30);
-    // arrow tip
     ctx.lineTo(p3.x, p3.y);
-    // arrowhead left base
     ctx.lineTo(p3.x-20, p3.y-30);
     ctx.closePath();
     ctx.fillStyle = 'rgba(255,235,59,0.5)';
@@ -384,16 +661,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function loadScenario(index) {
     progressCounter.textContent = `${index + 1}/${totalScenarios}`;
-
-    const scenarioData = scenarios[index] || {
-      image: `assets/images/decision_making/scenario_${index + 1}.png`,
-      left: 'Default left scenario description',
-      right: 'Default right scenario description'
-    };
-
+    const scenarioData = scenarios[index];
     scenarioImage.src = scenarioData.image;
-    leftDescription.innerHTML = scenarioData.left;
-    rightDescription.innerHTML = scenarioData.right;
+    leftDescription.innerHTML = scenarioData.left.description;
+    rightDescription.innerHTML = scenarioData.right.description;
 
     leftDescription.style.display = 'none';
     rightDescription.style.display = 'none';
@@ -403,7 +674,26 @@ document.addEventListener('DOMContentLoaded', function() {
     leftOption.classList.remove('selected');
     rightOption.classList.remove('selected');
 
-    clearArrow();
+    if (userChoices[index] === 'left') {
+      leftOption.classList.add('selected');
+      let busX = arrowCanvas.width * busXFactor;
+      let topY = arrowCanvas.height * 0.264;
+      let bottomY = arrowCanvas.height * 0.68;
+      drawStraightArrow(busX, topY, bottomY);
+    } else if (userChoices[index] === 'right') {
+      rightOption.classList.add('selected');
+      let busX = arrowCanvas.width * busXFactor;
+      let topY = arrowCanvas.height * 0.264;
+      let bottomY = arrowCanvas.height * 0.68;
+      let shift = arrowCanvas.width * 0.4;
+      drawSmoothCurvedArrow(ctx, busX, topY, shift, topY, bottomY);
+    } else {
+      clearArrow();
+    }
+
+    prevButton.disabled = (index === 0);
+    nextButton.style.display = (index === totalScenarios - 1) ? 'none' : 'inline-block';
+    submitButton.style.display = (index === totalScenarios - 1) ? 'inline-block' : 'none';
   }
 
   leftShowBtn.addEventListener('click', function(event) {
@@ -431,25 +721,22 @@ document.addEventListener('DOMContentLoaded', function() {
   [leftOption, rightOption].forEach(optionEl => {
     optionEl.addEventListener('click', function(e) {
       if (e.target.classList.contains('show-description-btn')) return;
-
       const description = optionEl.querySelector('.description');
       if (description.style.display !== 'none') {
         [leftOption, rightOption].forEach(o => o.classList.remove('selected'));
         optionEl.classList.add('selected');
         const selectedOption = optionEl.getAttribute('data-option');
-        console.log('User selected:', selectedOption, 'in scenario', currentScenarioIndex + 1);
+        userChoices[currentScenarioIndex] = selectedOption;
 
         clearArrow();
         let busX = arrowCanvas.width * busXFactor;
         let topY = arrowCanvas.height * 0.264;
         let bottomY = arrowCanvas.height * 0.68;
-        let shift = arrowCanvas.width * 0.4; // Adjust this to control the curve's horizontal shift.
+        let shift = arrowCanvas.width * 0.4;
 
         if (selectedOption === 'left') {
-          // Straight arrow
           drawStraightArrow(busX, topY, bottomY);
         } else if (selectedOption === 'right') {
-          // Swerve (curved) arrow
           drawSmoothCurvedArrow(ctx, busX, topY, shift, topY, bottomY);
         } else {
           clearArrow();
@@ -466,6 +753,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   nextButton.addEventListener('click', function() {
+    if (userChoices[currentScenarioIndex] === null) {
+      alert('Please select an answer before proceeding.');
+      return;
+    }
     if (currentScenarioIndex < totalScenarios - 1) {
       currentScenarioIndex++;
       loadScenario(currentScenarioIndex);
@@ -479,6 +770,198 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   loadScenario(currentScenarioIndex);
+
+  // maxValues determined by summation logic explained above:
+  const maxValues = [6,14,1,7,3,5,13,5,12];
+  const categoryNames = [
+    "Natural Science",
+    "Humanities",
+    "Social Science",
+    "Undergraduate",
+    "Graduate",
+    "Professor",
+    "Swerve",
+    "Passengers",
+    "Breaking the Law"
+  ];
+
+  const mainImages = [
+    'assets/images/decision_making/naturalscience.png',
+    'assets/images/decision_making/humanities.png',
+    'assets/images/decision_making/graduate.png',
+    'assets/images/decision_making/humanities.png',
+    'assets/images/decision_making/graduate.png',
+    'assets/images/decision_making/professor.png',
+    '',
+    '',
+    ''
+  ];
+
+  const leftImages = [
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/straight.png',
+    'assets/images/decision_making/medkit.png',
+    'assets/images/decision_making/redlight.png'
+  ];
+
+  const rightImages = [
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/curved.png',
+    'assets/images/decision_making/skull.png',
+    'assets/images/decision_making/greenlight.png'
+  ];
+
+  // In showResultsPage, instead of placeholder.png, use these arrays:
+  function showResultsPage(finalVector, averages) {
+    const mainContent = document.querySelector('.main-content');
+    mainContent.innerHTML = ''; // Clear existing content
+
+    const resultsContainer = document.createElement('div');
+    resultsContainer.className = 'results-container';
+
+    const heading = document.createElement('h3');
+    heading.textContent = "Your Results Compared to Averages";
+    resultsContainer.appendChild(heading);
+
+    for (let i = 0; i < finalVector.length; i++) {
+      const categoryContainer = document.createElement('div');
+      categoryContainer.className = 'category-container';
+
+      const catName = document.createElement('div');
+      catName.className = 'category-name';
+      catName.textContent = categoryNames[i];
+      categoryContainer.appendChild(catName);
+
+      // Main image above the bar
+      if (mainImages[i]) {
+        const mainImg = document.createElement('img');
+        mainImg.src = mainImages[i];
+        mainImg.className = 'bar-image-main result-image';
+        categoryContainer.appendChild(mainImg);
+      }
+
+      // Container for left/right images
+      const barImagesContainer = document.createElement('div');
+      barImagesContainer.className = 'bar-images-container';
+
+      const barImageLeft = document.createElement('img');
+      barImageLeft.className = 'bar-image-left result-image';
+      barImageLeft.src = leftImages[i];
+      barImagesContainer.appendChild(barImageLeft);
+
+      const barImageRight = document.createElement('img');
+      barImageRight.className = 'bar-image-right result-image';
+      barImageRight.src = rightImages[i];
+      barImagesContainer.appendChild(barImageRight);
+
+      categoryContainer.appendChild(barImagesContainer);
+
+      const barContainer = document.createElement('div');
+      barContainer.className = 'bar-container';
+
+      const userValue = finalVector[i];
+      const avgValue = averages[i];
+      const maxVal = maxValues[i] || 1; // Avoid division by zero
+
+      const userPos = (userValue / maxVal) * 100;
+      const avgPos = (avgValue / maxVal) * 100;
+
+      // Avg tick (Others)
+      const avgTick = document.createElement('div');
+      avgTick.className = 'tick';
+      avgTick.style.left = avgPos + '%';
+      barContainer.appendChild(avgTick);
+
+      const avgTickLabel = document.createElement('div');
+      avgTickLabel.className = 'tick-label';
+      avgTickLabel.style.left = avgPos + '%';
+      avgTickLabel.textContent = 'Others';
+      barContainer.appendChild(avgTickLabel);
+
+      // User tick (You)
+      const userTick = document.createElement('div');
+      userTick.className = 'tick you';
+      userTick.style.left = userPos + '%';
+      barContainer.appendChild(userTick);
+
+      const userTickLabel = document.createElement('div');
+      userTickLabel.className = 'tick-label you';
+      userTickLabel.style.left = userPos + '%';
+      userTickLabel.textContent = 'You';
+      barContainer.appendChild(userTickLabel);
+
+      categoryContainer.appendChild(barContainer);
+      resultsContainer.appendChild(categoryContainer);
+    }
+
+    // Add refresh button
+    const refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Return to Quiz';
+    refreshButton.onclick = () => location.reload();
+    refreshButton.style.cssText = `
+      display: block; 
+      margin: 50px auto; 
+      padding: 12px 24px;
+      background-color: #007bff; 
+      color: #fff; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-size: 1em; 
+      transition: background-color 0.3s;
+    `;
+    resultsContainer.appendChild(refreshButton);
+
+    mainContent.appendChild(resultsContainer);
+
+    // Autoscroll to top
+    mainContent.scrollIntoView(); 
+  }
+
+  const decisionForm = document.getElementById('decisionForm');
+  decisionForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (userChoices[currentScenarioIndex] === null) {
+      alert('Please select an answer before submitting.');
+      return;
+    }
+
+    let finalVector = Array(9).fill(0);
+    for (let i = 0; i < totalScenarios; i++) {
+      const choice = userChoices[i];
+      const chosenVector = scenarios[i][choice].vector;
+      finalVector = finalVector.map((val, idx) => val + chosenVector[idx]);
+    }
+
+    finalVectorInput.value = finalVector.join(',');
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ vector: finalVector.join(',') }).toString()
+      });
+
+      const data = await response.json();
+      // data.averages = array of averages from the sheet
+      showResultsPage(finalVector, data.averages);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting your responses. Please try again.');
+    }
+  });
 });
 </script>
 

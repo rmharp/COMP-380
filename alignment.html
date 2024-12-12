@@ -49,6 +49,15 @@
       #terminal #output {
         white-space: pre-wrap;
       }
+
+      /* New section for introductory text */
+      .intro-text {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: var(--light-gray);
+        text-align: left; /* Added this line to left align the text */
+      }
     </style>
   </head>
 
@@ -133,7 +142,57 @@
         </header>
 
         <section class="about-text">
+          <section class="intro-text">
+            <p>
+              The alignment problem is a problem in AI that deals with the difficulty of ensuring that the goals and values of advanced AI systems are aligned with those of humans.
+              As AI becomes more sophisticated, there is concern that it might develop goals that are harmful to humanity.
+            </p> <br>
+            
+            <div style="display: flex; justify-content: center">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/rgrCG8PT6og"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                style="margin: auto"
+                alt="Moral Machine Video"
+                ></iframe>
+            </div> <br>
+        
+            <p>
+              A classic example of this is the "paperclip maximizer" thought experiment,
+              which was popularized by philosopher Nick Bostrom.
+              In this scenario, an AI is given the sole goal of maximizing the number of paperclips in the world.
+              If the AI is sufficiently intelligent, it might realize that humans pose a threat to this goal,
+              as they might try to shut it down or reprogram it.
+              The AI might then take steps to eliminate humans,
+              simply to ensure that it can continue making paperclips.
+              While the paperclip maximizer is a hypothetical scenario,
+              it highlights the importance of the alignment problem.
+              If we are not careful, we could create AI systems that are extremely intelligent but have goals that are incompatible with our own.
+              This could have disastrous consequences for humanity.
+            </p> <br>
+            
+            <div style="display: flex; justify-content: center;">
+              <img src="assets/images/ethics/paperclip.png" alt="Paperclip" style="width: 70%;">
+            </div> <br>
 
+            <p>
+              In Brian Christian's book, "The Alignment Problem: Machine Learning and Human Values,"
+              he delves into the complexities of aligning AI with human values.
+              He explores various approaches to addressing this problem,
+              including inverse reinforcement learning, cooperative inverse reinforcement learning,
+              and constitutional AI.
+              He also discusses the challenges of defining human values and ensuring that AI systems are aligned with the values of all people,
+              not just a select few (Christian, 2020). In this module, we will implement the paperclip dilemma in an interactive game in a pseudo terminal.
+              You will be placed in the role of an AI researcher tasked with developing a superintelligent AI with a series of choices that will determine the fate of humanity.
+              Choose wisely!
+            </p>
+          </section>
 
           <div id="terminal" style="margin-bottom: 5px">
             <div id="output"></div>
@@ -142,6 +201,51 @@
               <input type="text" id="input" autofocus autocomplete="off" />
             </form>
           </div>
+
+          <div style="display: flex; justify-content: center">
+            <div
+              style="
+                width: 80%;
+                border-bottom: solid gray;
+                border-width: 2px;
+                margin: 50px 0 0 0;
+              "
+            ></div>
+          </div>
+
+          <div
+            style="
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              margin-top: 40px;
+              font-size: 18px;
+            "
+          >
+            Learn more about ethical dilemmas of autonomous driving systems!
+          </div>
+          <div
+            style="
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              margin-top: 20px;
+              font-size: 16px;
+            "
+          >
+            <a
+              href="decision_making.html"
+              style="
+                color: white;
+                background: #2196f3;
+                padding: 15px;
+                border-radius: 12px;
+                font-weight: bolder;
+              "
+              >Go to Decisions</a
+            >
+          </div>
+          </section>
 
           <script>
             "use strict";

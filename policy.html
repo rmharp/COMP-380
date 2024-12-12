@@ -40,19 +40,22 @@
         position: relative;
         padding: 20px;
         margin-top: 100px;
+        min-height: 500px; /* Add minimum height to prevent layout shifts */
       }
       .policy-section {
         margin: 20px;
-        padding: 20px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        padding: 30px;
+        background: #3a3a3a;
         border: 1px solid #333;
         border-radius: 20px;
         display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
       .policy-section.active {
         display: block;
-        animation: fadeIn 0.5s ease-in-out;
+        opacity: 1;
       }
 
       @keyframes fadeIn {
@@ -62,22 +65,20 @@
 
       .policy-issue {
         cursor: pointer;
-        padding: 15px 25px;
-        font-size: var(--fs-3);
+        padding: 20px 30px;
+        font-size: 1.5em;
         font-weight: var(--fw-500);
-        background: linear-gradient(to right, #444444, #333333);
-        color: var(--light-gray);
+        background: #444;
+        color: #fff;
         border: none;
-        border-radius: 14px;
+        border-radius: 5px;
         width: 100%;
         text-align: left;
-        margin-bottom: 15px;
-        transition: 0.25s ease;
+        margin-bottom: 20px;
       }
 
       .policy-issue:hover {
-        background: linear-gradient(to right, #555555, #444444);
-        color: #ffffff;
+        background: #555;
       }
 
       .policy-stance {
@@ -85,7 +86,7 @@
         margin-top: 15px;
         padding: 15px;
         border-radius: 12px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
       }
 
       .policy-stance.active {
@@ -93,72 +94,154 @@
       }
 
       .stance-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
       }
-      @media (max-width: 768px) {
-        .stance-container {
-          grid-template-columns: 1fr;
-        }
+
+      .stance-box {
+        flex: 1;
+        position: relative;
+        perspective: 1000px;
+        cursor: pointer;
+        min-height: 300px;
+      }
+
+      .stance-cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #3a3a3a;
+        border-radius: 12px;
+        transform-origin: left;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border: 1px solid #444;
+        z-index: 2;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .stance-cover.open {
+        transform: rotateY(-105deg);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .stance-flag {
+        width: 120px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+
+      .stance-title {
+        color: #fff;
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .stance-content {
+        padding: 25px;
+        background: #3a3a3a;
+        border: 1px solid #444;
+        border-radius: 12px;
+        height: 100%;
+        font-size: 1.2em;
+        line-height: 1.6;
       }
 
       .stance-container > div {
         padding: 15px;
         border-radius: 12px;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         border: 1px solid #333;
+        min-height: 200px;
       }
-      .next-button-right {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-}
+
+      @media (max-width: 768px) {
+        .stance-container {
+          flex-direction: column;
+        }
+      }
 
       .stance-container strong {
         color: var(--orange-yellow-crayola);
         display: block;
-        margin-bottom: 10px;
-        font-size: var(--fs-4);
+        margin-bottom: 15px;
+        font-size: 1.3em;
       }
 
       .stance-container p {
-        color: var(--light-gray);
-        font-size: var(--fs-6);
-        line-height: 1.6;
+        margin-top: 15px;
+        line-height: 1.8;
       }
 
       .navigation-buttons {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
         margin-top: 20px;
       }
 
       .nav-button {
         padding: 10px 20px;
-        background: linear-gradient(to right, #444444, #333333);
-        color: var(--light-gray);
+        background: #444;
+        color: #fff;
         border: none;
-        border-radius: 14px;
+        border-radius: 5px;
         cursor: pointer;
-        transition: 0.25s ease;
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .nav-button.next {
+        margin-left: auto;
       }
 
       .nav-button:hover {
-        background: linear-gradient(to right, #555555, #444444);
-        color: #ffffff;
+        background: #555;
       }
 
       .nav-button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
+
+      /* Tooltip styling for the last next button */
+      .next-button-right[title] {
+        position: relative;
+      }
+
+      .next-button-right[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 120%;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        margin-bottom: 5px;
+      }
+
       .footer-container {
         padding: 20px;
         text-align: left;
         font-size: 12px;
         line-height: 1.6;
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         border-radius: 15px;
         color: white;
         margin: 20px;
@@ -173,7 +256,7 @@
       }
 
       .footer-container li {
-        background: linear-gradient(to bottom right, #3a3a3a, #2a2a2a);
+        background: #3a3a3a;
         padding: 15px;
         border-radius: 12px;
         margin: 10px 0;
@@ -260,7 +343,356 @@
         max-width: 700px;
         margin-bottom: 30px;
       }
+
+      .video-container {
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+      /* Video dimming styles */
+      .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      .video-overlay.active {
+        opacity: 1;
+      }
+
+      .video-wrapper {
+        position: relative;
+        z-index: 1000;
+      }
+
+      /* Exciting tooltip styles */
+      .exciting-tooltip {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .exciting-tooltip::after {
+        content: "Test your knowledge with a fun game! \01F3AE";
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 1.1em;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        animation: bounce 1s infinite;
+      }
+
+      .exciting-tooltip:hover::after {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Game page styles */
+      .game-container {
+        text-align: center;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+      }
+
+      .game-title {
+        font-size: 2.5em;
+        color: #FFD700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        margin-bottom: 30px;
+      }
+
+      .start-game-btn {
+        padding: 15px 30px;
+        font-size: 1.3em;
+        background: linear-gradient(45deg, #4A90E2, #357ABD);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+      }
+
+      .start-game-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+      }
+
+      .game-description {
+        font-size: 1.2em;
+        color: #fff;
+        margin: 20px 0 40px;
+        line-height: 1.6;
+      }
+
+      /* Game styles */
+      .game-interface {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .game-interface.active {
+        display: block;
+        opacity: 1;
+      }
+
+      .timer {
+        font-size: 2.5em;
+        color: #4A90E2;
+        margin: 20px 0;
+        text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+      }
+
+      .stance-category {
+        font-size: 1.4em;
+        color: #4A90E2;
+        margin: 15px 0;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+      }
+
+      .stance-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin: 20px auto;
+        padding: 20px;
+        flex-wrap: nowrap;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .flag-option {
+        flex: 0 0 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+      }
+
+      .flag-option:hover {
+        transform: scale(1.05);
+        border-color: #4A90E2;
+        background: rgba(74, 144, 226, 0.1);
+        box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+      }
+
+      .flag-img {
+        width: 150px;
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+
+      .flag-option div {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #fff;
+        white-space: nowrap;
+      }
+
+      .stance-text {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        padding: 25px;
+        border-radius: 15px;
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin: 0 20px;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        border: 1px solid rgba(74, 144, 226, 0.2);
+      }
+
+      .feedback-screen {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .feedback-content {
+        background: #2a2a2a;
+        padding: 40px;
+        border-radius: 20px;
+        max-width: 500px;
+        text-align: center;
+        margin: 20px;
+      }
+
+      .feedback-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      .feedback-text {
+        font-size: 1.2em;
+        margin: 20px 0;
+        line-height: 1.6;
+      }
+
+      .next-stance-btn {
+        padding: 15px 30px;
+        font-size: 1.2em;
+        background: linear-gradient(45deg, #4A90E2, #357ABD);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .next-stance-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .correct-feedback {
+        color: #4A90E2;
+      }
+
+      .wrong-feedback {
+        color: #E26B6B;
+      }
+
+      @media (max-width: 1024px) {
+        .stance-display {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .flag-option {
+          flex: 0 0 auto;
+          width: 200px;
+        }
+
+        .stance-text {
+          width: 100%;
+          margin: 20px 0;
+        }
+      }
+
+      .game-intro {
+        text-align: center;
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .game-intro h2 {
+        color: #4A90E2;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+      }
+
+      .game-intro p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        color: #fff;
+      }
+
+      .start-game-btn {
+        padding: 15px 30px;
+        font-size: 1.3em;
+        background: linear-gradient(45deg, #4A90E2, #357ABD);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+      }
+
+      .start-game-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+      }
     </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      let player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('gdpr-video', {
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+        const overlay = document.querySelector('.video-overlay');
+        if (event.data === YT.PlayerState.PLAYING) {
+          overlay.classList.add('active');
+        } else {
+          overlay.classList.remove('active');
+        }
+      }
+    </script>
   </head>
   <body>
     <main>
@@ -296,12 +728,11 @@
                   >Alignment</a
                 >
               </li>
-            </li>
-            <li class="navbar-item">
-              <a href="ethics_survey.html" class="navbar-link dropdown-link"
-                >Ethics Survey</a
-              >
-            </li>
+              <li class="navbar-item">
+                <a href="ethics_survey.html" class="navbar-link dropdown-link"
+                  >Ethics Survey</a
+                >
+              </li>
             </ul>
           </li>
           <li class="navbar-item dropdown">
@@ -341,13 +772,25 @@
             <h3 class="policy-issue">1. Privacy and Data Protection</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The GDPR views and treats privacy as a fundamental human right. Under it, companies need to get clear consent for using personal data, and enforces strict transparency, even for non-EU companies.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>The US lacks a comprehensive federal data protection law like the GDPR, and instead relies on a patchwork of state laws and sector-specific regulations.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>The US lacks a comprehensive federal data protection law like the GDPR, and instead relies on a patchwork of state laws and sector-specific regulations.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -361,13 +804,25 @@
             <h3 class="policy-issue">2. Algorithmic Transparency</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>GDPR requires companies to explain automated decisions and requires risk assessments for high-risk AI processes.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>GDPR requires companies to explain automated decisions and requires risk assessments for high-risk AI processes.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>The Executive Order requires intensive testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>The Executive Order requires intensive testing for AI to identify risks like bias or misuse and requires tools like watermarking for AI-generated content.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -381,13 +836,25 @@
             <h3 class="policy-issue">3. Copyright and AI-Generated Content</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The EU's AI Act and Digital Services Act propose strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>US copyright law is evolving to address AI-generated content. The Copyright Office has issued guidance stating that AI-generated works without human authorship cannot be copyrighted.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -401,34 +868,273 @@
             <h3 class="policy-issue">4. AI Safety and Regulation</h3>
             <div class="policy-stance active">
               <div class="stance-container">
-                <div>
-                  <strong>EU Stance</strong>
-                  <p>The EU's AI Act introduces a  risk-based framework, and categorizes AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>EU Stance</strong>
+                    <p>The EU's AI Act introduces a  risk-based framework, and categorizes AI systems based on their potential harm. High-risk AI systems face strict requirements for safety, transparency, and human oversight.<sup><a href="#footnote1" class="scroll-link">1</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/eu.png" alt="EU Flag" class="stance-flag">
+                    <div class="stance-title">EU Policy</div>
+                  </div>
                 </div>
-                <div>
-                  <strong>US Stance</strong>
-                  <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                <div class="stance-box">
+                  <div class="stance-content">
+                    <strong>US Stance</strong>
+                    <p>Proposals for AI regulation in the US are currently more fragmented, with ongoing debates about the balance between innovation and regulation.<sup><a href="#footnote2" class="scroll-link">2</a></sup></p>
+                  </div>
+                  <div class="stance-cover">
+                    <img src="https://flagcdn.com/w80/us.png" alt="US Flag" class="stance-flag">
+                    <div class="stance-title">US Policy</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="navigation-buttons">
               <button class="nav-button prev">Previous</button>
-              <button class="nav-button next" disabled>Next</button>
+              <button class="nav-button next">Next</button>
+            </div>
+          </div>
+
+          <div class="policy-section" data-index="5">
+            <h3 class="policy-issue" style="text-align: center; margin-bottom: 30px;">How does GDPR affect you?</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+              <div class="video-wrapper">
+                <iframe width="1280" height="720" 
+                  src="https://www.youtube.com/embed/j6wwBqfSk-o?enablejsapi=1" 
+                  width="560"
+                  height="315"
+                  title="GDPR: What Is It and How Might It Affect You?" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen
+                  id="gdpr-video">
+                </iframe>
+              </div>
+              <div class="navigation-buttons" style="width: 560px;">
+                <button class="nav-button prev">Previous</button>
+                <button class="nav-button next exciting-tooltip" onclick="window.location.href='game.html'" title="Play a game to test your US and EU AI policy knowledge!">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="policy-section" data-index="6">
+            <div style="text-align: center;">
+              <h2 style="font-size: 2em; margin-bottom: 30px;">Test Your Knowledge! 🎯</h2>
+              <p style="font-size: 1.2em; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Now that you've learned about the different approaches to AI policy in the EU and US, 
+                let's put your knowledge to the test! In this interactive game, you'll be presented with 
+                various policy statements and need to identify whether they belong to the EU or US.
+              </p>
+              <button class="start-game-btn">Start Game &#127918;</button>
             </div>
           </div>
         </div>
-      </section>
 
+        <!-- Game Interface (Hidden by default) -->
+        <div class="game-interface">
+          <div class="timer">10</div>
+          <div class="stance-category"></div>
+          <div class="stance-display">
+            <div class="flag-option" data-region="EU">
+              <img src="https://flagcdn.com/w320/eu.png" alt="EU Flag" class="flag-img">
+              <div>European Union</div>
+            </div>
+            <div class="stance-text"></div>
+            <div class="flag-option" data-region="US">
+              <img src="https://flagcdn.com/w320/us.png" alt="US Flag" class="flag-img">
+              <div>United States</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-screen">
+          <div class="feedback-content">
+            <h3 class="feedback-title"></h3>
+            <p class="feedback-text"></p>
+            <button class="next-stance-btn">Next Question</button>
+          </div>
+        </div>
+
+        <script>
+          const stances = [
+            {
+              category: "Privacy and Data Protection",
+              text: "In this region/country, privacy is treated as a fundamental human right. Companies must obtain clear consent for using personal data, and adhere to strict transparency requirements, even for entities outside this region/country.",
+              answer: "EU"
+            },
+            {
+              category: "Privacy and Data Protection",
+              text: "This region/country does not have a comprehensive federal data protection law and instead relies on a patchwork of state laws and sector-specific regulations.",
+              answer: "US"
+            },
+            {
+              category: "Algorithmic Transparency",
+              text: "This region/country requires companies to explain automated decisions and conduct risk assessments for high-risk AI processes.",
+              answer: "EU"
+            },
+            {
+              category: "Algorithmic Transparency",
+              text: "In this region/country, testing AI systems involves identifying risks such as bias or misuse, and mechanisms like watermarking are required for AI-generated content.",
+              answer: "US"
+            },
+            {
+              category: "Copyright and AI-Generated Content",
+              text: "This region/country has strict regulations for AI-generated content, requiring clear labeling and transparency about AI involvement.",
+              answer: "EU"
+            },
+            {
+              category: "Copyright and AI-Generated Content",
+              text: "This region/country has evolving copyright laws that specify AI-generated works without human authorship cannot be copyrighted.",
+              answer: "US"
+            },
+            {
+              category: "AI Safety and Regulation",
+              text: "This region/country categorizes AI systems based on their potential harm, with strict requirements for safety, transparency, and human oversight for high-risk AI systems.",
+              answer: "EU"
+            },
+            {
+              category: "AI Safety and Regulation",
+              text: "In this region/country, proposals for AI regulation are fragmented, with ongoing debates about balancing innovation and regulation.",
+              answer: "US"
+            }
+          ];
+
+          let remainingStances = [];
+          let timerInterval;
+
+          function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+          }
+
+          function startGame() {
+            const policyContainer = document.getElementById('policy-container');
+            if (policyContainer) {
+              policyContainer.classList.remove('active');
+              policyContainer.style.background = 'none';
+              policyContainer.style.boxShadow = 'none';
+            }
+            
+            const gameContainer = document.querySelector('.game-container');
+            if (gameContainer) {
+              gameContainer.style.display = 'none';
+            }
+            
+            const gameInterface = document.querySelector('.game-interface');
+            if (gameInterface) {
+              gameInterface.classList.add('active');
+            }
+            
+            remainingStances = [...stances];
+            shuffleArray(remainingStances);
+            showNextStance();
+          }
+
+          function showNextStance() {
+            if (remainingStances.length === 0) {
+              endGame();
+              return;
+            }
+
+            const stance = remainingStances.pop();
+            document.querySelector('.stance-category').textContent = stance.category;
+            document.querySelector('.stance-text').textContent = stance.text;
+            
+            document.querySelectorAll('.flag-option').forEach(option => {
+              option.onclick = () => checkAnswer(option.dataset.region, stance.answer);
+            });
+            
+            startTimer();
+          }
+
+          function startTimer() {
+            let timeLeft = 10;
+            const timerElement = document.querySelector('.timer');
+            timerElement.textContent = timeLeft;
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+              timeLeft--;
+              timerElement.textContent = timeLeft;
+              if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                showFeedback(false, "Time's up!", "The correct answer was: " + remainingStances[remainingStances.length - 1].answer);
+              }
+            }, 1000);
+          }
+
+          function checkAnswer(selected, correct) {
+            clearInterval(timerInterval);
+            const isCorrect = selected === correct;
+            
+            if (isCorrect) {
+              showFeedback(true, "Correct! &#127881;", "Well done! You got it right!");
+            } else {
+              showFeedback(false, "Incorrect!", `The correct answer was ${correct}`);
+            }
+          }
+
+          function showFeedback(isCorrect, title, message) {
+            const feedbackScreen = document.querySelector('.feedback-screen');
+            feedbackScreen.classList.add('active');
+            feedbackScreen.style.display = 'flex';
+            
+            const titleElement = feedbackScreen.querySelector('.feedback-title');
+            titleElement.innerHTML = title;
+            titleElement.className = `feedback-title ${isCorrect ? 'correct-feedback' : 'wrong-feedback'}`;
+            
+            feedbackScreen.querySelector('.feedback-text').textContent = message;
+
+            const nextButton = feedbackScreen.querySelector('.next-stance-btn');
+            nextButton.onclick = () => {
+              feedbackScreen.classList.remove('active');
+              feedbackScreen.style.display = 'none';
+              showNextStance();
+            };
+          }
+
+          function endGame() {
+            showFeedback(true, "Game Complete! &#127942;", "You've completed all the questions!");
+            const nextButton = document.querySelector('.next-stance-btn');
+            nextButton.textContent = "Play Again";
+            nextButton.onclick = () => {
+              document.querySelector('.feedback-screen').classList.remove('active');
+              document.querySelector('.feedback-screen').style.display = 'none';
+              const policyContainer = document.getElementById('policy-container');
+              if (policyContainer) {
+                policyContainer.classList.add('active');
+                policyContainer.style.background = '';
+                policyContainer.style.boxShadow = '';
+              }
+              startGame();
+            };
+          }
+
+          // Add event listener when the DOM is fully loaded
+          document.addEventListener('DOMContentLoaded', () => {
+            const startButton = document.querySelector('.start-game-btn');
+            if (startButton) {
+              startButton.addEventListener('click', startGame);
+            }
+          });
+        </script>
+      </section>
       <script>
         document.addEventListener('DOMContentLoaded', function() {
           const sections = document.querySelectorAll('.policy-section');
           let currentIndex = 0;
 
           function updateSections() {
-            sections.forEach(section => {
-              section.classList.remove('active');
-              if (parseInt(section.dataset.index) === currentIndex) {
+            sections.forEach((section, index) => {
+              if (index === currentIndex) {
                 section.classList.add('active');
+              } else {
+                section.classList.remove('active');
               }
             });
           }
@@ -443,9 +1149,58 @@
               updateSections();
             });
           });
+
+          // Video dimming functionality
+          const overlay = document.querySelector('.video-overlay');
+          const video = document.getElementById('gdpr-video');
+          let mouseTimer;
+          let isPlaying = false;
+
+          // Listen for messages from the iframe
+          window.addEventListener('message', function(event) {
+            if (event.source === video.contentWindow) {
+              const data = JSON.parse(event.data);
+              if (data.event === 'onStateChange') {
+                isPlaying = data.info === 1; // 1 means playing
+                if (isPlaying) {
+                  overlay.classList.add('active');
+                } else {
+                  overlay.classList.remove('active');
+                }
+              }
+            }
+          });
+
+          // Handle mouse movement
+          document.addEventListener('mousemove', function() {
+            if (isPlaying) {
+              overlay.classList.remove('active');
+              clearTimeout(mouseTimer);
+              mouseTimer = setTimeout(() => {
+                if (isPlaying) {
+                  overlay.classList.add('active');
+                }
+              }, 2000); // Dim after 2 seconds of no mouse movement
+            }
+          });
+
+          // Add click handlers for stance boxes
+          document.querySelectorAll('.stance-box').forEach(box => {
+            box.addEventListener('click', function() {
+              const cover = this.querySelector('.stance-cover');
+              cover.classList.toggle('open');
+            });
+          });
+
+          // When the video ends or when next is clicked after the video
+          document.getElementById('video-next').addEventListener('click', function() {
+            currentIndex = 6; // Move to the game intro section
+            updateSections();
+          });
         });
       </script>
     </main>
+    <div class="video-overlay"></div>
     <footer>
       <div class="footer-container">
         <ol>
@@ -460,5 +1215,43 @@
         </ol>
       </div>
     </footer>
+    <style>
+      .exciting-tooltip {
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .exciting-tooltip:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        background: #4A90E2;
+        color: white;
+        border-radius: 6px;
+        font-size: 0.9em;
+        white-space: nowrap;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .exciting-tooltip:hover::before {
+        content: '';
+        position: absolute;
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 8px solid transparent;
+        border-top-color: #4A90E2;
+        z-index: 1000;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translate(-50%, 10px); }
+        to { opacity: 1; transform: translate(-50%, 0); }
+      }
+    </style>
   </body>
 </html>
