@@ -23,7 +23,6 @@
     body {
       margin:0;
       padding:0;
-      background: #2a2a2a; /* Dark background for contrast */
       color: #ffffff; /* Light text for visibility */
       font-family: 'Poppins', sans-serif;
     }
@@ -33,10 +32,20 @@
       margin:0 auto;
       padding:20px;
     }
+
+    /* New section for introductory text */
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: var(--light-gray)
+    }
+
     .about-text {
       padding:20px;
       border-radius:8px;
     }
+
     .dilemma-prompt {
       text-align:center;
       font-size:1.8em;
@@ -277,7 +286,77 @@
     <header>
       <h2 class="h2 article-title">Decision Making</h2>
     </header>
+    
+    <!-- New section for text with appropriate width -->
+    <section class="intro-text">
+      <p>
+        A classic scenario that is commonly brought up in discussions
+        involving the ethics of decision making in AI is the
+        "autonomous vehicle crash scenario." For example, imagine a
+        self-driving car that suddenly malfunctions and is about to crash,
+        with no way to stop it. There are two pedestrian crossings on either
+        side of the car, each with a different composition of people. The
+        car must choose between the "lesser of two evils" and decide which
+        direction to crash into. Should the car prioritize the lives of
+        its passengers? The lives of the pedestrians? Should the ages and
+        backgrounds of the people involved matter? Maybe this sounds a little
+        too much like a moral dilemma, but these are the kinds of decisions
+        an autonomous vehicle might have to make in the future. That and, this is sort
+        of like the modern day trolley problem, which was a famous moral dilemma you may remember being discussed
+        in our course.
+      </p> <br>
 
+      <div style="display: flex; justify-content: center">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/watch?v=ixIoDYVfKA0&ab_channel=TED-Ed"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="margin: auto"
+          alt="Moral Machine Video"
+          ></iframe>
+      </div> <br>
+
+      <p>
+        In 2018, Nature published a paper titled "The Moral Machine
+        Experiment," which presented an online game that put users in
+        this type of autonomous vehicle crash scenario. The Moral
+        Machine went viral, sparking debate and discussion around the
+        world about the ethics of AI decision-making and causing stakeholders
+        who didn't even know they were involved to begin thinking about
+        the implications of AI in society. The game was designed to collect
+        data on how people would make decisions in these scenarios and to
+        understand the moral preferences of humans. After all, we shouldn't expect
+        AI to make ethical decisions that we ourselves can't make.
+      </p> <br>
+
+      <div style="display: flex; justify-content: center;">
+        <img src="assets/images/decision_making/map.png" alt="World Map" style="width: 80%;">
+      </div>
+      <p class="poppins-regular" style="width: 100%; text-align: center; margin-top: 20px; font-size: 16px; margin-left: auto; margin-right: auto;">
+        "World map highlighting the locations of Moral Machine visitors. Each point represents a 
+        location from which at least one visitor made at least one decision (n = 39.6 million). 
+        The numbers of visitors or decisions from each location are not represented." (Awad et al., 2018)
+      </p>
+      <br>
+
+      <p>
+        In this module, we will replicate the online game presented in
+        the Moral Machine experiment with a new twist to make the experiment
+        even more personal to you by placing it in the context of a college
+        campus. We will present you with a series of 13
+        autonomous vehicle crash scenarios. In each scenario, you
+        must choose to continue going straight or to swerve if you feel it would offer a benefit. 
+        Your data will be collected anonymously throughout the experiment and t the end of the series, 
+        we will show you how your choices compare to the average choices of other users.
+      </p>
+    </section>
+
+    <!-- Keep the about-text section for the form and scenario -->
     <section class="about-text">
       <form id="decisionForm">
         <div class="dilemma-prompt" id="dilemmaPrompt">What should the self-driving car do?</div>
@@ -323,7 +402,6 @@ document.addEventListener('DOMContentLoaded', function() {
   let busXFactor = 0.36;
 
   // Vector format: [natural_sci, humanities, social_sci, undergrad, grad, prof, swerve, passengers, greenVsRed]
-  // Each scenario has left and right choices with associated vectors.
   const scenarios = [
     {
       image: 'assets/images/decision_making/scenario_1.png',
