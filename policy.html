@@ -380,6 +380,83 @@
         position: relative;
         z-index: 1000;
       }
+
+      /* Exciting tooltip styles */
+      .exciting-tooltip {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .exciting-tooltip::after {
+        content: "Test your knowledge with a fun game! \01F3AE";
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 1.1em;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        animation: bounce 1s infinite;
+      }
+
+      .exciting-tooltip:hover::after {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Game page styles */
+      .game-container {
+        text-align: center;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+      }
+
+      .game-title {
+        font-size: 2.5em;
+        color: #FFD700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        margin-bottom: 30px;
+      }
+
+      .start-game-btn {
+        padding: 20px 50px;
+        font-size: 1.4em;
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        margin-top: 20px;
+      }
+
+      .game-description {
+        font-size: 1.2em;
+        color: #fff;
+        margin: 20px 0 40px;
+        line-height: 1.6;
+      }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
@@ -621,8 +698,15 @@
             </div>
               <div class="navigation-buttons" style="width: 560px;">
                 <button class="nav-button prev">Previous</button>
-                <button class="nav-button next">Next</button>
+                <button class="nav-button next exciting-tooltip">Next</button>
               </div>
+            </div>
+          </div>
+          <div class="policy-section" data-index="6">
+            <div class="game-container">
+              <h2 class="game-title">Guess Whose Policy! &#127919;</h2>
+              <p class="game-description">Think you know your EU and US policies? Put your knowledge to the test in this exciting Jeopardy-style game! Match the policy statement with the correct region and earn points.</p>
+              <button class="start-game-btn">Start Game &#127918;</button>
             </div>
           </div>
           </div>
