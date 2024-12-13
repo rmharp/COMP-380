@@ -36,6 +36,61 @@
 
     gtag("config", "G-LXQLH66J4S");
   </script>
+  <style>
+    .footer-container {
+        padding: 20px;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.6;
+        background: #3a3a3a;
+        border-radius: 15px;
+        color: white;
+        margin: 20px;
+      }
+
+      .footer-container ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-container li {
+        background: #3a3a3a;
+        padding: 15px;
+        border-radius: 12px;
+        margin: 10px 0;
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .footer-container li:hover {
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .footer-container li::before {
+        content: attr(data-number);
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(to bottom right, #ff8c00, #ff4500);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        margin-right: 10px;
+        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+      }
+
+      .footer-container a {
+        color: #ff8c00;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-container a:hover {
+        color: #ff4500;
+      }
+  </style>
 </head>
 
 <body>
@@ -197,7 +252,7 @@
                   <div class="icon-box">
                     <i class="fa-regular fa-snowflake fa-lg"></i>
                   </div>
-                  <h3 class="modalTitle">Timeline 2</h3>
+                  <h3 class="modalTitle">AI Winter</h3>
                 </div>
                 <ol class="timeline-list">
                 </ol>
@@ -213,7 +268,7 @@
                   <div class="icon-box">
                     <i class="fa-solid fa-arrow-trend-up fa-lg"></i>
                   </div>
-                  <h3 class="modalTitle">Timeline 3</h3>
+                  <h3 class="modalTitle">Research and Growth</h3>
                 </div>
                 <ol class="timeline-list">
                 </ol>
@@ -228,7 +283,7 @@
                   <div class="icon-box">
                     <i class="fa-solid fa-gears fa-lg"></i>
                   </div>
-                  <h3 class="modalTitle">Timeline 4</h3>
+                  <h3 class="modalTitle">Industry Impact</h3>
                 </div>
                 <ol class="timeline-list">
                 </ol>
@@ -243,7 +298,7 @@
                   <div class="icon-box">
                     <i class="fa-solid fa-earth-americas fa-lg"></i>
                   </div>
-                  <h3 class="modalTitle">Timeline 5</h3>
+                  <h3 class="modalTitle">Going Mainstream</h3>
                 </div>
                 <ol class="timeline-list">
                 </ol>
@@ -354,71 +409,151 @@
 
             // Example usage with multiple timeline data sets
             const allTimelineData = [
-              // First timeline data
-              [
-                {
-                  "year": "1966",
-                  "event": "NRC ends $20 million funding",
-                  "description": "A report from Automatic Language Processing Advisory Committee (ALPAC) criticized machine translation efforts, which the NRC used to justify cutting funding."
-                },
-                {
-                  "year": "1969",
-                  "event": "Perceptrons (book)",
-                  "description": "This book pointed out limitations in perceptron technology, severly demotivating work in neural networks for the following decade."
-                },
-                {
-                  "year": "1969",
-                  "event": "Mansfield Amendment",
-                  "description": "A law was passed requiring DARPA project to be mission-oriented, rather than undirected as they had been in the past. Although not directly targeting AI, it was hard to justify AI spending under this amendment at the time"
-                },
-                {
-                  "year": "1973",
-                  "event": "Lighthill Report",
-                  "description": "A UK report describing the lack of results in AI. Leads to diminishing funding in AI in the UK."
-                },
-                {
-                  "year": "1974",
-                  "event": "SUR cancelled",
-                  "description": "The Speech Understanding Research program at Carnegie Mellon University lost its annual $3 million funding from DARPA. "
-                }
-              ],
-              // Second timeline data
-              [
-                {
-                  "year": 2022,
-                  "event": "Second Timeline Event 1",
-                  "description": "Description of the first event in the second timeline."
-                },
-                {
-                  "year": 2021,
-                  "event": "Second Timeline Event 2",
-                  "description": "Description of the second event in the second timeline."
-                }
-              ],
-              // Third timeline data
-              [
-                {
-                  "year": 2020,
-                  "event": "Third Timeline Event 1",
-                  "description": "Description of the first event in the third timeline."
-                }
-              ],
-              // Fourth timeline data
-              [
-                {
-                  "year": 2019,
-                  "event": "Fourth Timeline Event 1",
-                  "description": "Description of the first event in the fourth timeline."
-                }
-              ],
-              // Fifth timeline data
-              [
-                {
-                  "year": 2018,
-                  "event": "Fifth Timeline Event 1",
-                  "description": "Description of the first event in the fifth timeline."
-                }
-              ]
+                [
+                    {
+                        "year": "1950",
+                        "event": "Turing Test",
+                        "description": "Alan Turing proposes a test to measure a machine's ability to exhibit intelligent behavior indistinguishable from that of a human. It serves as a benchmark for AI development and sparks debate about the nature of intelligence and consciousness."
+                    },
+                    {
+                        "year": "1956",
+                        "event": "Dartmouth Summer Research Project on Artificial Intelligence",
+                        "description": "This workshop marks the birth of AI as a formal field of study. It brings together leading researchers to discuss the possibility of creating machines that can think and learn."
+                    },
+                    {
+                        "year": "1958",
+                        "event": "Lisp",
+                        "description": "John McCarthy develops Lisp, a programming language that becomes foundational for AI research. Its flexibility and ability to process symbolic information make it well-suited for developing AI programs."
+                    },
+                    {
+                        "year": "1960",
+                        "event": "General Problem Solver",
+                        "description": "Allen Newell and Herbert A. Simon introduce the General Problem Solver, a program designed to solve a wide range of problems using heuristic search. It represents a significant step towards creating general-purpose AI systems."
+                    }
+                ],
+                [
+                    {
+                        "year": "1966",
+                        "event": "NRC ends $20 million funding",
+                        "description": "A report from Automatic Language Processing Advisory Committee (ALPAC) criticized machine translation efforts, which the NRC used to justify cutting funding."
+                    },
+                    {
+                        "year": "1969",
+                        "event": "Perceptrons (book)",
+                        "description": "This book pointed out limitations in perceptron technology, severly demotivating work in neural networks for the following decade."
+                    },
+                    {
+                        "year": "1969",
+                        "event": "Mansfield Amendment",
+                        "description": "A law was passed requiring DARPA project to be mission-oriented, rather than undirected as they had been in the past. Although not directly targeting AI, it was hard to justify AI spending under this amendment at the time"
+                    },
+                    {
+                        "year": "1973",
+                        "event": "Lighthill Report",
+                        "description": "A UK report describing the lack of results in AI. Leads to diminishing funding in AI in the UK."
+                    },
+                    {
+                        "year": "1974",
+                        "event": "SUR cancelled",
+                        "description": "The Speech Understanding Research program at Carnegie Mellon University lost its annual $3 million funding from DARPA. "
+                    }
+                ],
+                [
+                    {
+                        "year": "1980",
+                        "event": "Expert Systems",
+                        "description": "These programs were designed to mimic the decision-making process of a human expert in a specific field. They were used in a variety of applications, such as medical diagnosis and financial planning."
+                    },
+                    {
+                        "year": "1982",
+                        "event": "Japan launches Fifth Generation Computer Systems project",
+                        "description": "This project aimed to develop a new generation of computers that could perform tasks such as natural language processing and machine translation. The project was not successful in achieving its goals, but it did help to stimulate AI research in other countries."
+                    },
+                    {
+                        "year": "1985",
+                        "event": "Neural Networks",
+                        "description": "A new approach to AI that was inspired by the human brain. Neural networks are now used in a variety of applications, such as image recognition and natural language processing."
+                    },
+                    {
+                        "year": "1987",
+                        "event": "Lisp Machines",
+                        "description": "A type of computer that was designed to run the Lisp programming language. Lisp machines were popular in the 1980s, but they were eventually replaced by more general-purpose computers."
+                    },
+                    {
+                        "year": "1990",
+                        "event": "Japan terminates Fifth Generation Computer Systems project",
+                        "description": "The project was not successful in achieving its goals, but it did help to stimulate AI research in other countries."
+                    }
+                ],
+                [
+                    {
+                        "year": "2005",
+                        "event": "The DARPA Grand Challenge",
+                        "description": "A series of prize competitions for autonomous vehicles, funded by the Defense Advanced Research Projects Agency, the most prominent research organization of the United States Department of Defense. The initial 2004 competition was unsuccessful, with no robot successfully completing the course, but the 2005 competition was won by Stanley, an autonomous car developed by Stanford University."
+                    },
+                    {
+                        "year": "2006",
+                        "event": "Deep Learning",
+                        "description": "A new approach to AI that is based on deep neural networks. Deep learning has been very successful in recent years, and it is now used in a variety of applications, such as image recognition, natural language processing, and machine translation."
+                    },
+                    {
+                        "year": "2010",
+                        "event": "ImageNet",
+                        "description": "A large visual database that is used for training AI systems. ImageNet has been very important in the development of deep learning, as it has provided a large amount of data for training AI systems."
+                    },
+                    {
+                        "year": "2011",
+                        "event": "Watson wins Jeopardy!",
+                        "description": "Watson was a question-answering computer developed by IBM. In 2011, Watson defeated two of the best Jeopardy! champions, Brad Rutter and Ken Jennings, in a two-game match. This was another major milestone in the history of AI, as it showed that computers could outperform humans in tasks that require natural language understanding."
+                    }
+                ],
+                [
+                    {
+                        "year": "2012",
+                        "event": "AlexNet",
+                        "description": "A deep neural network that was developed by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton. AlexNet won the 2012 ImageNet Large Scale Visual Recognition Challenge (ILSVRC), and it was a major breakthrough in the development of deep learning."
+                    },
+                    {
+                        "year": "2014",
+                        "event": "Generative Adversarial Networks (GANs)",
+                        "description": "A type of AI that can be used to generate new data, such as images, videos, and text. GANs have been used to create some very impressive results, such as realistic images of people and objects that do not exist."
+                    },
+                    {
+                        "year": "2016",
+                        "event": "AlphaGo beats Lee Sedol",
+                        "description": "AlphaGo was a Go-playing computer developed by Google DeepMind. In 2016, AlphaGo defeated Lee Sedol, one of the best Go players in the world, in a five-game match. This was another major milestone in the history of AI, as it showed that computers could outperform humans in tasks that require intuition and creativity."
+                    },
+                    {
+                        "year": "2017",
+                        "event": "The Transformer",
+                        "description": "A type of AI that is now used in a variety of natural language processing applications, such as machine translation and text summarization. The Transformer has been very important in the development of large language models, such as GPT-3 and LaMDA."
+                    },
+                    {
+                        "year": "2018",
+                        "event": "BERT",
+                        "description": "A large language model that was developed by Google AI. BERT has been very successful in a variety of natural language processing tasks, such as question answering and natural language inference."
+                    },
+                    {
+                        "year": "2020",
+                        "event": "GPT-3",
+                        "description": "A large language model that was developed by OpenAI. GPT-3 can generate very realistic text, and it has been used to create a variety of applications, such as chatbots and text summarization tools."
+                    },
+                    {
+                        "year": "2022",
+                        "event": "Imagen",
+                        "description": "A text-to-image AI model that was developed by Google AI. Imagen can generate very realistic images from text descriptions."
+                    },
+                    {
+                        "year": "2023",
+                        "event": "Bard",
+                        "description": "A large language model that was developed by Google AI. Bard is a conversational AI model that can generate text, translate languages, and answer questions."
+                    },
+                    {
+                        "year": "2024",
+                        "event": "Gemini",
+                        "description": "A large language model that was developed by Google AI. Gemini is a multimodal AI model that can process text, images, and code."
+                    }
+                ]
             ];
 
             // Call the function when the page loads
@@ -428,6 +563,19 @@
           </script>
       </section>
     </div>
+
+    <footer>
+      <div class="footer-container">
+        <ol>
+          <li id="footnote17" data-number="17">
+            Cade Metz. (2020). Genius Makers: The Mavericks Who Brought AI to Google, Facebook, and the World. Dutton.
+          </li>
+          <li id="footnote18" data-number="18">
+            Melanie Mitchell (2019). Artificial Intelligence: A Guide for Thinking Humans. Farrar, Straus and Giroux.
+          </li>
+        </ol>
+      </div>
+    </footer>
   </main>
 
   <!--
